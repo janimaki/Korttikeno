@@ -2,5 +2,3 @@ Korttikeno
 ==========
 
 Korttikeno
-
-Testiä tässä =)
