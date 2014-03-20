@@ -4,7 +4,7 @@ Viikko 1: Ensimmäinen viikko meni opetellessa githubin käyttöä ja varsinkin 
 
 Aikaa käytetty 5 tuntia.
 
-<<<<<<< HEAD
+
 Viikko 2: Ohjelmointi aloitettu ja jo nyt ahdistaa kuinka haastavaa tämä minulle on. Ohjelmoinnin lisäksi aikaa on mennyt testien ja luokkakaavion tekemiseen.
 =======
 Viikko 2:
