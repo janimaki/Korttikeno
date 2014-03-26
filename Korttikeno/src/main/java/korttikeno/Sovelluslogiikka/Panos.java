@@ -9,12 +9,22 @@ package korttikeno.Sovelluslogiikka;
  * @author Jani
  */
 public class Panos {
-    
+    public double panos;
   
     
-    public Panos(){
-        
+    public Panos(double paukku){
+        this.panos = paukku;
     }
+
+    public double getPanos() {
+        return panos;
+    }
+
+    public void setPanos(double panos) {
+        this.panos = panos;
+    }
+    
+    
     
     
 }

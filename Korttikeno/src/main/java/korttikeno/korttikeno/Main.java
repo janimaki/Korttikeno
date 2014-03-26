@@ -9,16 +9,10 @@ import korttikeno.Sovelluslogiikka.Kenoarvonta;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {        
         
-        
-        
-        
-        Kenoarvonta keno = new Kenoarvonta();
-        
-        keno.suoritaArvonta();
-        System.out.println("--");
-        
-        
+        Korttikeno keno = new Korttikeno();
+        keno.Pelaa();
+                           
     }
 }

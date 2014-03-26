@@ -13,32 +13,52 @@ import java.util.ArrayList;
  */
 public class Kenoarvonta {
 
-    ArrayList<Integer> arvotutNumerot;
+    public ArrayList<Integer> arvotutNumerot;
     Arpoja arpoja;
-    Pelaaja pelaaja ;
+    public Pelaaja pelaaja;
+    public Panos panos;
 
     public Kenoarvonta() {
         arpoja = new Arpoja();
         arvotutNumerot = new ArrayList();
-        pelaaja = new Pelaaja("Jani",10);
+        
+        
     }
-    
-    public void asetaRahaa(int saldo){
+
+    public void asetaPanos(double panos) {
+        this.panos = new Panos(panos);
+    }
+
+    public void asetaRahaa(int saldo) {
         pelaaja.setSaldo(saldo);
     }
-    
+
     public void suoritaArvonta() {
-        
-        if (pelaaja.getSaldo() - 1 > 0) {
-            pelaaja.muutaSaldoa(-1);
-            
+
+        if (pelaaja.getSaldo() - panos.getPanos() > 0) {
+            pelaaja.muutaSaldoa(-panos.getPanos());
+
             while (arvotutNumerot.size() < 10) {
                 int arvottuLuku = arpoja.arvoLuvut();
                 if (!arvotutNumerot.contains(arvottuLuku)) {
                     arvotutNumerot.add(arvottuLuku);
                 }
             }
-        }       
+        }
+    }
+
+    public boolean onkoVoittoa() {
+        if (montakoOsumaa() / montaValittuaNumeroa() >= 0.5) {
+            return true;
+        }
+        return false;
+    }
+
+    public int montaValittuaNumeroa() {
+        if (pelaaja.montakoValittuaNumeroa() == 0) {
+            return -1;
+        }
+        return pelaaja.montakoValittuaNumeroa();
     }
 
     public int montakoOsumaa() {
@@ -50,38 +70,37 @@ public class Kenoarvonta {
                 }
             }
         }
-        return osumat ;
+        return osumat;
     }
 
     public void suoritaVoitonmaksu() {
         if (pelaaja.montakoValittuaNumeroa() == 1) { // yksi kortti valittuna
             if (montakoOsumaa() == 1) {
-                pelaaja.muutaSaldoa(4);
+                pelaaja.muutaSaldoa(panos.getPanos() * 4);
             }
         }
         if (pelaaja.montakoValittuaNumeroa() == 2) { // kaksi korttia valittu
             if (montakoOsumaa() == 1) {
-                pelaaja.muutaSaldoa(2);
+                pelaaja.muutaSaldoa(panos.getPanos() * 2);
             } else if (montakoOsumaa() == 2) {
-                pelaaja.muutaSaldoa(4);
+                pelaaja.muutaSaldoa(panos.getPanos() * 4);
             }
         }
         if (pelaaja.montakoValittuaNumeroa() == 3) { // kolme korttia valittu
             if (montakoOsumaa() == 2) {
-                pelaaja.muutaSaldoa(2);
+                pelaaja.muutaSaldoa(panos.getPanos() * 2);
             } else if (montakoOsumaa() == 3) {
-                pelaaja.muutaSaldoa(4);
+                pelaaja.muutaSaldoa(panos.getPanos() * 4);
             }
         }
         if (pelaaja.montakoValittuaNumeroa() == 4) { // neljä korttia valittu
             if (montakoOsumaa() == 2) {
-                pelaaja.muutaSaldoa(1);
+                pelaaja.muutaSaldoa(panos.getPanos() * 1);
             } else if (montakoOsumaa() == 3) {
-                pelaaja.muutaSaldoa(3);
+                pelaaja.muutaSaldoa(panos.getPanos() * 3);
             } else if (montakoOsumaa() == 4) {
-                pelaaja.muutaSaldoa(6);
+                pelaaja.muutaSaldoa(panos.getPanos() * 6);
             }
         }
     }
 }
-
