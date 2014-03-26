@@ -10,6 +10,9 @@ Ohjelmointi aloitettu ja jo nyt ahdistaa kuinka haastavaa tämä minulle on. Ohj
 
 Aikaa käytetty 8 tuntia.
 
+Viikko 3:
+
+
 Viikko 1: 5 tuntia
 Viikko 2: 8 tuntia
 Viikko 3:
