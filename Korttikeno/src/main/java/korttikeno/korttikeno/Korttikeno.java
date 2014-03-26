@@ -22,17 +22,21 @@ public class Korttikeno {
     Random random;
 
     public Korttikeno() {
+        this.pelaaja = new Pelaaja("Esimerkki",0);
     }
     
-
-    public void Pelaa() {
-
+    public void uusiPelaaja(){
         System.out.print("Syötä nimi: ");
         String nimi = lukija.nextLine();
         System.out.print("Paljonko sijoitat? (0,2-10): ");
-        Double aloitussumma = Double.parseDouble(lukija.nextLine());
-        arvonta.pelaaja.setNimi(nimi);
-        arvonta.pelaaja.setSaldo(aloitussumma);
+        Double aloitussumma = Double.parseDouble(lukija.nextLine()); 
+        this.pelaaja = new Pelaaja(nimi, aloitussumma);
+    }
+
+    public void Pelaa() {        
+        if(pelaaja.getNimi().equals("Esimerkki")){         
+            uusiPelaaja();
+        }        
         System.out.print("Panos? (0,2 - 1): ");
         Double panos = Double.parseDouble(lukija.nextLine());
         arvonta.asetaPanos(panos);
@@ -41,15 +45,15 @@ public class Korttikeno {
         for (int i = 0; i < kortteja; i++) {
             System.out.println("Valitse numero: (1-52)");
             int numero = lukija.nextInt();
-            arvonta.pelaaja.valitseNumero(numero);
+            pelaaja.valitseNumero(numero);
         }
         arvonta.suoritaArvonta();
-        System.out.println(arvonta.pelaaja.toString());
+        System.out.println(pelaaja.toString());
         if (!arvonta.onkoVoittoa()) {
-            System.out.println(arvonta.pelaaja.toString());
-        } else {
+            System.out.println(pelaaja.toString());
+        } else {    //tuplausvaihtoehto myöhemmin
             arvonta.suoritaVoitonmaksu();
-            System.out.println(arvonta.pelaaja.toString());
+            System.out.println(pelaaja.toString());
         }
         
 

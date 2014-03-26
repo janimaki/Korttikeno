@@ -11,10 +11,10 @@ import java.util.ArrayList;
  * @author Jani
  */
 public class Pelaaja {
-    private String nimi;
-    private double saldo;
-    private ArrayList<Integer> valitutNumerot;
-//    public int tuplaus; 
+    public String nimi;
+    public double saldo;
+    public ArrayList<Integer> valitutNumerot;
+    public int tuplaus; 
     
     public Pelaaja(String nimi, double saldo) {
         this.nimi = nimi;
@@ -60,13 +60,13 @@ public class Pelaaja {
         return valitutNumerot.size();
     }
     
-//    public int getTuplaus(){
-//        return tuplaus;
-//    }
-//    
-//    public void setTuplaus(int tuplaus){
-//        this.tuplaus = tuplaus; // 0 = pieni, 3 = suuri
-//    }
+    public int getTuplaus(){
+        return tuplaus;
+    }
+    
+    public void setTuplaus(int tuplaus){
+        this.tuplaus = tuplaus; // 0 = pieni, 3 = suuri
+    }
 
     @Override
     public String toString() {

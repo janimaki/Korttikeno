@@ -14,15 +14,14 @@ import java.util.ArrayList;
 public class Kenoarvonta {
 
     public ArrayList<Integer> arvotutNumerot;
-    Arpoja arpoja;
+    public Arpoja arpoja;
     public Pelaaja pelaaja;
     public Panos panos;
 
     public Kenoarvonta() {
         arpoja = new Arpoja();
         arvotutNumerot = new ArrayList();
-        
-        
+
     }
 
     public void asetaPanos(double panos) {
