@@ -20,4 +20,12 @@ public class Skanneri {
         
     }
 
+    public String nextLine() {
+        return lukija.nextLine();
+    }
+
+    public int nextInt() {
+        return lukija.nextInt();
+    }
+
 }
