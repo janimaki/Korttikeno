@@ -11,11 +11,14 @@ Ohjelmointi aloitettu ja jo nyt ahdistaa kuinka haastavaa tämä minulle on. Ohj
 Aikaa käytetty 8 tuntia.
 
 Viikko 3:
+Ohjelmointi lähtenyt paremmin käyntiin, logiikka "käytännössä valmis". Tarkoittaa sitä, että hyväksyy virheellisiä arvoja ja vikoja löytyy, mutta oikeilla arvoilla tekstikäyttöliittymän kautta pelaaminen alkaa jo onnistua. Testejäki tuli tehtyä ihan kivasti, ja 70% rivikattavauus on logiikan osalta paketissa.
+
+Aikaa käytetty 8 tuntia.
 
 
 Viikko 1: 5 tuntia
 Viikko 2: 8 tuntia
-Viikko 3:
+Viikko 3: 8 tuntia
 Viikko 4:
 Viikko 5:
 Viikko 6:
