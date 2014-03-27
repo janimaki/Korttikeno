@@ -60,4 +60,10 @@ public class KenoarvontaTest {
         kenoarvonta.suoritaArvonta();
         assertEquals(10, kenoarvonta.arvotutNumerot.size());
     }
+    
+    @Test
+    public void uusiPelaajaToimii(){
+        kenoarvonta.uusiPelaaja("pelle", 10);
+        assertEquals("pelle", kenoarvonta.pelaaja.getNimi());
+    }
 }
