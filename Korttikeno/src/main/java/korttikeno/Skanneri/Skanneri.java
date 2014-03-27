@@ -12,11 +12,12 @@ import java.util.Scanner;
  */
 public class Skanneri {
 
-    public static Scanner lukija= new Scanner(System.in);
+    public static Scanner lukija;
 
     public Skanneri() {
-        
+        lukija = new Scanner(System.in);
         
         
     }
+
 }

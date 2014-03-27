@@ -49,11 +49,13 @@ public class PelaajaTest {
         pelaaja.valitseNumero(12);
         pelaaja.valitseNumero(16);
         pelaaja.valitseNumero(2);
-        assertEquals(4, pelaaja.montakoValittuaNumeroa());
+        pelaaja.valitseNumero(17);
+        pelaaja.valitseNumero(9);
+        assertEquals(5, pelaaja.montakoValittuaNumeroa());
     }
-    
+
     @Test
-    public void eiVoiValitaSamojaLukuja(){
+    public void eiVoiValitaSamojaLukuja() {
         pelaaja.valitseNumero(4);
         pelaaja.valitseNumero(4);
         pelaaja.valitseNumero(20);
@@ -61,16 +63,38 @@ public class PelaajaTest {
         pelaaja.valitseNumero(15);
         assertEquals(3, pelaaja.montakoValittuaNumeroa());
     }
-    
-    public void pelaajaSetSaldoToimii(){
+
+    @Test
+    public void pelaajaSetSaldoToimii() {
         pelaaja.setSaldo(18);
-        assertEquals(18,pelaaja.getSaldo());
+        assertEquals(18, pelaaja.getSaldo(), 0.0001);
     }
-    
-    public void muutaSaldoaToimii(){
+
+    @Test
+    public void muutaSaldoaToimii() {
         pelaaja.muutaSaldoa(-2);
-        assertEquals(8,pelaaja.getSaldo());
+        assertEquals(8, pelaaja.getSaldo(), 0.0001);
         pelaaja.muutaSaldoa(12);
-        assertEquals(20, pelaaja.getSaldo());
+        assertEquals(20, pelaaja.getSaldo(), 0.0001);
+        pelaaja.muutaSaldoa(-32.4);
+        assertEquals(20, pelaaja.getSaldo(), 0.0001);
+        pelaaja.muutaSaldoa(-20);
+        assertEquals(0, pelaaja.getSaldo(), 0.0001);
+    }
+
+
+    @Test
+    public void tyhjennaRiviJaMontakoValittuaNumeroaToimii() {
+        pelaaja.valitseNumero(16);
+        pelaaja.valitseNumero(2);
+        pelaaja.valitseNumero(17);
+        pelaaja.valitseNumero(9);
+        assertEquals(4, pelaaja.montakoValittuaNumeroa());
+        pelaaja.tyhjennaRivi();
+        pelaaja.valitseNumero(17);
+        pelaaja.valitseNumero(9);
+        assertEquals(2, pelaaja.montakoValittuaNumeroa());
+        pelaaja.tyhjennaRivi();
+        assertEquals(0, pelaaja.montakoValittuaNumeroa());
     }
 }

@@ -20,9 +20,10 @@ public class Korttikeno {
     Kenoarvonta arvonta = new Kenoarvonta();
     private static Scanner lukija = new Scanner(System.in);
     Random random;
+    public Skanneri skanneri;
 
     public Korttikeno() {
-        
+        skanneri = new Skanneri();
     }
     
     public void uusiPelaaja(){
@@ -44,7 +45,7 @@ public class Korttikeno {
         arvonta.asetaPanos(panos);
         System.out.print("Montako korttia? (1-4): ");
         int kortteja = lukija.nextInt();
-        for (int i = 0; i < kortteja; i++) {
+        while(arvonta.pelaaja.valitutNumerot.size()!=kortteja){
             System.out.println("Valitse numero: (1-52)");
             int numero = lukija.nextInt();
             arvonta.pelaaja.valitseNumero(numero);
