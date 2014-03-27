@@ -1,0 +1,2111 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+border: 1px solid #dddddd;
+padding-top: 10px;
+padding-right: 5px;
+padding-left: 5px;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+</style>
+
+</head>
+<body>
+
+
+<h1>Kenoarvonta.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_1'/>
+1
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_1'></a>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_2'/>
+2
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_2'></a>
+</td>
+<td class=''><pre><span  class=''> * To change this template, choose Tools | Templates</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_3'/>
+3
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_3'></a>
+</td>
+<td class=''><pre><span  class=''> * and open the template in the editor.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_4'/>
+4
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_4'></a>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_5'/>
+5
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_5'></a>
+</td>
+<td class=''><pre><span  class=''>package korttikeno.Sovelluslogiikka;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_6'/>
+6
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_6'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_7'/>
+7
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_7'></a>
+</td>
+<td class=''><pre><span  class=''>import korttikeno.Pelaaja.Pelaaja;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_8'/>
+8
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_8'></a>
+</td>
+<td class=''><pre><span  class=''>import java.util.ArrayList;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_9'/>
+9
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_9'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_10'/>
+10
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_10'></a>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_11'/>
+11
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_11'></a>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_12'/>
+12
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_12'></a>
+</td>
+<td class=''><pre><span  class=''> * @author Jani</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_13'/>
+13
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_13'></a>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_14'/>
+14
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_14'></a>
+</td>
+<td class=''><pre><span  class=''>public class Kenoarvonta {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_15'/>
+15
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_15'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_16'/>
+16
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_16'></a>
+</td>
+<td class=''><pre><span  class=''>    public ArrayList&#60;Integer&#62; arvotutNumerot;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_17'/>
+17
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_17'></a>
+</td>
+<td class=''><pre><span  class=''>    public Arpoja arpoja;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_18'/>
+18
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_18'></a>
+</td>
+<td class=''><pre><span  class=''>    public Pelaaja pelaaja;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_19'/>
+19
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_19'></a>
+</td>
+<td class=''><pre><span  class=''>    public Panos panos;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_20'/>
+20
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_20'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_21'/>
+21
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_21'></a>
+</td>
+<td class='covered'><pre><span  class=''>    public Kenoarvonta() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_22'/>
+22
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_22'></a>
+</td>
+<td class='covered'><pre><span  class=''>        arpoja = new Arpoja();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_23'/>
+23
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_23'></a>
+</td>
+<td class='covered'><pre><span  class=''>        arvotutNumerot = new ArrayList();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_24'/>
+24
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_24'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.pelaaja = new Pelaaja(&#34;uusi&#34;, 0);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_25'/>
+25
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_25'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_26'/>
+26
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_26'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_27'/>
+27
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_27'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_28'/>
+28
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_28'></a>
+</td>
+<td class=''><pre><span  class=''>    public void uusiPelaaja(String nimi, double saldo) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_29'/>
+29
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_29'></a>
+</td>
+<td class='covered'><pre><span  class=''>        this.pelaaja = new Pelaaja(nimi, saldo);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_30'/>
+30
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_30'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_31'/>
+31
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_31'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_32'/>
+32
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_32'></a>
+</td>
+<td class=''><pre><span  class=''>    public void asetaPanos(double panos) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_33'/>
+33
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_33'>2</a>
+</td>
+<td class='covered'><pre><span  class='survived'>        if(panos &#62;= 1.0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_34'/>
+34
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_34'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.panos = new Panos(1.0);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_35'/>
+35
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_35'>2</a>
+</td>
+<td class='covered'><pre><span  class='survived'>        } else if (panos&#60;= 0.2) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_36'/>
+36
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_36'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.panos = new Panos(0.2);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_37'/>
+37
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_37'></a>
+</td>
+<td class=''><pre><span  class=''>        } else {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_38'/>
+38
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_38'></a>
+</td>
+<td class='covered'><pre><span  class=''>            this.panos = new Panos(panos);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_39'/>
+39
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_39'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_40'/>
+40
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_40'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_41'/>
+41
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_41'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_42'/>
+42
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_42'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_43'/>
+43
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_43'></a>
+</td>
+<td class=''><pre><span  class=''>    public void asetaSaldo(double saldo) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_44'/>
+44
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_44'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_45'/>
+45
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_45'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        pelaaja.setSaldo(saldo);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_46'/>
+46
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_46'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_47'/>
+47
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_47'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_48'/>
+48
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_48'></a>
+</td>
+<td class=''><pre><span  class=''>    public void suoritaArvonta() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_49'/>
+49
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_49'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_50'/>
+50
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_50'>3</a>
+</td>
+<td class='covered'><pre><span  class='survived'>        if (pelaaja.getSaldo() - panos.getPanos() &#62;= 0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_51'/>
+51
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_51'>2</a>
+</td>
+<td class='covered'><pre><span  class='survived'>            pelaaja.muutaSaldoa(-panos.getPanos());</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_52'/>
+52
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_52'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_53'/>
+53
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_53'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            while (arvotutNumerot.size() &#60; 10) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_54'/>
+54
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_54'></a>
+</td>
+<td class='covered'><pre><span  class=''>                int arvottuLuku = arpoja.arvoLuvut();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_55'/>
+55
+</td>
+<td class='uncertain'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_55'>1</a>
+</td>
+<td class='covered'><pre><span  class='uncertain'>                if (!arvotutNumerot.contains(arvottuLuku)) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_56'/>
+56
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_56'></a>
+</td>
+<td class='covered'><pre><span  class=''>                    arvotutNumerot.add(arvottuLuku);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_57'/>
+57
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_57'></a>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_58'/>
+58
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_58'></a>
+</td>
+<td class='covered'><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_59'/>
+59
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_59'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_60'/>
+60
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_60'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_61'/>
+61
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_61'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_62'/>
+62
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_62'></a>
+</td>
+<td class=''><pre><span  class=''>    public boolean onkoVoittoa() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_63'/>
+63
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_63'>5</a>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        if (montakoOsumaa() / montaValittuaNumeroa() &#62;= 0.4 &#38;&#38; montaValittuaNumeroa()&#62;0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_64'/>
+64
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_64'>1</a>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return true;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_65'/>
+65
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_65'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_66'/>
+66
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_66'>1</a>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return false;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_67'/>
+67
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_67'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_68'/>
+68
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_68'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_69'/>
+69
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_69'></a>
+</td>
+<td class=''><pre><span  class=''>    public int montaValittuaNumeroa() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_70'/>
+70
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_70'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return pelaaja.montakoValittuaNumeroa();</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_71'/>
+71
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_71'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_72'/>
+72
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_72'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_73'/>
+73
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_73'></a>
+</td>
+<td class=''><pre><span  class=''>    public int montakoOsumaa() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_74'/>
+74
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_74'></a>
+</td>
+<td class='covered'><pre><span  class=''>        int osumat = 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_75'/>
+75
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_75'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (Integer arvotut : arvotutNumerot) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_76'/>
+76
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_76'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            for (Integer valitut : pelaaja.getValitutNumerot()) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_77'/>
+77
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_77'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                if (arvotut == valitut) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_78'/>
+78
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_78'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                    osumat++;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_79'/>
+79
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_79'></a>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_80'/>
+80
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_80'></a>
+</td>
+<td class='covered'><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_81'/>
+81
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_81'></a>
+</td>
+<td class='covered'><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_82'/>
+82
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_82'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return osumat;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_83'/>
+83
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_83'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_84'/>
+84
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_84'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_85'/>
+85
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_85'></a>
+</td>
+<td class=''><pre><span  class=''>    public void suoritaVoitonmaksu() {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_86'/>
+86
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_86'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (montaValittuaNumeroa() == 1) { // yksi kortti valittuna</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_87'/>
+87
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_87'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (montakoOsumaa() == 1) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_88'/>
+88
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_88'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                pelaaja.muutaSaldoa(panos.getPanos() * 5);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_89'/>
+89
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_89'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_90'/>
+90
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_90'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_91'/>
+91
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_91'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (montaValittuaNumeroa() == 2) { // kaksi korttia valittu</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_92'/>
+92
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_92'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (montakoOsumaa() == 1) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_93'/>
+93
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_93'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                pelaaja.muutaSaldoa(panos.getPanos() * 2);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_94'/>
+94
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_94'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            } else if (montakoOsumaa() == 2) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_95'/>
+95
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_95'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                pelaaja.muutaSaldoa(panos.getPanos() * 6);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_96'/>
+96
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_96'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_97'/>
+97
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_97'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_98'/>
+98
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_98'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (montaValittuaNumeroa() == 3) { // kolme korttia valittu</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_99'/>
+99
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_99'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (montakoOsumaa() == 2) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_100'/>
+100
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_100'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                pelaaja.muutaSaldoa(panos.getPanos() * 4);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_101'/>
+101
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_101'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            } else if (montakoOsumaa() == 3) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_102'/>
+102
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_102'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                pelaaja.muutaSaldoa(panos.getPanos() * 8);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_103'/>
+103
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_103'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_104'/>
+104
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_104'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_105'/>
+105
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_105'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (montaValittuaNumeroa() == 4) { // nelj&#195;&#164; korttia valittu</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_106'/>
+106
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_106'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (montakoOsumaa() == 2) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_107'/>
+107
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_107'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                pelaaja.muutaSaldoa(panos.getPanos() * 3);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_108'/>
+108
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_108'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            } else if (montakoOsumaa() == 3) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_109'/>
+109
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_109'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                pelaaja.muutaSaldoa(panos.getPanos() * 6);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_110'/>
+110
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_110'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            } else if (montakoOsumaa() == 4) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_111'/>
+111
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_111'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                pelaaja.muutaSaldoa(panos.getPanos() * 10);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_112'/>
+112
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_112'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_113'/>
+113
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_113'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_114'/>
+114
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_114'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (montaValittuaNumeroa() == 5) { // viisi korttia valittu</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_115'/>
+115
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_115'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (montakoOsumaa() == 2) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_116'/>
+116
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_116'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                pelaaja.muutaSaldoa(panos.getPanos() * 2);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_117'/>
+117
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_117'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            } else if (montakoOsumaa() == 3) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_118'/>
+118
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_118'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                pelaaja.muutaSaldoa(panos.getPanos() * 4);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_119'/>
+119
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_119'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            } else if (montakoOsumaa() == 4) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_120'/>
+120
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_120'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                pelaaja.muutaSaldoa(panos.getPanos() * 8);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_121'/>
+121
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_121'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            } else if (montakoOsumaa() == 5) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_122'/>
+122
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_122'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                pelaaja.muutaSaldoa(panos.getPanos() * 20);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_123'/>
+123
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_123'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_124'/>
+124
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_124'></a>
+</td>
+<td class=''><pre><span  class=''>            </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_125'/>
+125
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_125'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_126'/>
+126
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_126'></a>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@34beb116_127'/>
+127
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_127'></a>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_33'>33</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_33'/> 
+
+<p class='SURVIVED'>changed conditional boundary : SURVIVED</p> <p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.KenoarvontaTest.korttikeno.Sovelluslogiikka.KenoarvontaTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_35'>35</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_35'/> 
+
+<p class='SURVIVED'>changed conditional boundary : SURVIVED</p> <p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.KenoarvontaTest.korttikeno.Sovelluslogiikka.KenoarvontaTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_45'>45</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_45'/> 
+
+<p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::setSaldo : KILLED -> korttikeno.Sovelluslogiikka.KenoarvontaTest.korttikeno.Sovelluslogiikka.KenoarvontaTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_50'>50</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_50'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.KenoarvontaTest.korttikeno.Sovelluslogiikka.KenoarvontaTest</p> <p class='KILLED'>Replaced double subtraction with addition : KILLED -> korttikeno.Sovelluslogiikka.KenoarvontaTest.korttikeno.Sovelluslogiikka.KenoarvontaTest</p> <p class='SURVIVED'>changed conditional boundary : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_51'>51</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_51'/> 
+
+<p class='SURVIVED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : SURVIVED</p> <p class='SURVIVED'>removed negation : SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_53'>53</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_53'/> 
+
+<p class='KILLED'>changed conditional boundary : KILLED -> korttikeno.Sovelluslogiikka.KenoarvontaTest.korttikeno.Sovelluslogiikka.KenoarvontaTest</p> <p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.KenoarvontaTest.korttikeno.Sovelluslogiikka.KenoarvontaTest</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_55'>55</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_55'/> 
+
+<p class='TIMED_OUT'>negated conditional : TIMED_OUT</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_63'>63</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_63'/> 
+
+<p class='NO_COVERAGE'>Replaced integer division with multiplication : NO_COVERAGE</p> <p class='NO_COVERAGE'>changed conditional boundary : NO_COVERAGE</p> <p class='NO_COVERAGE'>changed conditional boundary : NO_COVERAGE</p> <p class='NO_COVERAGE'>negated conditional : NO_COVERAGE</p> <p class='NO_COVERAGE'>negated conditional : NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_64'>64</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_64'/> 
+
+<p class='NO_COVERAGE'>replaced return of integer sized value with (x == 0 ? 1 : 0) : NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_66'>66</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_66'/> 
+
+<p class='NO_COVERAGE'>replaced return of integer sized value with (x == 0 ? 1 : 0) : NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_70'>70</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_70'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_75'>75</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_75'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_76'>76</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_76'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_77'>77</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_77'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_78'>78</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_78'/> 
+
+<p class='KILLED'>Changed increment from 1 to -1 : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_82'>82</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_82'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_86'>86</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_86'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_87'>87</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_87'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_88'>88</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_88'/> 
+
+<p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_91'>91</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_91'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_92'>92</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_92'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_93'>93</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_93'/> 
+
+<p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_94'>94</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_94'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_95'>95</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_95'/> 
+
+<p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_98'>98</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_98'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_99'>99</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_99'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_100'>100</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_100'/> 
+
+<p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_101'>101</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_101'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_102'>102</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_102'/> 
+
+<p class='KILLED'>Replaced double multiplication with division : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> <p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_105'>105</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_105'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_106'>106</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_106'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_107'>107</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_107'/> 
+
+<p class='KILLED'>Replaced double multiplication with division : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> <p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_108'>108</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_108'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_109'>109</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_109'/> 
+
+<p class='KILLED'>Replaced double multiplication with division : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> <p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_110'>110</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_110'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_111'>111</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_111'/> 
+
+<p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_114'>114</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_114'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_115'>115</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_115'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_116'>116</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_116'/> 
+
+<p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_117'>117</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_117'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_118'>118</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_118'/> 
+
+<p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_119'>119</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_119'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_120'>120</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_120'/> 
+
+<p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_121'>121</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_121'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@34beb116_122'>122</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@34beb116_122'/> 
+
+<p class='KILLED'>removed call to korttikeno/Pelaaja/Pelaaja::muutaSaldoa : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> <p class='KILLED'>Replaced double multiplication with division : KILLED -> korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>korttikeno.Sovelluslogiikka.Kenoarvonta2Test.korttikeno.Sovelluslogiikka.Kenoarvonta2Test (11 ms)</li><li>korttikeno.Sovelluslogiikka.KenoarvontaTest.korttikeno.Sovelluslogiikka.KenoarvontaTest (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 0.30
+
+</body>
+</html>
