@@ -25,7 +25,7 @@ public class Arpoja {
      * @return kokonaisluku väliltä 1-52
      */
     public int arvoLuvut() {
-        return arpoja.nextInt(52) + 1;
+        return arpoja.nextInt(20) + 1;
     }
 
     /**

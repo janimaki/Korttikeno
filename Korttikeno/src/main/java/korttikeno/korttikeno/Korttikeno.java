@@ -15,11 +15,12 @@ import korttikeno.Skanneri.Skanneri;
  */
 public class Korttikeno {
 
-    Kenoarvonta arvonta = new Kenoarvonta();
+    public Kenoarvonta arvonta;
     public Skanneri skanneri;
 
     public Korttikeno() {
         skanneri = new Skanneri();
+        arvonta = new Kenoarvonta();
     }
 
     /**
@@ -57,8 +58,13 @@ public class Korttikeno {
             for (Integer numero : arvonta.arvotutNumerot) {
                 System.out.println(numero);
             }
-            if (arvonta.onkoVoittoa() == false) {
+            if (!arvonta.onkoVoittoa()) {
                 System.out.println(arvonta.pelaaja.toString());
+                
+                System.out.println(arvonta.montakoOsumaa()/arvonta.montaValittuaNumeroa());
+                System.out.println(arvonta.montakoOsumaa());
+                System.out.println(arvonta.montaValittuaNumeroa());
+                
             } else {
                 System.out.println("Tuplataanko? (Y/N)");
                 String vastaus = skanneri.nextLine();

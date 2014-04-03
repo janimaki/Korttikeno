@@ -87,7 +87,10 @@ public class Kenoarvonta {
      * @return true jos osumia on tarpeeksi voittoon, muuten false
      */
     public boolean onkoVoittoa() {
-        if (montakoOsumaa() / montaValittuaNumeroa() >= 0.3 && montaValittuaNumeroa() > 0) {
+        double osumat = montakoOsumaa();
+        double valitut = montaValittuaNumeroa();
+        double jako = osumat/valitut;
+        if (jako > 0.3) {
             return true;
         }
         return false;
@@ -112,7 +115,7 @@ public class Kenoarvonta {
         int osumat = 0;
         for (Integer arvotut : arvotutNumerot) {
             for (Integer valitut : pelaaja.getValitutNumerot()) {
-                if (arvotut == valitut) {
+                if (arvotut.equals(valitut)) {
                     osumat++;
                 }
             }
@@ -158,7 +161,7 @@ public class Kenoarvonta {
         }
         if (montaValittuaNumeroa() == 3) { // kolme korttia valittu
             if (montakoOsumaa() == 1) {
-                pelaaja.muutaSaldoa(panos.getPanos());
+                pelaaja.muutaSaldoa(panos.getPanos() * 1);
             } else if (montakoOsumaa() == 2) {
                 pelaaja.muutaSaldoa(panos.getPanos() * 5);
             } else if (montakoOsumaa() == 3) {
