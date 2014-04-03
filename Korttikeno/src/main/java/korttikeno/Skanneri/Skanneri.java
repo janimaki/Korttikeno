@@ -7,6 +7,7 @@ package korttikeno.Skanneri;
 import java.util.Scanner;
 
 /**
+ * Luokka, jota käytetään käyttäjän syötteen lukemiseen.
  *
  * @author Jani
  */
@@ -16,16 +17,14 @@ public class Skanneri {
 
     public Skanneri() {
         lukija = new Scanner(System.in);
-        
-        
     }
 
+    /**
+     * Metodi palauttaa rivin, jonka käyttäjä on antanut syötteenä
+     *
+     * @return rivi, jonka käyttäjä syöttänyt.
+     */
     public String nextLine() {
         return lukija.nextLine();
     }
-
-    public int nextInt() {
-        return lukija.nextInt();
-    }
-
 }

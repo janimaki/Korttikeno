@@ -9,6 +9,7 @@ import korttikeno.Sovelluslogiikka.*;
 import korttikeno.Skanneri.Skanneri;
 
 /**
+ * Luokka, jossa pelaaja luodaan ja peli käynnistetään.
  *
  * @author Jani
  */
@@ -21,6 +22,9 @@ public class Korttikeno {
         skanneri = new Skanneri();
     }
 
+    /**
+     * Metodi, jolla luodaan uusi pelaaja peliin.
+     */
     public void uusiPelaaja() {
         System.out.print("Syötä nimi: ");
         String nimi = skanneri.nextLine();
@@ -30,34 +34,59 @@ public class Korttikeno {
 
     }
 
+    /**
+     * Metodi, joka käynnistää pelin. Peli loppuu, jos käyttäjä syöttää
+     * kierroksen päätteksi "N" tai jos pelaajan saldo menee nollaan.
+     */
     public void Pelaa() {
         if (arvonta.pelaaja.getNimi().equals("uusi")) {
             uusiPelaaja();
         }
+        while (arvonta.pelaaja.getSaldo() > 0) {
+            System.out.print("Panos? (0,2 - 1): ");
+            Double panos = Double.parseDouble(skanneri.nextLine());
+            arvonta.asetaPanos(panos);
+            System.out.print("Montako korttia? (1-5): ");
+            int kortteja = Integer.parseInt(skanneri.nextLine());
+            while (arvonta.pelaaja.valitutNumerot.size() != kortteja) {
+                System.out.println("Valitse numero: (1-52)");
+                int numero = Integer.parseInt(skanneri.nextLine());
+                arvonta.pelaaja.valitseNumero(numero);
+            }
+            arvonta.suoritaArvonta();
+            for (Integer numero : arvonta.arvotutNumerot) {
+                System.out.println(numero);
+            }
+            if (arvonta.onkoVoittoa() == false) {
+                System.out.println(arvonta.pelaaja.toString());
+            } else {
+                System.out.println("Tuplataanko? (Y/N)");
+                String vastaus = skanneri.nextLine();
+                if (vastaus.equals("N")) {
+                    arvonta.suoritaVoitonmaksu();
+                    System.out.println(arvonta.pelaaja.toString());
+                } else {
+                    System.out.println("Pieni (p) vai Suuri? (s)");
+                    String tuplavas = skanneri.nextLine();
+                    if (tuplavas.equals("p")) {
+                        arvonta.pelaaja.setTuplaus(0);
+                    } else {
+                        arvonta.pelaaja.setTuplaus(3);
+                    }
+                    arvonta.tuplaaVoitto();
+                    System.out.println("Kortti: " + arvonta.tupla.kortti);
+                    arvonta.suoritaVoitonmaksu();
+                    System.out.println(arvonta.pelaaja.toString());
+                }
+            }
+            arvonta.valmistaUuttaPelia();
+            System.out.println("Jatketaanko? (Y/N):");
+            String jatkuu = skanneri.nextLine();
+            if (jatkuu.equals("N")) {
+                break;
+            }
 
-        System.out.print("Panos? (0,2 - 1): ");
-        Double panos = Double.parseDouble(skanneri.nextLine());
-        arvonta.asetaPanos(panos);
-        System.out.print("Montako korttia? (1-4): ");
-        int kortteja = skanneri.nextInt();
-        while (arvonta.pelaaja.valitutNumerot.size() != kortteja) {
-            System.out.println("Valitse numero: (1-52)");
-            int numero = skanneri.nextInt();
-            arvonta.pelaaja.valitseNumero(numero);
-        }
-        System.out.println(arvonta.pelaaja.toString());
-        arvonta.suoritaArvonta();
-        System.out.println(arvonta.pelaaja.toString());
-        for (Integer numero : arvonta.arvotutNumerot) {
-            System.out.println(numero);
-        }
-        if (!arvonta.onkoVoittoa()) {
-            System.out.println(arvonta.pelaaja.toString());
-        } else {    //tuplausvaihtoehto myöhemmin
-            arvonta.suoritaVoitonmaksu();
-            System.out.println(arvonta.pelaaja.toString());
-        }
 
-
+        }
     }
 }

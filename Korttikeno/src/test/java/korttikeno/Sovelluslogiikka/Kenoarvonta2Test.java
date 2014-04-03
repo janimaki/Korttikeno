@@ -156,55 +156,61 @@ public class Kenoarvonta2Test {
     @Test
     public void voitonmaksuKahdellaKortilla() {
         arvonta.asetaSaldo(6);
-        arvonta.asetaPanos(0.8);
+        arvonta.asetaPanos(1);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(10.8, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(14, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.asetaPanos(0.5);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(11.8, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(15, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.asetaPanos(0.6);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(11.8, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(15, arvonta.pelaaja.getSaldo(), 0.0001);
     }
 
     @Test
     public void voitonmaksuKolmellaKortilla() {
         arvonta.asetaSaldo(6);
-        arvonta.asetaPanos(0.3);
+        arvonta.asetaPanos(1);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.pelaaja.valitseNumero(4);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(8.4, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(24, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.asetaPanos(0.4);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(10.0, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(26, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.5);
+        arvonta.asetaPanos(1);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(10.0, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(27, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.5);
+        arvonta.asetaPanos(0.6);
+        arvonta.pelaaja.valitseNumero(3);
+        arvonta.pelaaja.valitseNumero(5);
+        arvonta.pelaaja.valitseNumero(1);
+        arvonta.suoritaVoitonmaksu();
+        assertEquals(27.6, arvonta.pelaaja.getSaldo(), 0.0001);
+        arvonta.asetaPanos(0.6);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(7);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(10.0, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(27.6, arvonta.pelaaja.getSaldo(), 0.0001);
     }
 
     @Test
@@ -216,15 +222,15 @@ public class Kenoarvonta2Test {
         arvonta.pelaaja.valitseNumero(4);
         arvonta.pelaaja.valitseNumero(10);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(16, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(26, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.5);
+        arvonta.asetaPanos(0.6);
         arvonta.pelaaja.valitseNumero(4);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(19, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(32, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.asetaPanos(1);
         arvonta.pelaaja.valitseNumero(3);
@@ -232,7 +238,7 @@ public class Kenoarvonta2Test {
         arvonta.pelaaja.valitseNumero(1);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(22, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(37, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.asetaPanos(0.5);
         arvonta.pelaaja.valitseNumero(3);
@@ -240,7 +246,7 @@ public class Kenoarvonta2Test {
         arvonta.pelaaja.valitseNumero(7);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(22, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(37, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.asetaPanos(1);
         arvonta.pelaaja.valitseNumero(3);
@@ -248,47 +254,47 @@ public class Kenoarvonta2Test {
         arvonta.pelaaja.valitseNumero(7);
         arvonta.pelaaja.valitseNumero(8);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(22, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(37, arvonta.pelaaja.getSaldo(), 0.0001);
     }
 
     @Test
     public void voitonmaksuViidellaKortilla() {
         arvonta.asetaSaldo(6);
-        arvonta.asetaPanos(1);
+        arvonta.asetaPanos(0.2);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.pelaaja.valitseNumero(4);
         arvonta.pelaaja.valitseNumero(10);
         arvonta.pelaaja.valitseNumero(15);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(26, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(16, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.5);
+        arvonta.asetaPanos(1);
         arvonta.pelaaja.valitseNumero(4);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.pelaaja.valitseNumero(10);
         arvonta.pelaaja.valitseNumero(7);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(30, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(46, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(1);
+        arvonta.asetaPanos(0.2);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(4);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(34, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(48, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.5);
+        arvonta.asetaPanos(1);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(7);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(35, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(50, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.asetaPanos(1);
         arvonta.pelaaja.valitseNumero(3);
@@ -297,7 +303,7 @@ public class Kenoarvonta2Test {
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(8);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(35, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(50, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.asetaPanos(1);
         arvonta.pelaaja.valitseNumero(3);
@@ -306,6 +312,21 @@ public class Kenoarvonta2Test {
         arvonta.pelaaja.valitseNumero(9);
         arvonta.pelaaja.valitseNumero(8);
         arvonta.suoritaVoitonmaksu();
-        assertEquals(35, arvonta.pelaaja.getSaldo(), 0.0001);
+        assertEquals(50, arvonta.pelaaja.getSaldo(), 0.0001);
     }
+
+    @Test
+    public void valitutJaArvotutNumerotTyhjennetaan() {
+        arvonta.pelaaja.valitseNumero(3);
+        arvonta.pelaaja.valitseNumero(5);
+        arvonta.pelaaja.valitseNumero(7);
+        arvonta.pelaaja.valitseNumero(9);
+        arvonta.pelaaja.valitseNumero(8);
+        arvonta.valmistaUuttaPelia();
+        assertEquals(0,arvonta.arvotutNumerot.size());
+        assertEquals(0,arvonta.pelaaja.valitutNumerot.size());
+        
+    }
+    
+    
 }
