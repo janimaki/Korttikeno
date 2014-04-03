@@ -106,31 +106,38 @@ public class Kenoarvonta2Test {
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(6);
         arvonta.pelaaja.valitseNumero(5);
-        assertEquals(true, arvonta.onkoVoittoa());
+        boolean tosi = arvonta.onkoVoittoa();
+        assertEquals(true, tosi);
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.pelaaja.valitseNumero(1);
         arvonta.pelaaja.valitseNumero(2);
-        assertEquals(true, arvonta.onkoVoittoa());
+        tosi = arvonta.onkoVoittoa();
+        assertEquals(true, tosi);
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
-        assertEquals(false, arvonta.onkoVoittoa());
+        tosi = arvonta.onkoVoittoa();
+        assertEquals(false, tosi);
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.pelaaja.valitseNumero(7);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(6);
         arvonta.pelaaja.valitseNumero(5);
-        assertEquals(false, arvonta.onkoVoittoa());
+        tosi = arvonta.onkoVoittoa();
+        assertEquals(false, tosi);
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(7);
-        assertEquals(false, arvonta.onkoVoittoa());
+        tosi = arvonta.onkoVoittoa();
+        assertEquals(false, tosi);
         arvonta.pelaaja.valitseNumero(1);
-        assertEquals(false, arvonta.onkoVoittoa());
+        tosi = arvonta.onkoVoittoa();
+        assertEquals(false, tosi);
         arvonta.pelaaja.valitseNumero(2);
-        assertEquals(true, arvonta.onkoVoittoa());
+        tosi = arvonta.onkoVoittoa();
+        assertEquals(true, tosi);
 
     }
 
@@ -324,9 +331,12 @@ public class Kenoarvonta2Test {
         arvonta.pelaaja.valitseNumero(8);
         arvonta.valmistaUuttaPelia();
         assertEquals(0,arvonta.arvotutNumerot.size());
-        assertEquals(0,arvonta.pelaaja.valitutNumerot.size());
-        
+        assertEquals(0,arvonta.pelaaja.valitutNumerot.size());        
     }
+    
+//    @Test
+//    public void 
+//    
     
     
 }

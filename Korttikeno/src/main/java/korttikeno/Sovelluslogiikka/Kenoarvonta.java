@@ -158,7 +158,7 @@ public class Kenoarvonta {
         }
         if (montaValittuaNumeroa() == 3) { // kolme korttia valittu
             if (montakoOsumaa() == 1) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 1);
+                pelaaja.muutaSaldoa(panos.getPanos());
             } else if (montakoOsumaa() == 2) {
                 pelaaja.muutaSaldoa(panos.getPanos() * 5);
             } else if (montakoOsumaa() == 3) {
