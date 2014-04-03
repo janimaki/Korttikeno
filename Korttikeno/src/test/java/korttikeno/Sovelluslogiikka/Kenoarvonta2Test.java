@@ -138,6 +138,10 @@ public class Kenoarvonta2Test {
         arvonta.pelaaja.valitseNumero(2);
         tosi = arvonta.onkoVoittoa();
         assertEquals(true, tosi);
+        arvonta.pelaaja.tyhjennaRivi();
+        tosi = arvonta.onkoVoittoa();
+        assertEquals(false,tosi);
+        
 
     }
 
@@ -332,11 +336,6 @@ public class Kenoarvonta2Test {
         arvonta.valmistaUuttaPelia();
         assertEquals(0,arvonta.arvotutNumerot.size());
         assertEquals(0,arvonta.pelaaja.valitutNumerot.size());        
-    }
-    
-//    @Test
-//    public void 
-//    
-    
+    }    
     
 }
