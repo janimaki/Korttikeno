@@ -1,5 +1,7 @@
 package korttikeno.korttikeno;
 
+import javax.swing.SwingUtilities;
+import korttikeno.Kayttoliittyma.Kayttoliittyma;
 import korttikeno.Pelaaja.Pelaaja;
 import korttikeno.Sovelluslogiikka.Kenoarvonta;
 
@@ -11,9 +13,11 @@ public class Main {
 
     public static void main(String[] args) {        
         
-        Korttikeno keno = new Korttikeno();
-        
-        keno.Pelaa();
-                           
+//        Korttikeno keno = new Korttikeno();
+//        
+//        keno.Pelaa();
+//                           
+        Kayttoliittyma kayttol = new Kayttoliittyma();
+        SwingUtilities.invokeLater(kayttol);
     }
 }

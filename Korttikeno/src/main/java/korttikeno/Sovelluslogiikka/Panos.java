@@ -9,7 +9,7 @@ package korttikeno.Sovelluslogiikka;
  * @author Jani
  */
 public class Panos {
-    public double panos;
+    public double panos = 0;
   
     
     public Panos(double paukku){
