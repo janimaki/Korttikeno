@@ -61,7 +61,6 @@ public class Kenoarvonta {
      * @param saldo käyttäjän syöttämä uusi saldo.
      */
     public void asetaSaldo(double saldo) {
-
         pelaaja.setSaldo(saldo);
     }
 
