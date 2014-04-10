@@ -37,7 +37,7 @@ public class KenoarvontaTest {
     @Before
     public void setUp() {
         arvonta = new Kenoarvonta();
-        arvonta.uusiPelaaja("testaaja", 5);
+        arvonta.uusiPelaaja(5);
 
     }
 
@@ -66,8 +66,8 @@ public class KenoarvontaTest {
 
     @Test
     public void uusiPelaajaToimii() {
-        arvonta.uusiPelaaja("pelle", 10);
-        assertEquals("pelle, 10.0", arvonta.pelaaja.toString());
+        arvonta.uusiPelaaja(10);
+        assertEquals("sinun saldosi: 10.0", arvonta.pelaaja.toString());
 
     }
 

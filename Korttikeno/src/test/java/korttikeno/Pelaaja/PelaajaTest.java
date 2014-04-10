@@ -32,7 +32,7 @@ public class PelaajaTest {
 
     @Before
     public void setUp() {
-        pelaaja = new Pelaaja("Testaaja", 10);
+        pelaaja = new Pelaaja(10);
     }
 
     @After

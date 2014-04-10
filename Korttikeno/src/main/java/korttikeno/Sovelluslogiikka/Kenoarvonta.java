@@ -23,18 +23,17 @@ public class Kenoarvonta {
     public Kenoarvonta() {
         arpoja = new Arpoja();
         arvotutNumerot = new ArrayList();
-        this.pelaaja = new Pelaaja("uusi", 0);
+        this.pelaaja = new Pelaaja(0);
 
     }
 
     /**
      * Metodi, joka luo uuden pelaajan peliin
-     *
-     * @param nimi nimi, joka pelaajalle asetetaan.
+     * 
      * @param saldo saldo, joka pelaajalle asetetaan.
      */
-    public void uusiPelaaja(String nimi, double saldo) {
-        this.pelaaja = new Pelaaja(nimi, saldo);
+    public void uusiPelaaja(double saldo) {
+        this.pelaaja = new Pelaaja(saldo);
     }
 
     /**

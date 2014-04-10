@@ -19,5 +19,6 @@ public class Main {
 //                           
         Kayttoliittyma kayttol = new Kayttoliittyma();
         SwingUtilities.invokeLater(kayttol);
+        
     }
 }

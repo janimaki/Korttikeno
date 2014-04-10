@@ -27,15 +27,14 @@ public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
     private Korttikeno keno = new Korttikeno();
-    private JTextField keski;
-    private JTextField ylin;
+
 
     @Override
     public void run() {
         frame = new JFrame("Korttikeno");
         frame.setPreferredSize(new Dimension(1200, 800));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
+        
         luoKomponentit(frame.getContentPane());
 
         frame.pack();
@@ -99,9 +98,11 @@ public class Kayttoliittyma implements Runnable {
     
     
     private JPanel valitutKortit(){
-        JPanel panel = new JPanel(new GridLayout(1,3));
-        JLabel label = new JLabel("Valitut kortit:                                                                                      ");
+        JPanel panel = new JPanel(new GridLayout(2,1));
+        JLabel label = new JLabel("Valitut kortit: ");
+        JTextField teksti = new JTextField();
         panel.add(label);
+        panel.add(teksti);
         return panel;
     }
     

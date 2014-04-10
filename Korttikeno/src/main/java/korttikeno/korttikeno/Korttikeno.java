@@ -27,11 +27,10 @@ public class Korttikeno {
      * Metodi, jolla luodaan uusi pelaaja peliin.
      */
     public void uusiPelaaja() {
-        System.out.print("Syötä nimi: ");
-        String nimi = skanneri.nextLine();
+
         System.out.print("Paljonko sijoitat? (0,2-10): ");
         Double aloitussumma = Double.parseDouble(skanneri.nextLine());
-        arvonta.uusiPelaaja(nimi, aloitussumma);
+        arvonta.uusiPelaaja(aloitussumma);
 
     }
 
@@ -40,9 +39,8 @@ public class Korttikeno {
      * kierroksen päätteksi "N" tai jos pelaajan saldo menee nollaan.
      */
     public void Pelaa() {
-        if (arvonta.pelaaja.getNimi().equals("uusi")) {
-            uusiPelaaja();
-        }
+        uusiPelaaja();
+
         while (arvonta.pelaaja.getSaldo() > 0) {
             System.out.print("Panos? (0,2 - 1): ");
             Double panos = Double.parseDouble(skanneri.nextLine());
@@ -60,11 +58,7 @@ public class Korttikeno {
             }
             if (!arvonta.onkoVoittoa()) {
                 System.out.println(arvonta.pelaaja.toString());
-                
-                System.out.println(arvonta.montakoOsumaa()/arvonta.montaValittuaNumeroa());
-                System.out.println(arvonta.montakoOsumaa());
-                System.out.println(arvonta.montaValittuaNumeroa());
-                
+
             } else {
                 System.out.println("Tuplataanko? (Y/N)");
                 String vastaus = skanneri.nextLine();
@@ -91,7 +85,6 @@ public class Korttikeno {
             if (jatkuu.equals("N")) {
                 break;
             }
-
 
         }
     }

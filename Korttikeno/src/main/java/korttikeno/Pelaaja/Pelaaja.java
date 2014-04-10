@@ -14,24 +14,15 @@ import java.util.ArrayList;
  * @author Jani
  */
 public class Pelaaja {
-
-    public String nimi;
+   
     public double saldo;
     public ArrayList<Integer> valitutNumerot;
     public int tuplaus;
 
-    public Pelaaja(String nimi, double saldo) {
-        this.nimi = nimi;
+    public Pelaaja(double saldo) {
+        
         this.saldo = saldo;
         valitutNumerot = new ArrayList();
-    }
-
-    public String getNimi() {
-        return nimi;
-    }
-
-    public void setNimi(String nimi) {
-        this.nimi = nimi;
     }
 
     public double getSaldo() {
@@ -97,6 +88,6 @@ public class Pelaaja {
 
     @Override
     public String toString() {
-        return nimi + ", " + saldo;
+        return "sinun saldosi: " + saldo;
     }
 }

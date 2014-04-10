@@ -36,7 +36,7 @@ public class Kenoarvonta2Test {
     @Before
     public void setUp() {
         arvonta = new Kenoarvonta();
-        arvonta.uusiPelaaja("testaaja", 5);
+        arvonta.uusiPelaaja(5);
         arvonta.arvotutNumerot.add(1);
         arvonta.arvotutNumerot.add(2);
         arvonta.arvotutNumerot.add(10);
