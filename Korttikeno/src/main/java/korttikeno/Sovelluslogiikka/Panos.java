@@ -5,7 +5,8 @@
 package korttikeno.Sovelluslogiikka;
 
 /**
- *
+ * Luokka, joka määrittää pelin panoksen. 
+ * 
  * @author Jani
  */
 public class Panos {

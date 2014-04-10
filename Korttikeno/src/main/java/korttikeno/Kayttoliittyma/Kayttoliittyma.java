@@ -20,6 +20,7 @@ import javax.swing.WindowConstants;
 import korttikeno.korttikeno.Korttikeno;
 
 /**
+ * Käyttöliittymäluokka, joka luo graafisen käyttöliittymän pelille.
  *
  * @author Jani
  */
@@ -27,7 +28,7 @@ public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
     public Korttikeno keno;
-    
+
     public Kayttoliittyma(Korttikeno keno) {
         this.keno = keno;
     }
@@ -37,31 +38,38 @@ public class Kayttoliittyma implements Runnable {
         frame = new JFrame("Korttikeno");
         frame.setPreferredSize(new Dimension(1200, 800));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
+
         luoKomponentit(frame.getContentPane());
 
         frame.pack();
         frame.setVisible(true);
     }
 
+    /**
+     * Metodi luo komponentit käyttöliittymälle.
+     *
+     * @param container parametri, jonka avulla lisätään komponentit.
+     */
     private void luoKomponentit(Container container) {
         container.setLayout(new BorderLayout());
 
         container.add(new JLabel("Aseta panos, valitse 1-5 korttia, paina 'pelaa'"), BorderLayout.NORTH);
-        
+
         container.add(valitutKortit(), BorderLayout.EAST);
-        
+
         container.add(luoKortit(), BorderLayout.CENTER);
 
         container.add(luoPanos(), BorderLayout.SOUTH);
-        
-        
-        
-
     }
-    
+
+    /**
+     * Komponentin luontimetodi, jolla luodaan 52 korttia, joista pelaaja voi
+     * valita suosikkinsa.
+     *
+     * @return palauttaa paneelikomponentin
+     */
     private JPanel luoKortit() {
-        JPanel panel = new JPanel(new GridLayout(4,13));
+        JPanel panel = new JPanel(new GridLayout(4, 13));
         for (int i = 1; i <= 52; i++) {
             JButton asd = new JButton("" + i);
             panel.add(asd);
@@ -69,46 +77,54 @@ public class Kayttoliittyma implements Runnable {
         return panel;
     }
 
+    /**
+     * Komponentin luontimetodi, jolla asetetaan panos, jolla peliä pelataan
+     *
+     * @return palauttaa paneelikomponentin
+     */
     private JPanel luoPanos() {
         JPanel panel = new JPanel(new GridLayout(1, 5));
-        
+
         JButton paukku = new JButton("Pelaa: ");
         ButtonGroup buttonGroup = new ButtonGroup();
-        
+
         JButton yksi = new JButton("0,20e");
         JButton kaksi = new JButton("0,40e");
         JButton kolme = new JButton("0,60e");
         JButton nelja = new JButton("0,80e");
         JButton viisi = new JButton("1,00e");
-        
+
         buttonGroup.add(yksi);
         buttonGroup.add(kaksi);
         buttonGroup.add(kolme);
         buttonGroup.add(nelja);
         buttonGroup.add(viisi);
-        
+
         PanosKuuntelija kuuntelija = new PanosKuuntelija(keno, paukku, yksi, kaksi, kolme, nelja, viisi);
-        
+
         panel.add(paukku);
         panel.add(yksi);
         panel.add(kaksi);
         panel.add(kolme);
         panel.add(nelja);
         panel.add(viisi);
-        
+
         paukku.addActionListener(kuuntelija);
-        
+
         return panel;
     }
-    
-    
-    private JPanel valitutKortit(){
-        JPanel panel = new JPanel(new GridLayout(2,1));
+
+    /**
+     * Komponentin luontimetodi, johon tulee pelaajan valitsemat kortit.
+     *
+     * @return palauttaa paneelikomponentin
+     */
+    private JPanel valitutKortit() {
+        JPanel panel = new JPanel(new GridLayout(2, 1));
         JLabel label = new JLabel("Valitut kortit: ");
         JTextField teksti = new JTextField();
         panel.add(label);
         panel.add(teksti);
         return panel;
     }
-    
 }
