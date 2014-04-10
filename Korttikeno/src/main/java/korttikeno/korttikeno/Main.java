@@ -15,10 +15,9 @@ public class Main {
         
         Korttikeno keno = new Korttikeno();
 //        
-//        keno.Pelaa();
 //                           
-        Kayttoliittyma kayttol = new Kayttoliittyma(keno);
-        SwingUtilities.invokeLater(kayttol);
+//        Kayttoliittyma kayttol = new Kayttoliittyma(keno);
+//        SwingUtilities.invokeLater(kayttol);
         keno.Pelaa();
         
     }

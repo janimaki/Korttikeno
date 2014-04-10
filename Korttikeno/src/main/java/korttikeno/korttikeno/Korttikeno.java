@@ -40,7 +40,7 @@ public class Korttikeno {
      */
     public void Pelaa() {
         uusiPelaaja();
-        arvonta.asetaPanos(0);
+//        arvonta.asetaPanos(0);
 
         while (arvonta.pelaaja.getSaldo() > 0) {
             System.out.print("Panos? (0,2 - 1): ");
