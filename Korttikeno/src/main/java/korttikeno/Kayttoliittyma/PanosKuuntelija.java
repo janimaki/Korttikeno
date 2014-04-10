@@ -16,16 +16,16 @@ import korttikeno.korttikeno.Korttikeno;
  */
 public class PanosKuuntelija implements ActionListener {
 
-    private Korttikeno keno = new Korttikeno();
-    private JRadioButton yksi;
-    private JRadioButton kaksi;
-    private JRadioButton kolme;
-    private JRadioButton nelja;
-    private JRadioButton viisi;
+    public Korttikeno keno;
+    private JButton yksi;
+    private JButton kaksi;
+    private JButton kolme;
+    private JButton nelja;
+    private JButton viisi;
     private JButton pelaa;
 
-    public PanosKuuntelija(Korttikeno keno, JButton pelaa, JRadioButton yksi, JRadioButton kaksi, JRadioButton kolme,
-            JRadioButton nelja, JRadioButton viisi) {
+    public PanosKuuntelija(Korttikeno keno, JButton pelaa, JButton yksi, JButton kaksi, JButton kolme,
+            JButton nelja, JButton viisi) {
         this.keno = keno;
         this.yksi = yksi;
         this.kaksi = kaksi;
@@ -33,13 +33,14 @@ public class PanosKuuntelija implements ActionListener {
         this.nelja = nelja;
         this.viisi = viisi;
         this.pelaa = pelaa;
+        this.pelaa.setEnabled(false);  
 
 
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (keno.arvonta.panos.getPanos() == 0) {
+        if (keno.arvonta.getPanos() == 0) {
             pelaa.setEnabled(false);
         } else {
             pelaa.setEnabled(true);

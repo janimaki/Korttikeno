@@ -49,7 +49,10 @@ public class Kenoarvonta {
         } else {
             this.panos = new Panos(panos);
         }
-
+    }
+    
+    public double getPanos(){
+        return panos.getPanos();
     }
 
     /**

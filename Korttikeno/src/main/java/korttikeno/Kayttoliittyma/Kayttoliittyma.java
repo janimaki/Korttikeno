@@ -26,8 +26,11 @@ import korttikeno.korttikeno.Korttikeno;
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
-    private Korttikeno keno = new Korttikeno();
-
+    public Korttikeno keno;
+    
+    public Kayttoliittyma(Korttikeno keno) {
+        this.keno = keno;
+    }
 
     @Override
     public void run() {
@@ -53,6 +56,7 @@ public class Kayttoliittyma implements Runnable {
         container.add(luoPanos(), BorderLayout.SOUTH);
         
         
+        
 
     }
     
@@ -67,14 +71,15 @@ public class Kayttoliittyma implements Runnable {
 
     private JPanel luoPanos() {
         JPanel panel = new JPanel(new GridLayout(1, 5));
+        
         JButton paukku = new JButton("Pelaa: ");
         ButtonGroup buttonGroup = new ButtonGroup();
         
-        JRadioButton yksi = new JRadioButton("0,20e");
-        JRadioButton kaksi = new JRadioButton("0,40e");
-        JRadioButton kolme = new JRadioButton("0,60e");
-        JRadioButton nelja = new JRadioButton("0,80e");
-        JRadioButton viisi = new JRadioButton("1,00e");
+        JButton yksi = new JButton("0,20e");
+        JButton kaksi = new JButton("0,40e");
+        JButton kolme = new JButton("0,60e");
+        JButton nelja = new JButton("0,80e");
+        JButton viisi = new JButton("1,00e");
         
         buttonGroup.add(yksi);
         buttonGroup.add(kaksi);

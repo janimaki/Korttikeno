@@ -13,12 +13,13 @@ public class Main {
 
     public static void main(String[] args) {        
         
-//        Korttikeno keno = new Korttikeno();
+        Korttikeno keno = new Korttikeno();
 //        
 //        keno.Pelaa();
 //                           
-        Kayttoliittyma kayttol = new Kayttoliittyma();
+        Kayttoliittyma kayttol = new Kayttoliittyma(keno);
         SwingUtilities.invokeLater(kayttol);
+        keno.Pelaa();
         
     }
 }
