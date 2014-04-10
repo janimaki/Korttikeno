@@ -11,7 +11,8 @@ import javax.swing.JRadioButton;
 import korttikeno.korttikeno.Korttikeno;
 
 /**
- *
+ * ActionListener luokka, jolla toteutetaan panoksen asettaminen peliin.
+ * 
  * @author Jani
  */
 public class PanosKuuntelija implements ActionListener {
