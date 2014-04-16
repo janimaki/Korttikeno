@@ -4,6 +4,8 @@
  */
 package korttikeno.korttikeno;
 
+import javax.swing.SwingUtilities;
+import korttikeno.Kayttoliittyma.Kayttoliittyma;
 import korttikeno.Sovelluslogiikka.*;
 
 import korttikeno.Skanneri.Skanneri;
@@ -18,9 +20,9 @@ public class Korttikeno {
     public Kenoarvonta arvonta;
     public Skanneri skanneri;
 
-    public Korttikeno() {
+    public Korttikeno(Kenoarvonta arvonta) {
         skanneri = new Skanneri();
-        arvonta = new Kenoarvonta();
+        this.arvonta = arvonta;
     }
 
     /**
@@ -38,7 +40,7 @@ public class Korttikeno {
      * Metodi, joka käynnistää pelin. Peli loppuu, jos käyttäjä syöttää
      * kierroksen päätteksi "N" tai jos pelaajan saldo menee nollaan.
      */
-    public void Pelaa() {
+    public void PelaaTekstina() {
         uusiPelaaja();
 //        arvonta.asetaPanos(0);
 
@@ -88,5 +90,9 @@ public class Korttikeno {
             }
 
         }
+    }
+
+    public void pelaaGraafinen() {
+        
     }
 }

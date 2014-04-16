@@ -11,14 +11,14 @@ import korttikeno.Sovelluslogiikka.Kenoarvonta;
  */
 public class Main {
 
-    public static void main(String[] args) {        
-        
-        Korttikeno keno = new Korttikeno();
-//        
+    public static void main(String[] args) {
+
+//        Korttikeno keno = new Korttikeno();
+//        keno.pelaaGraafinen();
 //                           
-//        Kayttoliittyma kayttol = new Kayttoliittyma(keno);
-//        SwingUtilities.invokeLater(kayttol);
-        keno.Pelaa();
-        
+        Kayttoliittyma kayttol = new Kayttoliittyma();
+        SwingUtilities.invokeLater(kayttol);
+
+//        keno.Pelaa();
     }
 }

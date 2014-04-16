@@ -15,10 +15,10 @@ import static org.junit.Assert.*;
  *
  * @author Jani
  */
-public class TuplaustTest {
+public class TuplausTest {
     Tuplaus tuplaus;
     
-    public TuplaustTest() {
+    public TuplausTest() {
     }
     
     @BeforeClass

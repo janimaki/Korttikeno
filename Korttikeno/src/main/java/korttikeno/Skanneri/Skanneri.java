@@ -27,4 +27,8 @@ public class Skanneri {
     public String nextLine() {
         return lukija.nextLine();
     }
+    
+    public Double nextDouble() {
+        return lukija.nextDouble();
+    }
 }
