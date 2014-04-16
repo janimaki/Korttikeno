@@ -7,6 +7,7 @@ package korttikeno.Kayttoliittyma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
@@ -28,9 +29,11 @@ public class SaldonKuuntelija implements ActionListener {
     JLabel ohje;
     JLabel saldoinfo;
     public Skanneri skanneri;
-    JLabel kortit;
+    JButton poista;
+    KortinKuuntelija kortti;
+    public ArrayList<KortinKuuntelija> kortit;
 
-    public SaldonKuuntelija(Kenoarvonta arvonta, JButton asetaSaldo, JTextField teksti, JLabel ohje, JLabel saldoinfo, JLabel cards) {
+    public SaldonKuuntelija(Kenoarvonta arvonta, JButton asetaSaldo, JTextField teksti, JLabel ohje, JLabel saldoinfo, JButton poista, ArrayList kortit) {
 //        this.keno = keno;
         this.aseta = asetaSaldo;
         this.uusisaldo = teksti;
@@ -38,7 +41,8 @@ public class SaldonKuuntelija implements ActionListener {
         this.ohje = ohje;
         this.arvonta = arvonta;
         this.saldoinfo = saldoinfo;
-        this.kortit = cards;
+        this.poista = poista;
+        this.kortit = kortit;
 
     }
 
@@ -50,10 +54,17 @@ public class SaldonKuuntelija implements ActionListener {
                 arvonta.asetaSaldo(saldo);
                 this.aseta.setEnabled(false);
                 this.saldoinfo.setText("Saldosi: " + arvonta.pelaaja.getSaldo());
-                kortit.setText("" + naytaValitutKortit());
+                poista.setText("" + naytaValitutKortit());
             } else {
                 this.ohje.setText("saldon pitää olla 0.2-20.0!");
             }
+        }
+        if (ae.getSource() == poista){
+            arvonta.pelaaja.tyhjennaRivi();
+            for (KortinKuuntelija kuuntelija : kortit) {
+                kuuntelija.kortti.setEnabled(true);
+            }
+            
         }
     }
 
@@ -74,5 +85,9 @@ public class SaldonKuuntelija implements ActionListener {
             kortit = kortit + kortti + " ";
         }
         return kortit;
+    }
+    
+    public void paivitaSaldo(){
+        this.saldoinfo.setText("Saldosi: " + arvonta.pelaaja.getSaldo());
     }
 }

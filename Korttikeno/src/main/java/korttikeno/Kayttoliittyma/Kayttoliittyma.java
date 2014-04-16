@@ -30,10 +30,14 @@ public class Kayttoliittyma implements Runnable {
     private JFrame frame;
     public Korttikeno keno;
     public Kenoarvonta arvonta;
+    public ArrayList<KortinKuuntelija> kortit;
+    public double saldo;
 
     public Kayttoliittyma() {
         this.arvonta = new Kenoarvonta();
         this.keno = new Korttikeno(arvonta);
+        this.kortit = new ArrayList();
+        this.saldo = arvonta.pelaaja.getSaldo();
     }
 
     @Override
@@ -75,8 +79,10 @@ public class Kayttoliittyma implements Runnable {
         JPanel panel = new JPanel(new GridLayout(4, 13));
         
         for (int i = 1; i <= 52; i++) {
-            JButton asd = new JButton("" + i);
+            
+            JButton asd = new JButton("" + i);           
             KortinKuuntelija kuuntelija = new KortinKuuntelija(arvonta, asd);
+            kortit.add(kuuntelija);
             panel.add(asd);
             asd.addActionListener(kuuntelija);
         }
@@ -106,7 +112,7 @@ public class Kayttoliittyma implements Runnable {
         buttonGroup.add(nelja);
         buttonGroup.add(viisi);
 
-        PanosKuuntelija kuuntelija = new PanosKuuntelija(arvonta, paukku, yksi, kaksi, kolme, nelja, viisi);
+        PanosKuuntelija kuuntelija = new PanosKuuntelija(arvonta, paukku, yksi, kaksi, kolme, nelja, viisi, kortit);
 
         panel.add(paukku);
         panel.add(yksi);
@@ -133,14 +139,14 @@ public class Kayttoliittyma implements Runnable {
     private JPanel saldoPalkki() {
 
         JPanel panel = new JPanel(new GridLayout(5, 1));
-        JLabel cards = new JLabel("korttisi: ");
+        JButton poistaValinnat = new JButton("kortit uusiksi");
         JLabel saldo = new JLabel("Saldosi: 0");
         JLabel ohjelaatikko = new JLabel("Anna saldosi: ");
         JTextField teksti = new JTextField();
         JButton asetaSaldo = new JButton("aseta saldo");
-        SaldonKuuntelija kuuntelija = new SaldonKuuntelija(arvonta, asetaSaldo, teksti, ohjelaatikko, saldo, cards);
+        SaldonKuuntelija kuuntelija = new SaldonKuuntelija(arvonta, asetaSaldo, teksti, ohjelaatikko, saldo, poistaValinnat, kortit);
         asetaSaldo.addActionListener(kuuntelija);
-        panel.add(cards);
+        panel.add(poistaValinnat);
         panel.add(saldo);
         panel.add(ohjelaatikko);
         panel.add(teksti);

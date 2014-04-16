@@ -53,7 +53,7 @@ public class Pelaaja {
      * välillä 1-52.
      */
     public void valitseNumero(int numero) {
-        if (valitutNumerot.size() < 5 && !valitutNumerot.contains(numero)) {
+        if (!valitutNumerot.contains(numero)) {
             valitutNumerot.add(numero);
         }
     }

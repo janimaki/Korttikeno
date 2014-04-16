@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package korttikeno.Kayttoliittyma;
 
 import java.awt.event.ActionEvent;
@@ -20,33 +19,37 @@ import korttikeno.korttikeno.Korttikeno;
  *
  * @author janimaki@cs
  */
-public class KortinKuuntelija implements ActionListener{
+public class KortinKuuntelija implements ActionListener {
+
     Kenoarvonta arvonta;
     JButton kortti;
-    
-    
+    SaldonKuuntelija saldo;
+    Kayttoliittyma kayttol;
+
     KortinKuuntelija(Kenoarvonta arvonta, JButton kortti) {
         this.arvonta = arvonta;
         this.kortti = kortti;
+
     }
-    
-    
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == kortti){
-            arvonta.pelaaja.valitseNumero(Integer.parseInt(kortti.getText()));
-            kortti.setEnabled(false);
+        String kortit = "";
+        if (ae.getSource() == kortti) {
+            if (arvonta.montaValittuaNumeroa() < 5) {
+                arvonta.pelaaja.valitseNumero(Integer.parseInt(kortti.getText()));
+                kortti.setEnabled(false);
+            }     
         }
-        
     }
-    
-    public String naytaValitutKortit(){
+
+    public String naytaValitutKortit() {
         String kortit = "";
         for (Integer kortti : arvonta.pelaaja.getValitutNumerot()) {
             kortit = kortit + ", " + kortti;
         }
         return kortit;
     }
-    
+
+
 }

@@ -6,6 +6,7 @@ package korttikeno.Kayttoliittyma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import korttikeno.Sovelluslogiikka.Kenoarvonta;
@@ -18,6 +19,7 @@ import korttikeno.korttikeno.Korttikeno;
  */
 public class PanosKuuntelija implements ActionListener {
 
+    public ArrayList<KortinKuuntelija> lista;
     public Kenoarvonta arvonta;
     public Korttikeno keno;
     private JButton yksi;
@@ -26,10 +28,12 @@ public class PanosKuuntelija implements ActionListener {
     private JButton nelja;
     private JButton viisi;
     private JButton pelaa;
+    
+    SaldonKuuntelija kuuntelija;
 
     public PanosKuuntelija(Kenoarvonta arvonta, JButton pelaa, JButton yksi, JButton kaksi, JButton kolme,
-            JButton nelja, JButton viisi) {
-//        this.keno = keno;
+            JButton nelja, JButton viisi, ArrayList kortit) {
+        this.lista = kortit;
         this.yksi = yksi;
         this.kaksi = kaksi;
         this.kolme = kolme;
@@ -37,16 +41,12 @@ public class PanosKuuntelija implements ActionListener {
         this.viisi = viisi;
         this.pelaa = pelaa;
         this.arvonta = arvonta;
-        this.pelaa.setEnabled(true);        
+        this.pelaa.setEnabled(false);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-//        if (arvonta.getPanos() == 0) {
-//            pelaa.setEnabled(true);
-//        } else {
-//            pelaa.setText("pelaa, panos: " + arvonta.getPanos());
-//        }
+
         if (ae.getSource() == yksi) {
             arvonta.asetaPanos(0.2);
         } else if (ae.getSource() == kaksi) {
@@ -58,12 +58,24 @@ public class PanosKuuntelija implements ActionListener {
         } else if (ae.getSource() == viisi) {
             arvonta.asetaPanos(1);
         }
+        if(arvonta.getPanos()>0){
+            pelaa.setEnabled(true);
+        }
         pelaa.setText("pelaa, panos: " + arvonta.getPanos());
 
         if (ae.getSource() == pelaa) {
-            if(arvonta.pelaaja.montakoValittuaNumeroa()>0 && arvonta.pelaaja.montakoValittuaNumeroa()<=5){
+            if (arvonta.pelaaja.montakoValittuaNumeroa() > 0 && arvonta.pelaaja.montakoValittuaNumeroa() <= 5) {
                 pelaa.setEnabled(false);
                 arvonta.suoritaArvonta();
+                arvonta.suoritaVoitonmaksu();
+                arvonta.valmistaUuttaPelia();
+                System.out.println(arvonta.pelaaja.getSaldo());
+                for (KortinKuuntelija kuuntelija : this.lista) {
+                    kuuntelija.kortti.setEnabled(true);
+                }
+                kuuntelija.saldoinfo.setText("asd");
+                pelaa.setEnabled(true);
+
             }
         }
     }
