@@ -34,7 +34,7 @@ public class KortinKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        String kortit = "";
+
         if (ae.getSource() == kortti) {
             if (arvonta.montaValittuaNumeroa() < 5) {
                 arvonta.pelaaja.valitseNumero(Integer.parseInt(kortti.getText()));
@@ -42,14 +42,5 @@ public class KortinKuuntelija implements ActionListener {
             }     
         }
     }
-
-    public String naytaValitutKortit() {
-        String kortit = "";
-        for (Integer kortti : arvonta.pelaaja.getValitutNumerot()) {
-            kortit = kortit + ", " + kortti;
-        }
-        return kortit;
-    }
-
 
 }

@@ -51,8 +51,20 @@ public class Kenoarvonta {
         }
     }
     
+    public void kasvataPanosta(){
+        if(getPanos() <= 0.8) {
+            panos.setPanos(getPanos()+0.2);
+        } else {
+            panos.setPanos(0.2);
+        }
+    }
+    
     public double getPanos(){
         return panos.getPanos();
+    }
+    
+    public double getSaldo() {
+        return pelaaja.getSaldo();
     }
 
     /**

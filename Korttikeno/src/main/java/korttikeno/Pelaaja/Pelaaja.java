@@ -40,7 +40,8 @@ public class Pelaaja {
      */
     public void muutaSaldoa(double maara) {
         if (this.saldo + maara >= 0) {
-            this.saldo = this.saldo + maara;
+            double uusiSaldo = Math.round((this.saldo+maara)*100);
+            this.saldo = uusiSaldo/100;
         }
     }
 

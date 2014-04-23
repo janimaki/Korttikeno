@@ -4,6 +4,8 @@
  */
 package korttikeno.Sovelluslogiikka;
 
+import java.text.DecimalFormat;
+
 /**
  * Luokka, joka määrittää pelin panoksen. 
  * 
@@ -22,8 +24,11 @@ public class Panos {
     }
 
     public void setPanos(double panos) {
-        this.panos = panos;
+        panos = Math.round(panos*100);
+        this.panos = panos/100;
     }
+    
+
     
     
     

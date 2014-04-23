@@ -31,13 +31,13 @@ public class Kayttoliittyma implements Runnable {
     public Korttikeno keno;
     public Kenoarvonta arvonta;
     public ArrayList<KortinKuuntelija> kortit;
-    public double saldo;
+
 
     public Kayttoliittyma() {
         this.arvonta = new Kenoarvonta();
         this.keno = new Korttikeno(arvonta);
         this.kortit = new ArrayList();
-        this.saldo = arvonta.pelaaja.getSaldo();
+        this.arvonta.asetaPanos(0.2);
     }
 
     @Override
@@ -77,10 +77,10 @@ public class Kayttoliittyma implements Runnable {
      */
     private JPanel luoKortit() {
         JPanel panel = new JPanel(new GridLayout(4, 13));
-        
+
         for (int i = 1; i <= 52; i++) {
-            
-            JButton asd = new JButton("" + i);           
+
+            JButton asd = new JButton("" + i);
             KortinKuuntelija kuuntelija = new KortinKuuntelija(arvonta, asd);
             kortit.add(kuuntelija);
             panel.add(asd);
@@ -97,36 +97,29 @@ public class Kayttoliittyma implements Runnable {
     private JPanel luoPanos() {
         JPanel panel = new JPanel(new GridLayout(1, 5));
 
-        JButton paukku = new JButton("Pelaa: ");       
-        ButtonGroup buttonGroup = new ButtonGroup();
+        JButton kasvataPanos = new JButton("Panos: 0.2e");
+        JButton pelaaNappi = new JButton("Pelaa: ");
+//        ButtonGroup buttonGroup = new ButtonGroup();
+        JLabel ohjelaatikko = new JLabel("Anna saldosi: ");
+        JTextField teksti = new JTextField();
+        JButton asetaSaldo = new JButton("aseta saldo");
 
-        JButton yksi = new JButton("0,20e");
-        JButton kaksi = new JButton("0,40e");
-        JButton kolme = new JButton("0,60e");
-        JButton nelja = new JButton("0,80e");
-        JButton viisi = new JButton("1,00e");
+        
 
-        buttonGroup.add(yksi);
-        buttonGroup.add(kaksi);
-        buttonGroup.add(kolme);
-        buttonGroup.add(nelja);
-        buttonGroup.add(viisi);
+//        buttonGroup.add(kasvataPanos);
 
-        PanosKuuntelija kuuntelija = new PanosKuuntelija(arvonta, paukku, yksi, kaksi, kolme, nelja, viisi, kortit);
+        PanosKuuntelija kuuntelija = new PanosKuuntelija(arvonta, pelaaNappi, kortit, kasvataPanos, asetaSaldo, teksti, ohjelaatikko);
 
-        panel.add(paukku);
-        panel.add(yksi);
-        panel.add(kaksi);
-        panel.add(kolme);
-        panel.add(nelja);
-        panel.add(viisi);
+        panel.add(pelaaNappi);
+        panel.add(kasvataPanos);
+        panel.add(ohjelaatikko);
+        panel.add(teksti);
+        panel.add(asetaSaldo);
+        
+        asetaSaldo.addActionListener(kuuntelija);
+        kasvataPanos.addActionListener(kuuntelija);
+        pelaaNappi.addActionListener(kuuntelija);
 
-        paukku.addActionListener(kuuntelija);
-        yksi.addActionListener(kuuntelija);
-        kaksi.addActionListener(kuuntelija);
-        kolme.addActionListener(kuuntelija);
-        nelja.addActionListener(kuuntelija);
-        viisi.addActionListener(kuuntelija);
 
         return panel;
     }
@@ -139,18 +132,11 @@ public class Kayttoliittyma implements Runnable {
     private JPanel saldoPalkki() {
 
         JPanel panel = new JPanel(new GridLayout(5, 1));
-        JButton poistaValinnat = new JButton("kortit uusiksi");
-        JLabel saldo = new JLabel("Saldosi: 0");
-        JLabel ohjelaatikko = new JLabel("Anna saldosi: ");
-        JTextField teksti = new JTextField();
-        JButton asetaSaldo = new JButton("aseta saldo");
-        SaldonKuuntelija kuuntelija = new SaldonKuuntelija(arvonta, asetaSaldo, teksti, ohjelaatikko, saldo, poistaValinnat, kortit);
-        asetaSaldo.addActionListener(kuuntelija);
+        JButton poistaValinnat = new JButton("Uudet kortit");
+        SaldonKuuntelija kuuntelija = new SaldonKuuntelija(arvonta, poistaValinnat, kortit);
+        
+        poistaValinnat.addActionListener(kuuntelija);
         panel.add(poistaValinnat);
-        panel.add(saldo);
-        panel.add(ohjelaatikko);
-        panel.add(teksti);
-        panel.add(asetaSaldo);
         return panel;
     }
 }
