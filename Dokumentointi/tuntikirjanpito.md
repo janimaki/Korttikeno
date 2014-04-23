@@ -25,10 +25,13 @@ Käyttöliittymä luokkaa aloitettu hahmottelemaan, ulkomuoto alkaa olla kasassa
 
 Aikaa käytetty 6 tuntia.
 
+Loput viikot:
+Käyttöliittymän kanssa väännetty ja käännetty todella paljon. Tällä sessiolla tuli neljä tuntia tauluun.
+
 Viikko 1: 5 tuntia
 Viikko 2: 8 tuntia
 Viikko 3: 8 tuntia
 Viikko 4: 7 tuntia
 Viikko 5: 6 tuntia
-Viikko 6:
+
 
