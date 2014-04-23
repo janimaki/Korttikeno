@@ -4,9 +4,12 @@
  */
 package korttikeno.Kayttoliittyma;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
@@ -31,9 +34,10 @@ public class AlapalkinKuuntelija implements ActionListener {
     private JTextField uusiSaldo;
     private JButton kylla;
     private JButton ei;
+    private JLabel tuplausOhje;
 
     AlapalkinKuuntelija(Kenoarvonta arvonta, JButton pelaaNappi, ArrayList<KortinKuuntelija> kortit, JButton kasvataPanos,
-            JButton asetaSaldo, JTextField teksti, JLabel ohjelaatikko, JButton kylla, JButton ei) {
+            JButton asetaSaldo, JTextField teksti, JLabel ohjelaatikko, JButton kylla, JButton ei, JLabel tuplaus) {
         this.lista = kortit;
         this.pelaa = pelaaNappi;
         this.arvonta = arvonta;
@@ -46,6 +50,7 @@ public class AlapalkinKuuntelija implements ActionListener {
         this.ei = ei;
         this.kylla.setEnabled(false);
         this.ei.setEnabled(false);
+        this.tuplausOhje = tuplaus;
 
     }
 
@@ -73,41 +78,65 @@ public class AlapalkinKuuntelija implements ActionListener {
         } else {
             pelaa.setEnabled(false);
         }
+
         paivitaSaldo();
 
         if (ae.getSource() == pelaa) {
             if (arvonta.pelaaja.montakoValittuaNumeroa() > 0 && arvonta.pelaaja.montakoValittuaNumeroa() <= 5) {
                 pelaa.setEnabled(false);
+                kasvataPanos.setEnabled(false);
+                poistaArvotut();
+
                 suoritaPeli();
-                tyhjennaValinnat();
-                pelaa.setEnabled(true);
-                paivitaSaldo();
+
             }
         }
-        
+
         if (ae.getSource() == kylla) {
-            
+            this.tuplausOhje.setText("Pieni vai Suuri?");
+            this.kylla.setText("pieni");
+            this.ei.setText("suuri");
+            arvonta.tuplaaVoitto();
         }
-        
-        if(ae.getSource()== ei) {
-            
+
+        if (ae.getSource() == ei) {
+            vapautaNapit();
+            peliLoppuun();
+            tyhjennaValinnat();
+            ei.setEnabled(false);
+            kylla.setEnabled(false);
         }
     }
 
     public void suoritaPeli() {
         arvonta.suoritaArvonta();
+        naytaArvotut();
         if (arvonta.onkoVoittoa() == true) {
             kylla.setEnabled(true);
             ei.setEnabled(true);
+        } else {
+
+            tyhjennaValinnat();
+            vapautaNapit();
+            peliLoppuun();
         }
-        arvonta.suoritaVoitonmaksu();
-        arvonta.valmistaUuttaPelia();
     }
 
     public void tyhjennaValinnat() {
         for (KortinKuuntelija kuuntelija : this.lista) {
             kuuntelija.kortti.setEnabled(true);
         }
+    }
+
+    public void vapautaNapit() {
+        kasvataPanos.setEnabled(true);
+        pelaa.setEnabled(true);
+    }
+
+    public void peliLoppuun() {
+        arvonta.suoritaVoitonmaksu();
+        paivitaSaldo();
+        arvonta.valmistaUuttaPelia();
     }
 
     public double onkoKelpoSaldo(JTextField saldo) {
@@ -123,5 +152,23 @@ public class AlapalkinKuuntelija implements ActionListener {
 
     public void paivitaSaldo() {
         pelaa.setText("pelaa: " + arvonta.getSaldo() + "e");
+    }
+
+    public void naytaArvotut() {
+        for (Integer numero : arvonta.arvotutNumerot) {
+            for (KortinKuuntelija kuuntelija : lista) {
+                JButton apum = kuuntelija.kortti;
+                if (kuuntelija.indeksit.get(apum).equals(numero)) {
+                    kuuntelija.kortti.setBackground(Color.GREEN);
+                }
+            }
+        }
+    }
+
+    public void poistaArvotut() {
+        for (KortinKuuntelija kuuntelija : lista) {
+            kuuntelija.kortti.setBackground(Color.lightGray);
+
+        }
     }
 }

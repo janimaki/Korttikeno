@@ -5,9 +5,12 @@
  */
 package korttikeno.Kayttoliittyma;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
@@ -24,8 +27,8 @@ public class KortinKuuntelija implements ActionListener {
 
     public Kenoarvonta arvonta;
     public JButton kortti;
-    public HashMap<JButton,Integer> indeksit;
-    
+    public HashMap<JButton, Integer> indeksit;
+    private JButton pelaa;
 
     KortinKuuntelija(Kenoarvonta arvonta, JButton kortti, HashMap indeksit) {
         this.arvonta = arvonta;
@@ -33,6 +36,8 @@ public class KortinKuuntelija implements ActionListener {
         this.indeksit = indeksit;
 
     }
+
+
 
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -42,9 +47,8 @@ public class KortinKuuntelija implements ActionListener {
                 int numero = indeksit.get(kortti);
                 arvonta.pelaaja.valitseNumero(numero);
                 kortti.setEnabled(false);
-                
-            }     
+
+            }
         }
     }
-
 }

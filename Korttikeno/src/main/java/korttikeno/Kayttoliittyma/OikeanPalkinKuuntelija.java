@@ -25,12 +25,14 @@ public class OikeanPalkinKuuntelija implements ActionListener {
     public Kenoarvonta arvonta;
     private JButton poista;
     public ArrayList<KortinKuuntelija> kortit;
+    private JLabel voitot;
 
 
-    public OikeanPalkinKuuntelija(Kenoarvonta arvonta, JButton poista, ArrayList kortit) {
+    public OikeanPalkinKuuntelija(Kenoarvonta arvonta, JButton poista, ArrayList kortit, JLabel voitot) {
         this.arvonta = arvonta;
         this.poista = poista;
         this.kortit = kortit;
+        this.voitot = voitot;
     }
 
 
@@ -41,6 +43,7 @@ public class OikeanPalkinKuuntelija implements ActionListener {
             for (KortinKuuntelija kuuntelija : kortit) {
                 kuuntelija.kortti.setEnabled(true);
             }
-        }        
+        }
+
     }
 }

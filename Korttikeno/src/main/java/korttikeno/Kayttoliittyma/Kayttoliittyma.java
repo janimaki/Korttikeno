@@ -5,6 +5,7 @@
 package korttikeno.Kayttoliittyma;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -87,6 +88,7 @@ public class Kayttoliittyma implements Runnable {
         for (int i = 1; i <= 52; i++) {
 
             JButton kortti = new JButton(new ImageIcon(((new ImageIcon("cards/" + "kortti_" + i + ".png")).getImage()).getScaledInstance(80, 175, java.awt.Image.SCALE_SMOOTH)));
+            kortti.setBackground(Color.lightGray);
             indeksit.put(kortti, i);
             KortinKuuntelija kuuntelija = new KortinKuuntelija(arvonta, kortti, indeksit);
 
@@ -114,7 +116,7 @@ public class Kayttoliittyma implements Runnable {
         JButton kylla = new JButton("Kyllä");
         JButton ei = new JButton("Ei");
 
-        AlapalkinKuuntelija kuuntelija = new AlapalkinKuuntelija(arvonta, pelaaNappi, kortit, kasvataPanos, asetaSaldo, teksti, ohjelaatikko, kylla, ei);
+        AlapalkinKuuntelija kuuntelija = new AlapalkinKuuntelija(arvonta, pelaaNappi, kortit, kasvataPanos, asetaSaldo, teksti, ohjelaatikko, kylla, ei, tuplausOhje);
 
         panel.add(pelaaNappi);
         panel.add(kasvataPanos);
@@ -143,13 +145,17 @@ public class Kayttoliittyma implements Runnable {
 
         JPanel panel = new JPanel(new GridLayout(5, 1));
         JButton poistaValinnat = new JButton("Uudet kortit");
+        JLabel voittotaulu = new JLabel("Voittotaulu:");
+        JLabel voitot = new JLabel("<html>This is first line.<br/>This is second line.</html>");
 
-        OikeanPalkinKuuntelija kuuntelija = new OikeanPalkinKuuntelija(arvonta, poistaValinnat, kortit);
+        OikeanPalkinKuuntelija kuuntelija = new OikeanPalkinKuuntelija(arvonta, poistaValinnat, kortit, voitot);
 
-        poistaValinnat.addActionListener(kuuntelija);
+        poistaValinnat.addActionListener(kuuntelija);       
 
         panel.add(poistaValinnat);
-
+        panel.add(voittotaulu);
+        panel.add(voitot);
+        
         return panel;
     }
 }
