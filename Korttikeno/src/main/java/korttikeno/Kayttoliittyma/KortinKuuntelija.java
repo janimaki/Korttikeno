@@ -7,6 +7,7 @@ package korttikeno.Kayttoliittyma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
@@ -21,14 +22,15 @@ import korttikeno.korttikeno.Korttikeno;
  */
 public class KortinKuuntelija implements ActionListener {
 
-    Kenoarvonta arvonta;
-    JButton kortti;
-    SaldonKuuntelija saldo;
-    Kayttoliittyma kayttol;
+    public Kenoarvonta arvonta;
+    public JButton kortti;
+    public HashMap<JButton,Integer> indeksit;
+    
 
-    KortinKuuntelija(Kenoarvonta arvonta, JButton kortti) {
+    KortinKuuntelija(Kenoarvonta arvonta, JButton kortti, HashMap indeksit) {
         this.arvonta = arvonta;
         this.kortti = kortti;
+        this.indeksit = indeksit;
 
     }
 
@@ -37,8 +39,10 @@ public class KortinKuuntelija implements ActionListener {
 
         if (ae.getSource() == kortti) {
             if (arvonta.montaValittuaNumeroa() < 5) {
-                arvonta.pelaaja.valitseNumero(Integer.parseInt(kortti.getText()));
+                int numero = indeksit.get(kortti);
+                arvonta.pelaaja.valitseNumero(numero);
                 kortti.setEnabled(false);
+                
             }     
         }
     }

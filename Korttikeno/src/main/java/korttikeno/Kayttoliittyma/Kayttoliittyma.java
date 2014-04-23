@@ -8,8 +8,13 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,13 +36,14 @@ public class Kayttoliittyma implements Runnable {
     public Korttikeno keno;
     public Kenoarvonta arvonta;
     public ArrayList<KortinKuuntelija> kortit;
-
+    public HashMap<JButton, Integer> indeksit;
 
     public Kayttoliittyma() {
         this.arvonta = new Kenoarvonta();
         this.keno = new Korttikeno(arvonta);
         this.kortit = new ArrayList();
         this.arvonta.asetaPanos(0.2);
+        this.indeksit = new HashMap();
     }
 
     @Override
@@ -60,13 +66,13 @@ public class Kayttoliittyma implements Runnable {
     private void luoKomponentit(Container container) {
         container.setLayout(new BorderLayout());
 
-        container.add(new JLabel("Aseta panos, valitse 1-5 korttia, paina 'pelaa'"), BorderLayout.NORTH);
+        container.add(new JLabel("Aseta saldo, valitse kortit, valitse panos, paina pelaa, tuplaa voittaessasi"), BorderLayout.NORTH);
 
-        container.add(saldoPalkki(), BorderLayout.EAST);
+        container.add(luoOikeaPalkki(), BorderLayout.EAST);
 
         container.add(luoKortit(), BorderLayout.CENTER);
 
-        container.add(luoPanos(), BorderLayout.SOUTH);
+        container.add(luoAlapalkki(), BorderLayout.SOUTH);
     }
 
     /**
@@ -80,11 +86,13 @@ public class Kayttoliittyma implements Runnable {
 
         for (int i = 1; i <= 52; i++) {
 
-            JButton asd = new JButton("" + i);
-            KortinKuuntelija kuuntelija = new KortinKuuntelija(arvonta, asd);
+            JButton kortti = new JButton(new ImageIcon(((new ImageIcon("cards/" + "kortti_" + i + ".png")).getImage()).getScaledInstance(80, 175, java.awt.Image.SCALE_SMOOTH)));
+            indeksit.put(kortti, i);
+            KortinKuuntelija kuuntelija = new KortinKuuntelija(arvonta, kortti, indeksit);
+
             kortit.add(kuuntelija);
-            panel.add(asd);
-            asd.addActionListener(kuuntelija);
+            panel.add(kortti);
+            kortti.addActionListener(kuuntelija);
         }
         return panel;
     }
@@ -94,32 +102,34 @@ public class Kayttoliittyma implements Runnable {
      *
      * @return palauttaa paneelikomponentin
      */
-    private JPanel luoPanos() {
-        JPanel panel = new JPanel(new GridLayout(1, 5));
+    private JPanel luoAlapalkki() {
+        JPanel panel = new JPanel(new GridLayout(1, 8));
 
         JButton kasvataPanos = new JButton("Panos: 0.2e");
-        JButton pelaaNappi = new JButton("Pelaa: ");
-//        ButtonGroup buttonGroup = new ButtonGroup();
+        JButton pelaaNappi = new JButton("Pelaa: 0.0e");
         JLabel ohjelaatikko = new JLabel("Anna saldosi: ");
         JTextField teksti = new JTextField();
         JButton asetaSaldo = new JButton("aseta saldo");
+        JLabel tuplausOhje = new JLabel("Tuplaatko?");
+        JButton kylla = new JButton("Kyllä");
+        JButton ei = new JButton("Ei");
 
-        
-
-//        buttonGroup.add(kasvataPanos);
-
-        PanosKuuntelija kuuntelija = new PanosKuuntelija(arvonta, pelaaNappi, kortit, kasvataPanos, asetaSaldo, teksti, ohjelaatikko);
+        AlapalkinKuuntelija kuuntelija = new AlapalkinKuuntelija(arvonta, pelaaNappi, kortit, kasvataPanos, asetaSaldo, teksti, ohjelaatikko, kylla, ei);
 
         panel.add(pelaaNappi);
         panel.add(kasvataPanos);
         panel.add(ohjelaatikko);
         panel.add(teksti);
         panel.add(asetaSaldo);
-        
+        panel.add(tuplausOhje);
+        panel.add(kylla);
+        panel.add(ei);
+
         asetaSaldo.addActionListener(kuuntelija);
         kasvataPanos.addActionListener(kuuntelija);
         pelaaNappi.addActionListener(kuuntelija);
-
+        kylla.addActionListener(kuuntelija);
+        ei.addActionListener(kuuntelija);
 
         return panel;
     }
@@ -129,14 +139,17 @@ public class Kayttoliittyma implements Runnable {
      *
      * @return palauttaa paneelikomponentin
      */
-    private JPanel saldoPalkki() {
+    private JPanel luoOikeaPalkki() {
 
         JPanel panel = new JPanel(new GridLayout(5, 1));
         JButton poistaValinnat = new JButton("Uudet kortit");
-        SaldonKuuntelija kuuntelija = new SaldonKuuntelija(arvonta, poistaValinnat, kortit);
-        
+
+        OikeanPalkinKuuntelija kuuntelija = new OikeanPalkinKuuntelija(arvonta, poistaValinnat, kortit);
+
         poistaValinnat.addActionListener(kuuntelija);
+
         panel.add(poistaValinnat);
+
         return panel;
     }
 }

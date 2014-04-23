@@ -20,18 +20,20 @@ import korttikeno.korttikeno.Korttikeno;
  *
  * @author janimaki@cs
  */
-public class SaldonKuuntelija implements ActionListener {
+public class OikeanPalkinKuuntelija implements ActionListener {
 
-    Kenoarvonta arvonta;
+    public Kenoarvonta arvonta;
     private JButton poista;
     public ArrayList<KortinKuuntelija> kortit;
 
-    public SaldonKuuntelija(Kenoarvonta arvonta, JButton poista, ArrayList kortit) {
+
+    public OikeanPalkinKuuntelija(Kenoarvonta arvonta, JButton poista, ArrayList kortit) {
         this.arvonta = arvonta;
         this.poista = poista;
         this.kortit = kortit;
     }
-    
+
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == poista) {
@@ -39,14 +41,6 @@ public class SaldonKuuntelija implements ActionListener {
             for (KortinKuuntelija kuuntelija : kortit) {
                 kuuntelija.kortti.setEnabled(true);
             }
-        }
-    }
-
-    public String naytaValitutKortit() {
-        String kortit = "";
-        for (Integer kortti : arvonta.pelaaja.getValitutNumerot()) {
-            kortit = kortit + kortti + " ";
-        }
-        return kortit;
+        }        
     }
 }

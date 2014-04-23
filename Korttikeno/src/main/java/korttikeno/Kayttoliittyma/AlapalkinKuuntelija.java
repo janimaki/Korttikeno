@@ -19,7 +19,7 @@ import korttikeno.korttikeno.Korttikeno;
  *
  * @author Jani
  */
-public class PanosKuuntelija implements ActionListener {
+public class AlapalkinKuuntelija implements ActionListener {
 
     public ArrayList<KortinKuuntelija> lista;
     public Kenoarvonta arvonta;
@@ -29,8 +29,11 @@ public class PanosKuuntelija implements ActionListener {
     private JLabel ohjelaatikko;
     private JButton asetaSaldo;
     private JTextField uusiSaldo;
+    private JButton kylla;
+    private JButton ei;
 
-    PanosKuuntelija(Kenoarvonta arvonta, JButton pelaaNappi, ArrayList<KortinKuuntelija> kortit, JButton kasvataPanos, JButton asetaSaldo, JTextField teksti, JLabel ohjelaatikko) {
+    AlapalkinKuuntelija(Kenoarvonta arvonta, JButton pelaaNappi, ArrayList<KortinKuuntelija> kortit, JButton kasvataPanos,
+            JButton asetaSaldo, JTextField teksti, JLabel ohjelaatikko, JButton kylla, JButton ei) {
         this.lista = kortit;
         this.pelaa = pelaaNappi;
         this.arvonta = arvonta;
@@ -39,6 +42,10 @@ public class PanosKuuntelija implements ActionListener {
         this.ohjelaatikko = ohjelaatikko;
         this.asetaSaldo = asetaSaldo;
         this.uusiSaldo = teksti;
+        this.kylla = kylla;
+        this.ei = ei;
+        this.kylla.setEnabled(false);
+        this.ei.setEnabled(false);
 
     }
 
@@ -50,7 +57,7 @@ public class PanosKuuntelija implements ActionListener {
             if (saldo >= 0.2 && saldo <= 20.0) {
                 arvonta.asetaSaldo(saldo);
                 this.asetaSaldo.setEnabled(false);
-                paivitaSaldo();            
+                paivitaSaldo();
             } else {
                 this.ohjelaatikko.setText("saldon pitää olla 0.2-20.0!");
             }
@@ -61,8 +68,10 @@ public class PanosKuuntelija implements ActionListener {
             kasvataPanos.setText("panos: " + arvonta.getPanos() + "e");
         }
 
-        if (arvonta.getPanos() > 0 && arvonta.pelaaja.getSaldo() > 0.2 && arvonta.montaValittuaNumeroa() > 0) {
+        if (arvonta.getPanos() <= arvonta.pelaaja.getSaldo() && arvonta.pelaaja.getSaldo() >= 0.2 && arvonta.montaValittuaNumeroa() > 0) {
             pelaa.setEnabled(true);
+        } else {
+            pelaa.setEnabled(false);
         }
         paivitaSaldo();
 
@@ -70,16 +79,27 @@ public class PanosKuuntelija implements ActionListener {
             if (arvonta.pelaaja.montakoValittuaNumeroa() > 0 && arvonta.pelaaja.montakoValittuaNumeroa() <= 5) {
                 pelaa.setEnabled(false);
                 suoritaPeli();
-                System.out.println(arvonta.pelaaja.getSaldo());
                 tyhjennaValinnat();
                 pelaa.setEnabled(true);
                 paivitaSaldo();
             }
         }
+        
+        if (ae.getSource() == kylla) {
+            
+        }
+        
+        if(ae.getSource()== ei) {
+            
+        }
     }
 
     public void suoritaPeli() {
         arvonta.suoritaArvonta();
+        if (arvonta.onkoVoittoa() == true) {
+            kylla.setEnabled(true);
+            ei.setEnabled(true);
+        }
         arvonta.suoritaVoitonmaksu();
         arvonta.valmistaUuttaPelia();
     }
@@ -102,6 +122,6 @@ public class PanosKuuntelija implements ActionListener {
     }
 
     public void paivitaSaldo() {
-        pelaa.setText("pelaa: " + arvonta.getSaldo());
+        pelaa.setText("pelaa: " + arvonta.getSaldo() + "e");
     }
 }

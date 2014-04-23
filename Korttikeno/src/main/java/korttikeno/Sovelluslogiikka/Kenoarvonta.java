@@ -142,16 +142,21 @@ public class Kenoarvonta {
      * vastauksella, nollaksi väärälle ja pitää panoksen samana punaisella
      * 7:llä. Uudella panoksella ei pääse enään uuteen arvontaan vaan sitä
      * käytetään vain hyväksi voitonmaksussa.
+     * 
+     * @return true jos tuplaus oikein ja tuplausta voidaan jatkaa, false muuten.
      */
-    public void tuplaaVoitto() {
+    public boolean tuplaaVoitto() {
         this.tupla = new Tuplaus();
         int kortinarvo = tupla.korttiPieniVaiSuuri(); // 0 = pieni, , 1 = punanen 7, 2 = musta 7, 3 = suuri
         if (kortinarvo == pelaaja.getTuplaus()) { // tuplaus oikein
             panos.setPanos(panos.getPanos() * 2);
+            return true;
         } else if (kortinarvo == 1) { // 
             panos.setPanos(panos.getPanos()); // punainen 7
+            return false;
         } else {
             panos.setPanos(0); // tuplaus väärin tai musta 7
+            return false;
         }
     }
 
