@@ -39,7 +39,7 @@ public class Tuplausliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Tuplaus");
-        frame.setPreferredSize(new Dimension(600, 400));
+        frame.setPreferredSize(new Dimension(800, 600));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         luoKomponentit(frame.getContentPane());
@@ -54,23 +54,16 @@ public class Tuplausliittyma implements Runnable {
 
     private void luoKomponentit(Container container) {
         container.setLayout(new BorderLayout());
-        container.add(luoKortti(), BorderLayout.NORTH);
-        container.add(luoNapit(), BorderLayout.SOUTH);
-    }
 
-    private JPanel luoKortti() {
-        JPanel panel = new JPanel();
-        kortti = new JLabel(new ImageIcon(((new ImageIcon("cards/" + "valinta" + ".png")).getImage()).getScaledInstance(80, 175, java.awt.Image.SCALE_SMOOTH)));
-        
-        panel.add(kortti);
-        return panel;
+        container.add(luoNapit());
     }
 
     private JPanel luoNapit() {
         JPanel panel = new JPanel(new GridLayout(1, 3));
         JButton pieni = new JButton("pieni");
         JButton suuri = new JButton("suuri");
-
+        kortti = new JLabel(new ImageIcon(((new ImageIcon("cards/" + "kortti_0" +".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
+//        kortti = new JLabel();
         TuplausKuuntelija kuuntelija = new TuplausKuuntelija(arvonta, pieni, suuri, kortti, onkoTuplattu);
 
         pieni.addActionListener(kuuntelija);

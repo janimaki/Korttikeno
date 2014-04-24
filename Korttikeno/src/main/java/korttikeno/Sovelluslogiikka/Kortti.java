@@ -11,23 +11,15 @@ package korttikeno.Sovelluslogiikka;
  */
 public class Kortti {
 
-    public static final int RISTI = 0;
-    public static final int RUUTU = 1;
-    public static final int HERTTA = 2;
-    public static final int PATA = 3;
-    public static final String[] MAAT = {"Risti", "Ruutu", "Hertta", "Pata"};
-    public static final String[] ARVOT = {"-", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
-    private int arvo;
-    private int maa;
     public int luku;
 
-    public Kortti(int arvo, int maa) {
-        this.arvo = arvo;
-        this.maa = maa;
-    }
     
     public Kortti(int luku) {
         this.luku = luku;
+    }
+    
+    public int getArvo(){
+        return this.luku;
     }
 
     @Override
@@ -35,11 +27,4 @@ public class Kortti {
         return "kortti_" + luku;
     }
 
-    public int getArvo() {
-        return arvo;
-    }
-
-    public int getMaa() {
-        return maa;
-    }
 }

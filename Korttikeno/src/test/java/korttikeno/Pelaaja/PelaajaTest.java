@@ -43,18 +43,6 @@ public class PelaajaTest {
     //
 
     @Test
-    public void valittujaNumeroitaEiTuleLiikaa() {
-        pelaaja.valitseNumero(4);
-        pelaaja.valitseNumero(30);
-        pelaaja.valitseNumero(12);
-        pelaaja.valitseNumero(16);
-        pelaaja.valitseNumero(2);
-        pelaaja.valitseNumero(17);
-        pelaaja.valitseNumero(9);
-        assertEquals(5, pelaaja.montakoValittuaNumeroa());
-    }
-
-    @Test
     public void eiVoiValitaSamojaLukuja() {
         pelaaja.valitseNumero(4);
         pelaaja.valitseNumero(4);

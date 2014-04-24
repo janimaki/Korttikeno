@@ -42,8 +42,8 @@ public class KorttiTest {
     // public void hello() {}
     @Test
     public void toStringOikein(){
-        kortti = new Kortti(1,0);
-        assertEquals("Risti A", kortti.toString());
+        kortti = new Kortti(1);
+        assertEquals("kortti_1", kortti.toString());
 
     }
 }

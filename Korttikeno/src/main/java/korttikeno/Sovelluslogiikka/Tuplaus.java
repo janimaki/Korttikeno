@@ -20,7 +20,7 @@ public class Tuplaus {
     public Tuplaus() {
 //        this.arvonta = arvonta;
         arpoja = new Arpoja();
-        kortti = new Kortti(arpoja.arvoLuvut());
+        kortti = new Kortti(0);
 
     }
 
@@ -35,6 +35,7 @@ public class Tuplaus {
      * jos kortti on musta 7. 3, jos kortin arvo on 8 tai suurempi.
      */
     public int korttiPieniVaiSuuri() {
+        kortti = new Kortti(arpoja.arvoLuvut());
         if ((getArvo() >= 1 && getArvo() <= 5) || (getArvo() >= 13 && getArvo() <= 18) || (getArvo() >= 26 && getArvo() <= 31) || (getArvo() >= 39 && getArvo() <= 44) || getArvo() == 52) {
             return 0; // 0 = pieni
         } else if (getArvo() == 6 || getArvo() == 45) {

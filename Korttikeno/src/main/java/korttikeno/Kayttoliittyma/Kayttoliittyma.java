@@ -148,8 +148,9 @@ public class Kayttoliittyma implements Runnable {
      */
     private JPanel luoOikeaPalkki() {
 
-        JPanel panel = new JPanel(new GridLayout(6,1));
+        JPanel panel = new JPanel(new GridLayout(7,1));
         JButton poistaValinnat = new JButton("Uudet kortit");
+        JButton voitonmaksu = new JButton("Voitot talteen");
         JLabel voitot1 = new JLabel("<html>Voittotaulu:<br/>Valittuja: 1<br/>Osumia 1: panos x4<br/></html>");
         
         JLabel voitot2 = new JLabel("<html>Valittuja: 2<br/>Osumia 1: panos x2"
@@ -167,11 +168,13 @@ public class Kayttoliittyma implements Runnable {
         poistaValinnat.addActionListener(kuuntelija);       
 
         panel.add(poistaValinnat);
+        panel.add(voitonmaksu);
         panel.add(voitot1);
         panel.add(voitot2);
         panel.add(voitot3);
         panel.add(voitot4);
         panel.add(voitot5);
+        
         
         
         return panel;

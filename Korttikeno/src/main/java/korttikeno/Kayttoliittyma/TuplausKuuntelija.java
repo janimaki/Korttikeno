@@ -34,19 +34,21 @@ public class TuplausKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == pieni) {
-            this.arvonta.pelaaja.setTuplaus(0);    
+            this.arvonta.pelaaja.setTuplaus(0);
+
         }
         if (ae.getSource() == suuri) {
             this.arvonta.pelaaja.setTuplaus(3);
+           
         }
         pieni.setEnabled(false);
         suuri.setEnabled(false);
         arvonta.tuplaaVoitto();
-        kortti = new JLabel(new ImageIcon(((new ImageIcon("cards/" + "kortti_" + arvonta.tupla.getArvo() +
-                ".png")).getImage()).getScaledInstance(80, 175, java.awt.Image.SCALE_SMOOTH)));
+        
+        kortti.setIcon(new ImageIcon(((new ImageIcon("cards/" + arvonta.tupla.kortti.toString() +".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
 
         this.onkoTuplattu = true;
-        
+
 
     }
 }

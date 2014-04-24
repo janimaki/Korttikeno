@@ -111,9 +111,10 @@ public class AlapalkinKuuntelija implements ActionListener {
         }
 
         if (ae.getSource() == ei) {
+            arvonta.suoritaVoitonmaksu();
             vapautaNapit();
             peliLoppuun();
-            arvonta.suoritaVoitonmaksu();
+
 
             ei.setEnabled(false);
             kylla.setEnabled(false);
