@@ -38,6 +38,8 @@ public class AlapalkinKuuntelija implements ActionListener {
     private JLabel tuplausOhje;
     private JButton tuplattu;
     private boolean onkoTuplaamassa;
+//    private JButton uusiTupla;
+    private double paukku;
 
     AlapalkinKuuntelija(Kenoarvonta arvonta, JButton pelaaNappi, ArrayList<KortinKuuntelija> kortit, JButton kasvataPanos,
             JButton asetaSaldo, JTextField teksti, JLabel ohjelaatikko, JButton kylla, JButton ei, JLabel tuplaus, JButton tuplattu) {
@@ -57,6 +59,8 @@ public class AlapalkinKuuntelija implements ActionListener {
         this.tuplattu = tuplattu;
         this.tuplattu.setEnabled(false);
         this.onkoTuplaamassa = false;
+//        this.uusiTupla = uusitupla;
+//        this.uusiTupla.setEnabled(false);
 
     }
 
@@ -79,13 +83,11 @@ public class AlapalkinKuuntelija implements ActionListener {
             kasvataPanos.setText("panos: " + arvonta.getPanos() + "e");
         }
 
-        if (arvonta.getPanos() <= arvonta.pelaaja.getSaldo() && arvonta.pelaaja.getSaldo() >= 0.2 && arvonta.montaValittuaNumeroa() > 0 && onkoTuplaamassa==false) {
+        if (arvonta.getPanos() <= arvonta.pelaaja.getSaldo() && arvonta.pelaaja.getSaldo() >= 0.2 && arvonta.montaValittuaNumeroa() > 0 && onkoTuplaamassa == false) {
             pelaa.setEnabled(true);
         } else {
             pelaa.setEnabled(false);
         }
-
-        paivitaSaldo();
 
         if (ae.getSource() == pelaa) {
             if (arvonta.pelaaja.montakoValittuaNumeroa() > 0 && arvonta.pelaaja.montakoValittuaNumeroa() <= 5) {
@@ -94,19 +96,21 @@ public class AlapalkinKuuntelija implements ActionListener {
                 poistaArvotut();
 
                 suoritaPeli();
-                
+
             }
         }
 
         if (ae.getSource() == kylla) {
+            paukku = arvonta.getPanos();
             onkoTuplaamassa = true;
             Tuplausliittyma tupla = new Tuplausliittyma(arvonta);
             SwingUtilities.invokeLater(tupla);
             ei.setEnabled(false);
-            kylla.setEnabled(false);          
+            kylla.setEnabled(false);
             tuplattu.setEnabled(true);
+//            uusiTupla.setEnabled(true);
             suljeNapit();
-            
+
 
         }
 
@@ -122,13 +126,27 @@ public class AlapalkinKuuntelija implements ActionListener {
 
         if (ae.getSource() == tuplattu) {
             if (arvonta.pelaaja.getTuplaus() != -1) {
+                arvonta.setPanos(paukku);
                 vapautaNapit();
+//                arvonta.suoritaVoitonmaksu();
                 peliLoppuun();
                 arvonta.pelaaja.setTuplaus(-1);
                 tuplattu.setEnabled(false);
                 onkoTuplaamassa = false;
             }
         }
+
+//        if (ae.getSource() == uusiTupla) {
+//            if (arvonta.getPanos() != 0 && arvonta.tupla.getArvo() != 19 && arvonta.tupla.getArvo() != 32) {
+//                uusiTupla.setEnabled(false);
+//                onkoTuplaamassa = true;
+//                Tuplausliittyma tupla = new Tuplausliittyma(arvonta);
+//                SwingUtilities.invokeLater(tupla);
+//                suljeNapit();
+//            } else {
+//                uusiTupla.setEnabled(false);
+//            }
+//        }
     }
 
     public void suoritaPeli() {

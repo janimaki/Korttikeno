@@ -44,7 +44,7 @@ public class Kayttoliittyma implements Runnable {
         this.arvonta = new Kenoarvonta();
         this.keno = new Korttikeno(arvonta);
         this.kortit = new ArrayList();
-        this.arvonta.asetaPanos(0.2);
+        this.arvonta.setPanos(0.2);
         this.indeksit = new HashMap();
     }
 
@@ -116,7 +116,8 @@ public class Kayttoliittyma implements Runnable {
         JLabel tuplausOhje = new JLabel("Tuplaatko?");
         JButton kylla = new JButton("Kyllä");
         JButton ei = new JButton("Ei");
-        JButton tuplattu = new JButton("tuplattu?");
+        JButton tuplattu = new JButton("Tuplaus rdy");
+//        JButton uusiksi = new JButton("Tuplaa uusiksi");
 
         AlapalkinKuuntelija kuuntelija = new AlapalkinKuuntelija(arvonta, pelaaNappi, kortit, kasvataPanos, 
                 asetaSaldo, teksti, ohjelaatikko, kylla, ei, tuplausOhje, tuplattu);
@@ -130,6 +131,7 @@ public class Kayttoliittyma implements Runnable {
         panel.add(kylla);
         panel.add(ei);
         panel.add(tuplattu);
+//        panel.add(uusiksi);
 
         asetaSaldo.addActionListener(kuuntelija);
         kasvataPanos.addActionListener(kuuntelija);
@@ -137,6 +139,7 @@ public class Kayttoliittyma implements Runnable {
         kylla.addActionListener(kuuntelija);
         ei.addActionListener(kuuntelija);
         tuplattu.addActionListener(kuuntelija);
+//        uusiksi.addActionListener(kuuntelija);
 
         return panel;
     }
@@ -163,9 +166,10 @@ public class Kayttoliittyma implements Runnable {
                 + "<br/>Osumia 4: panos x30<br/>Osumia 5: panos x50</html>");
 
         
-        OikeanPalkinKuuntelija kuuntelija = new OikeanPalkinKuuntelija(arvonta, poistaValinnat, kortit, voitot1);
+        OikeanPalkinKuuntelija kuuntelija = new OikeanPalkinKuuntelija(arvonta, poistaValinnat, kortit, voitonmaksu);
 
-        poistaValinnat.addActionListener(kuuntelija);       
+        poistaValinnat.addActionListener(kuuntelija);      
+        voitonmaksu.addActionListener(kuuntelija);
 
         panel.add(poistaValinnat);
         panel.add(voitonmaksu);
@@ -174,6 +178,7 @@ public class Kayttoliittyma implements Runnable {
         panel.add(voitot3);
         panel.add(voitot4);
         panel.add(voitot5);
+        
         
         
         

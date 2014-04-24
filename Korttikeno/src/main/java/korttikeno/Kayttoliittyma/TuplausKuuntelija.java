@@ -6,8 +6,11 @@ package korttikeno.Kayttoliittyma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import korttikeno.Sovelluslogiikka.Kenoarvonta;
 
@@ -22,13 +25,15 @@ public class TuplausKuuntelija implements ActionListener {
     public Kenoarvonta arvonta;
     public JLabel kortti;
     public boolean onkoTuplattu;
+    public JFrame frame;
 
-    public TuplausKuuntelija(Kenoarvonta arvonta, JButton pieni, JButton suuri, JLabel kortti, boolean onko) {
+    public TuplausKuuntelija(Kenoarvonta arvonta, JButton pieni, JButton suuri, JLabel kortti, boolean onko, JFrame frame) {
         this.pieni = pieni;
         this.suuri = suuri;
         this.arvonta = arvonta;
         this.kortti = kortti;
         this.onkoTuplattu = onko;
+        this.frame = frame;
     }
 
     @Override
@@ -48,7 +53,15 @@ public class TuplausKuuntelija implements ActionListener {
         kortti.setIcon(new ImageIcon(((new ImageIcon("cards/" + arvonta.tupla.kortti.toString() +".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
 
         this.onkoTuplattu = true;
-
+        
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(TuplausKuuntelija.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        
+//        frame.dispose();
+       
 
     }
 }

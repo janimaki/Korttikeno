@@ -47,9 +47,6 @@ public class Tuplausliittyma implements Runnable {
         frame.pack();
         frame.setVisible(true);
 
-        if (onkoTuplattu == true) {
-            suljeIkkuna();
-        }
     }
 
     private void luoKomponentit(Container container) {
@@ -64,7 +61,7 @@ public class Tuplausliittyma implements Runnable {
         JButton suuri = new JButton("suuri");
         kortti = new JLabel(new ImageIcon(((new ImageIcon("cards/" + "kortti_0" +".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
 //        kortti = new JLabel();
-        TuplausKuuntelija kuuntelija = new TuplausKuuntelija(arvonta, pieni, suuri, kortti, onkoTuplattu);
+        TuplausKuuntelija kuuntelija = new TuplausKuuntelija(arvonta, pieni, suuri, kortti, onkoTuplattu, frame);
 
         pieni.addActionListener(kuuntelija);
         suuri.addActionListener(kuuntelija);
@@ -76,8 +73,4 @@ public class Tuplausliittyma implements Runnable {
         return panel;
     }
 
-    private void suljeIkkuna() {
-        frame.setVisible(false);
-        frame.dispose();
-    }
 }

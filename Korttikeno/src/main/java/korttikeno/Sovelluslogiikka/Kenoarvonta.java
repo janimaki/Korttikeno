@@ -41,14 +41,15 @@ public class Kenoarvonta {
      *
      * @param panos panos, jonka käyttäjä asettaa arvonnalle.
      */
-    public void asetaPanos(double panos) {
-        if (panos >= 1.0) {
-            this.panos = new Panos(1.0);
-        } else if (panos <= 0.2) {
-            this.panos = new Panos(0.2);
-        } else {
-            this.panos = new Panos(panos);
-        }
+    public void setPanos(double panos) {
+//        if (panos >= 1.0) {
+//            this.panos = new Panos(1.0);
+//        } else if (panos <= 0.2) {
+//            this.panos = new Panos(0.2);
+//        } else {
+//            this.panos = new Panos(panos);
+//        }
+        this.panos = new Panos(panos);
     }
     
     public void kasvataPanosta(){
@@ -149,17 +150,18 @@ public class Kenoarvonta {
         this.tupla = new Tuplaus();
         int kortinarvo = tupla.korttiPieniVaiSuuri(); // 0 = pieni, , 1 = punanen 7, 2 = musta 7, 3 = suuri
         if (kortinarvo == pelaaja.getTuplaus()) { // tuplaus oikein
-            panos.setPanos(panos.getPanos() * 2);
+            setPanos(getPanos() * 2);
             suoritaVoitonmaksu();
-            panos.setPanos(panos.getPanos()/2);
+            setPanos(getPanos()/2);
         } else if (kortinarvo == 1) { // 
-            panos.setPanos(panos.getPanos()); // punainen 7
+            setPanos(getPanos()); // punainen 7
             suoritaVoitonmaksu();
         } else {
-            double apum = panos.getPanos();
-            panos.setPanos(0); // tuplaus väärin tai musta 7
+            double apum = getPanos();
+            setPanos(0); // tuplaus väärin tai musta 7
             suoritaVoitonmaksu();
-            panos.setPanos(apum);
+            setPanos(apum);
+
         }
         
     }

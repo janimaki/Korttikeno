@@ -47,7 +47,7 @@ public class Korttikeno {
         while (arvonta.pelaaja.getSaldo() > 0) {
             System.out.print("Panos? (0,2 - 1): ");
             Double panos = Double.parseDouble(skanneri.nextLine());
-            arvonta.asetaPanos(panos);
+            arvonta.setPanos(panos);
             System.out.print("Montako korttia? (1-5): ");
             int kortteja = Integer.parseInt(skanneri.nextLine());
             while (arvonta.pelaaja.valitutNumerot.size() != kortteja) {

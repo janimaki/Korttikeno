@@ -148,17 +148,17 @@ public class Kenoarvonta2Test {
     @Test
     public void voitonmaksuYhdellaKortilla() {
         arvonta.asetaSaldo(10);
-        arvonta.asetaPanos(1);
+        arvonta.setPanos(1);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.suoritaVoitonmaksu();
         assertEquals(15.0, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.5);
+        arvonta.setPanos(0.5);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.suoritaVoitonmaksu();
         assertEquals(15.0, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.6);
+        arvonta.setPanos(0.6);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.suoritaVoitonmaksu();
         assertEquals(18, arvonta.pelaaja.getSaldo(), 0.0001);
@@ -167,19 +167,19 @@ public class Kenoarvonta2Test {
     @Test
     public void voitonmaksuKahdellaKortilla() {
         arvonta.asetaSaldo(6);
-        arvonta.asetaPanos(1);
+        arvonta.setPanos(1);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.suoritaVoitonmaksu();
         assertEquals(14, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.5);
+        arvonta.setPanos(0.5);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.suoritaVoitonmaksu();
         assertEquals(15, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.6);
+        arvonta.setPanos(0.6);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.suoritaVoitonmaksu();
@@ -189,34 +189,34 @@ public class Kenoarvonta2Test {
     @Test
     public void voitonmaksuKolmellaKortilla() {
         arvonta.asetaSaldo(6);
-        arvonta.asetaPanos(1);
+        arvonta.setPanos(1);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.pelaaja.valitseNumero(4);
         arvonta.suoritaVoitonmaksu();
         assertEquals(24, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.4);
+        arvonta.setPanos(0.4);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.suoritaVoitonmaksu();
         assertEquals(26, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(1);
+        arvonta.setPanos(1);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.suoritaVoitonmaksu();
         assertEquals(27, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.6);
+        arvonta.setPanos(0.6);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.suoritaVoitonmaksu();
         assertEquals(27.6, arvonta.pelaaja.getSaldo(), 0.0001);
-        arvonta.asetaPanos(0.6);
+        arvonta.setPanos(0.6);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(7);
@@ -227,7 +227,7 @@ public class Kenoarvonta2Test {
     @Test
     public void voitonmaksuNeljallaKortilla() {
         arvonta.asetaSaldo(6);
-        arvonta.asetaPanos(1);
+        arvonta.setPanos(1);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.pelaaja.valitseNumero(4);
@@ -235,7 +235,7 @@ public class Kenoarvonta2Test {
         arvonta.suoritaVoitonmaksu();
         assertEquals(26, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.6);
+        arvonta.setPanos(0.6);
         arvonta.pelaaja.valitseNumero(4);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
@@ -243,7 +243,7 @@ public class Kenoarvonta2Test {
         arvonta.suoritaVoitonmaksu();
         assertEquals(32, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(1);
+        arvonta.setPanos(1);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(1);
@@ -251,7 +251,7 @@ public class Kenoarvonta2Test {
         arvonta.suoritaVoitonmaksu();
         assertEquals(37, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.5);
+        arvonta.setPanos(0.5);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(7);
@@ -259,7 +259,7 @@ public class Kenoarvonta2Test {
         arvonta.suoritaVoitonmaksu();
         assertEquals(37, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(1);
+        arvonta.setPanos(1);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(7);
@@ -271,7 +271,7 @@ public class Kenoarvonta2Test {
     @Test
     public void voitonmaksuViidellaKortilla() {
         arvonta.asetaSaldo(6);
-        arvonta.asetaPanos(0.2);
+        arvonta.setPanos(0.2);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
         arvonta.pelaaja.valitseNumero(4);
@@ -280,7 +280,7 @@ public class Kenoarvonta2Test {
         arvonta.suoritaVoitonmaksu();
         assertEquals(16, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(1);
+        arvonta.setPanos(1);
         arvonta.pelaaja.valitseNumero(4);
         arvonta.pelaaja.valitseNumero(2);
         arvonta.pelaaja.valitseNumero(1);
@@ -289,7 +289,7 @@ public class Kenoarvonta2Test {
         arvonta.suoritaVoitonmaksu();
         assertEquals(46, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(0.2);
+        arvonta.setPanos(0.2);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(1);
@@ -298,7 +298,7 @@ public class Kenoarvonta2Test {
         arvonta.suoritaVoitonmaksu();
         assertEquals(48, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(1);
+        arvonta.setPanos(1);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(7);
@@ -307,7 +307,7 @@ public class Kenoarvonta2Test {
         arvonta.suoritaVoitonmaksu();
         assertEquals(50, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(1);
+        arvonta.setPanos(1);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(7);
@@ -316,7 +316,7 @@ public class Kenoarvonta2Test {
         arvonta.suoritaVoitonmaksu();
         assertEquals(50, arvonta.pelaaja.getSaldo(), 0.0001);
         arvonta.pelaaja.tyhjennaRivi();
-        arvonta.asetaPanos(1);
+        arvonta.setPanos(1);
         arvonta.pelaaja.valitseNumero(3);
         arvonta.pelaaja.valitseNumero(5);
         arvonta.pelaaja.valitseNumero(7);

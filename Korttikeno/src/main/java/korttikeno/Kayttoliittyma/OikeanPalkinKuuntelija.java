@@ -25,10 +25,10 @@ public class OikeanPalkinKuuntelija implements ActionListener {
     public Kenoarvonta arvonta;
     private JButton poista;
     public ArrayList<KortinKuuntelija> kortit;
-    private JLabel voitot;
+    private JButton voitot;
 
 
-    public OikeanPalkinKuuntelija(Kenoarvonta arvonta, JButton poista, ArrayList kortit, JLabel voitot) {
+    public OikeanPalkinKuuntelija(Kenoarvonta arvonta, JButton poista, ArrayList kortit, JButton voitot) {
         this.arvonta = arvonta;
         this.poista = poista;
         this.kortit = kortit;
@@ -44,6 +44,15 @@ public class OikeanPalkinKuuntelija implements ActionListener {
                 kuuntelija.kortti.setEnabled(true);
             }
         }
+//        
+//        if( ae.getSource() == voitot) {
+//            
+//            voitot.setText("Voitit " + arvonta.getSaldo() + " euroa!");
+//            this.arvonta.asetaSaldo(0);
+//            voitot.setEnabled(false);
+//            poista.setEnabled(false);
+//            
+//        }
 
     }
 }
