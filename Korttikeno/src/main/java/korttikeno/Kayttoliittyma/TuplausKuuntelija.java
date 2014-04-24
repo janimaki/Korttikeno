@@ -6,6 +6,7 @@ package korttikeno.Kayttoliittyma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -44,24 +45,17 @@ public class TuplausKuuntelija implements ActionListener {
         }
         if (ae.getSource() == suuri) {
             this.arvonta.pelaaja.setTuplaus(3);
-           
+
         }
         pieni.setEnabled(false);
         suuri.setEnabled(false);
         arvonta.tuplaaVoitto();
-        
-        kortti.setIcon(new ImageIcon(((new ImageIcon("cards/" + arvonta.tupla.kortti.toString() +".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
+
+        kortti.setIcon(new ImageIcon(((new ImageIcon("cards/" + arvonta.tupla.kortti.toString() + ".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
 
         this.onkoTuplattu = true;
-        
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(TuplausKuuntelija.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
+               
 //        frame.dispose();
-       
 
     }
 }
