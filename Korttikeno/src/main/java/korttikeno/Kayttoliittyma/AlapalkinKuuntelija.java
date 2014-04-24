@@ -94,7 +94,7 @@ public class AlapalkinKuuntelija implements ActionListener {
                 poistaArvotut();
 
                 suoritaPeli();
-
+                
             }
         }
 
@@ -133,6 +133,7 @@ public class AlapalkinKuuntelija implements ActionListener {
 
     public void suoritaPeli() {
         arvonta.suoritaArvonta();
+        paivitaSaldo();
         naytaArvotut();
         if (arvonta.onkoVoittoa() == true) {
             kylla.setEnabled(true);
