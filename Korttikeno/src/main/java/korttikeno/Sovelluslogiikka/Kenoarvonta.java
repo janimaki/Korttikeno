@@ -145,19 +145,23 @@ public class Kenoarvonta {
      * 
      * @return true jos tuplaus oikein ja tuplausta voidaan jatkaa, false muuten.
      */
-    public boolean tuplaaVoitto() {
+    public void tuplaaVoitto() {
         this.tupla = new Tuplaus();
         int kortinarvo = tupla.korttiPieniVaiSuuri(); // 0 = pieni, , 1 = punanen 7, 2 = musta 7, 3 = suuri
         if (kortinarvo == pelaaja.getTuplaus()) { // tuplaus oikein
             panos.setPanos(panos.getPanos() * 2);
-            return true;
+            suoritaVoitonmaksu();
+            panos.setPanos(panos.getPanos()/2);
         } else if (kortinarvo == 1) { // 
             panos.setPanos(panos.getPanos()); // punainen 7
-            return false;
+            suoritaVoitonmaksu();
         } else {
+            double apum = panos.getPanos();
             panos.setPanos(0); // tuplaus väärin tai musta 7
-            return false;
+            suoritaVoitonmaksu();
+            panos.setPanos(apum);
         }
+        
     }
 
     /**

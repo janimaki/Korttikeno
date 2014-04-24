@@ -19,15 +19,20 @@ public class Kortti {
     public static final String[] ARVOT = {"-", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     private int arvo;
     private int maa;
+    public int luku;
 
     public Kortti(int arvo, int maa) {
         this.arvo = arvo;
         this.maa = maa;
     }
+    
+    public Kortti(int luku) {
+        this.luku = luku;
+    }
 
     @Override
     public String toString() {
-        return MAAT[maa] + " " + ARVOT[arvo];
+        return "kortti_" + luku;
     }
 
     public int getArvo() {

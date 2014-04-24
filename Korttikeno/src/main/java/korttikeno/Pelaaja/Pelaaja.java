@@ -23,6 +23,7 @@ public class Pelaaja {
         
         this.saldo = saldo;
         valitutNumerot = new ArrayList();
+        this.tuplaus = -1;
     }
 
     public double getSaldo() {

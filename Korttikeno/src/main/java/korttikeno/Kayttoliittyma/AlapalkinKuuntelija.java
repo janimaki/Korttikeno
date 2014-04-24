@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import korttikeno.Sovelluslogiikka.Kenoarvonta;
 import korttikeno.korttikeno.Korttikeno;
 
@@ -35,9 +36,11 @@ public class AlapalkinKuuntelija implements ActionListener {
     private JButton kylla;
     private JButton ei;
     private JLabel tuplausOhje;
+    private JButton tuplattu;
+    private boolean onkoTuplaamassa;
 
     AlapalkinKuuntelija(Kenoarvonta arvonta, JButton pelaaNappi, ArrayList<KortinKuuntelija> kortit, JButton kasvataPanos,
-            JButton asetaSaldo, JTextField teksti, JLabel ohjelaatikko, JButton kylla, JButton ei, JLabel tuplaus) {
+            JButton asetaSaldo, JTextField teksti, JLabel ohjelaatikko, JButton kylla, JButton ei, JLabel tuplaus, JButton tuplattu) {
         this.lista = kortit;
         this.pelaa = pelaaNappi;
         this.arvonta = arvonta;
@@ -51,6 +54,9 @@ public class AlapalkinKuuntelija implements ActionListener {
         this.kylla.setEnabled(false);
         this.ei.setEnabled(false);
         this.tuplausOhje = tuplaus;
+        this.tuplattu = tuplattu;
+        this.tuplattu.setEnabled(false);
+        this.onkoTuplaamassa = false;
 
     }
 
@@ -73,7 +79,7 @@ public class AlapalkinKuuntelija implements ActionListener {
             kasvataPanos.setText("panos: " + arvonta.getPanos() + "e");
         }
 
-        if (arvonta.getPanos() <= arvonta.pelaaja.getSaldo() && arvonta.pelaaja.getSaldo() >= 0.2 && arvonta.montaValittuaNumeroa() > 0) {
+        if (arvonta.getPanos() <= arvonta.pelaaja.getSaldo() && arvonta.pelaaja.getSaldo() >= 0.2 && arvonta.montaValittuaNumeroa() > 0 && onkoTuplaamassa==false) {
             pelaa.setEnabled(true);
         } else {
             pelaa.setEnabled(false);
@@ -93,18 +99,34 @@ public class AlapalkinKuuntelija implements ActionListener {
         }
 
         if (ae.getSource() == kylla) {
-            this.tuplausOhje.setText("Pieni vai Suuri?");
-            this.kylla.setText("pieni");
-            this.ei.setText("suuri");
-            arvonta.tuplaaVoitto();
+            onkoTuplaamassa = true;
+            Tuplausliittyma tupla = new Tuplausliittyma(arvonta);
+            SwingUtilities.invokeLater(tupla);
+            ei.setEnabled(false);
+            kylla.setEnabled(false);          
+            tuplattu.setEnabled(true);
+            suljeNapit();
+            
+
         }
 
         if (ae.getSource() == ei) {
             vapautaNapit();
             peliLoppuun();
-            tyhjennaValinnat();
+            arvonta.suoritaVoitonmaksu();
+
             ei.setEnabled(false);
             kylla.setEnabled(false);
+        }
+
+        if (ae.getSource() == tuplattu) {
+            if (arvonta.pelaaja.getTuplaus() != -1) {
+                vapautaNapit();
+                peliLoppuun();
+                arvonta.pelaaja.setTuplaus(-1);
+                tuplattu.setEnabled(false);
+                onkoTuplaamassa = false;
+            }
         }
     }
 
@@ -114,10 +136,11 @@ public class AlapalkinKuuntelija implements ActionListener {
         if (arvonta.onkoVoittoa() == true) {
             kylla.setEnabled(true);
             ei.setEnabled(true);
+            pelaa.setEnabled(false);
         } else {
 
-            tyhjennaValinnat();
             vapautaNapit();
+            arvonta.suoritaVoitonmaksu();
             peliLoppuun();
         }
     }
@@ -131,10 +154,10 @@ public class AlapalkinKuuntelija implements ActionListener {
     public void vapautaNapit() {
         kasvataPanos.setEnabled(true);
         pelaa.setEnabled(true);
+        tyhjennaValinnat();
     }
 
     public void peliLoppuun() {
-        arvonta.suoritaVoitonmaksu();
         paivitaSaldo();
         arvonta.valmistaUuttaPelia();
     }
@@ -169,6 +192,14 @@ public class AlapalkinKuuntelija implements ActionListener {
         for (KortinKuuntelija kuuntelija : lista) {
             kuuntelija.kortti.setBackground(Color.lightGray);
 
+        }
+    }
+
+    public void suljeNapit() {
+        kasvataPanos.setEnabled(false);
+        pelaa.setEnabled(false);
+        for (KortinKuuntelija kuuntelija : this.lista) {
+            kuuntelija.kortti.setEnabled(false);
         }
     }
 }

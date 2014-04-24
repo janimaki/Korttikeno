@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -87,7 +88,7 @@ public class Kayttoliittyma implements Runnable {
 
         for (int i = 1; i <= 52; i++) {
 
-            JButton kortti = new JButton(new ImageIcon(((new ImageIcon("cards/" + "kortti_" + i + ".png")).getImage()).getScaledInstance(80, 175, java.awt.Image.SCALE_SMOOTH)));
+            JButton kortti = new JButton(new ImageIcon(((new ImageIcon("cards/" + "kortti_" + i + ".png")).getImage()).getScaledInstance(73, 175, java.awt.Image.SCALE_SMOOTH)));
             kortti.setBackground(Color.lightGray);
             indeksit.put(kortti, i);
             KortinKuuntelija kuuntelija = new KortinKuuntelija(arvonta, kortti, indeksit);
@@ -105,7 +106,7 @@ public class Kayttoliittyma implements Runnable {
      * @return palauttaa paneelikomponentin
      */
     private JPanel luoAlapalkki() {
-        JPanel panel = new JPanel(new GridLayout(1, 8));
+        JPanel panel = new JPanel(new GridLayout(1, 9));
 
         JButton kasvataPanos = new JButton("Panos: 0.2e");
         JButton pelaaNappi = new JButton("Pelaa: 0.0e");
@@ -115,8 +116,10 @@ public class Kayttoliittyma implements Runnable {
         JLabel tuplausOhje = new JLabel("Tuplaatko?");
         JButton kylla = new JButton("Kyllä");
         JButton ei = new JButton("Ei");
+        JButton tuplattu = new JButton("tuplattu?");
 
-        AlapalkinKuuntelija kuuntelija = new AlapalkinKuuntelija(arvonta, pelaaNappi, kortit, kasvataPanos, asetaSaldo, teksti, ohjelaatikko, kylla, ei, tuplausOhje);
+        AlapalkinKuuntelija kuuntelija = new AlapalkinKuuntelija(arvonta, pelaaNappi, kortit, kasvataPanos, 
+                asetaSaldo, teksti, ohjelaatikko, kylla, ei, tuplausOhje, tuplattu);
 
         panel.add(pelaaNappi);
         panel.add(kasvataPanos);
@@ -126,12 +129,14 @@ public class Kayttoliittyma implements Runnable {
         panel.add(tuplausOhje);
         panel.add(kylla);
         panel.add(ei);
+        panel.add(tuplattu);
 
         asetaSaldo.addActionListener(kuuntelija);
         kasvataPanos.addActionListener(kuuntelija);
         pelaaNappi.addActionListener(kuuntelija);
         kylla.addActionListener(kuuntelija);
         ei.addActionListener(kuuntelija);
+        tuplattu.addActionListener(kuuntelija);
 
         return panel;
     }
@@ -143,18 +148,31 @@ public class Kayttoliittyma implements Runnable {
      */
     private JPanel luoOikeaPalkki() {
 
-        JPanel panel = new JPanel(new GridLayout(5, 1));
+        JPanel panel = new JPanel(new GridLayout(6,1));
         JButton poistaValinnat = new JButton("Uudet kortit");
-        JLabel voittotaulu = new JLabel("Voittotaulu:");
-        JLabel voitot = new JLabel("<html>This is first line.<br/>This is second line.</html>");
+        JLabel voitot1 = new JLabel("<html>Voittotaulu:<br/>Valittuja: 1<br/>Osumia 1: panos x4<br/></html>");
+        
+        JLabel voitot2 = new JLabel("<html>Valittuja: 2<br/>Osumia 1: panos x2"
+                + "<br/>Osumia 2: panos x8<br/></html>");
+        JLabel voitot3 = new JLabel("<html>Valittuja: 3<br/>Osumia 1: panos x1<br/>Osumia 2: panos x5"
+                + "<br/>Osumia 3: panos x18<br/></html>");
+        JLabel voitot4 = new JLabel("<html>Valittuja: 4<br/>Osumia 2: panos x5<br/>Osumia 3: panos x10"
+                + "<br/>Osumia 4: panos x20<br/></html>");
+        JLabel voitot5 = new JLabel("<html>Valittuja 5:<br/>Osumia 2: panos x2<br/>Osumia 3: panos x10"
+                + "<br/>Osumia 4: panos x30<br/>Osumia 5: panos x50</html>");
 
-        OikeanPalkinKuuntelija kuuntelija = new OikeanPalkinKuuntelija(arvonta, poistaValinnat, kortit, voitot);
+        
+        OikeanPalkinKuuntelija kuuntelija = new OikeanPalkinKuuntelija(arvonta, poistaValinnat, kortit, voitot1);
 
         poistaValinnat.addActionListener(kuuntelija);       
 
         panel.add(poistaValinnat);
-        panel.add(voittotaulu);
-        panel.add(voitot);
+        panel.add(voitot1);
+        panel.add(voitot2);
+        panel.add(voitot3);
+        panel.add(voitot4);
+        panel.add(voitot5);
+        
         
         return panel;
     }
