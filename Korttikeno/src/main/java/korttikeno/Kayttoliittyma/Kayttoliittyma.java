@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package korttikeno.Kayttoliittyma;
 
 import java.awt.BorderLayout;
@@ -25,7 +21,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import korttikeno.Sovelluslogiikka.Kenoarvonta;
-import korttikeno.korttikeno.Korttikeno;
 
 /**
  * Käyttöliittymäluokka, joka luo graafisen käyttöliittymän pelille.
@@ -35,14 +30,12 @@ import korttikeno.korttikeno.Korttikeno;
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
-    public Korttikeno keno;
     public Kenoarvonta arvonta;
     public ArrayList<KortinKuuntelija> kortit;
     public HashMap<JButton, Integer> indeksit;
 
     public Kayttoliittyma() {
         this.arvonta = new Kenoarvonta();
-        this.keno = new Korttikeno(arvonta);
         this.kortit = new ArrayList();
         this.arvonta.setPanos(0.2);
         this.indeksit = new HashMap();
@@ -68,7 +61,7 @@ public class Kayttoliittyma implements Runnable {
     private void luoKomponentit(Container container) {
         container.setLayout(new BorderLayout());
 
-        container.add(new JLabel("Aseta saldo, valitse kortit, valitse panos, paina pelaa, tuplaa voittaessasi"), BorderLayout.NORTH);
+        container.add(new JLabel("Aseta saldo, valitse kortit, valitse panos, paina pelaa, tuplaa voittaessasi, voita paljon!"), BorderLayout.NORTH);
 
         container.add(luoOikeaPalkki(), BorderLayout.EAST);
 
@@ -117,9 +110,8 @@ public class Kayttoliittyma implements Runnable {
         JButton kylla = new JButton("Kyllä");
         JButton ei = new JButton("Ei");
         JButton tuplattu = new JButton("Tuplaus rdy");
-//        JButton uusiksi = new JButton("Tuplaa uusiksi");
 
-        AlapalkinKuuntelija kuuntelija = new AlapalkinKuuntelija(arvonta, pelaaNappi, kortit, kasvataPanos, 
+        AlapalkinKuuntelija kuuntelija = new AlapalkinKuuntelija(arvonta, pelaaNappi, kortit, kasvataPanos,
                 asetaSaldo, teksti, ohjelaatikko, kylla, ei, tuplausOhje, tuplattu);
 
         panel.add(pelaaNappi);
@@ -131,7 +123,7 @@ public class Kayttoliittyma implements Runnable {
         panel.add(kylla);
         panel.add(ei);
         panel.add(tuplattu);
-//        panel.add(uusiksi);
+
 
         asetaSaldo.addActionListener(kuuntelija);
         kasvataPanos.addActionListener(kuuntelija);
@@ -139,7 +131,7 @@ public class Kayttoliittyma implements Runnable {
         kylla.addActionListener(kuuntelija);
         ei.addActionListener(kuuntelija);
         tuplattu.addActionListener(kuuntelija);
-//        uusiksi.addActionListener(kuuntelija);
+
 
         return panel;
     }
@@ -151,11 +143,11 @@ public class Kayttoliittyma implements Runnable {
      */
     private JPanel luoOikeaPalkki() {
 
-        JPanel panel = new JPanel(new GridLayout(7,1));
+        JPanel panel = new JPanel(new GridLayout(7, 1));
         JButton poistaValinnat = new JButton("Uudet kortit");
         JButton voitonmaksu = new JButton("Voitot talteen");
-        JLabel voitot1 = new JLabel("<html>Voittotaulu:<br/>Valittuja: 1<br/>Osumia 1: panos x4<br/></html>");
-        
+        JLabel voitot1 = new JLabel("<html>Voittotaulu:<br/>Valittuja: 1<br/>Osumia 1: panos x5<br/></html>");
+
         JLabel voitot2 = new JLabel("<html>Valittuja: 2<br/>Osumia 1: panos x2"
                 + "<br/>Osumia 2: panos x8<br/></html>");
         JLabel voitot3 = new JLabel("<html>Valittuja: 3<br/>Osumia 1: panos x1<br/>Osumia 2: panos x5"
@@ -165,10 +157,10 @@ public class Kayttoliittyma implements Runnable {
         JLabel voitot5 = new JLabel("<html>Valittuja 5:<br/>Osumia 2: panos x2<br/>Osumia 3: panos x10"
                 + "<br/>Osumia 4: panos x30<br/>Osumia 5: panos x50</html>");
 
-        
+
         OikeanPalkinKuuntelija kuuntelija = new OikeanPalkinKuuntelija(arvonta, poistaValinnat, kortit, voitonmaksu);
 
-        poistaValinnat.addActionListener(kuuntelija);      
+        poistaValinnat.addActionListener(kuuntelija);
         voitonmaksu.addActionListener(kuuntelija);
 
         panel.add(poistaValinnat);
@@ -178,10 +170,10 @@ public class Kayttoliittyma implements Runnable {
         panel.add(voitot3);
         panel.add(voitot4);
         panel.add(voitot5);
-        
-        
-        
-        
+
+
+
+
         return panel;
     }
 }

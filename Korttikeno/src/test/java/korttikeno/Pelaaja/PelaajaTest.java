@@ -44,12 +44,12 @@ public class PelaajaTest {
 
     @Test
     public void eiVoiValitaSamojaLukuja() {
-        pelaaja.valitseNumero(4);
-        pelaaja.valitseNumero(4);
-        pelaaja.valitseNumero(20);
-        pelaaja.valitseNumero(20);
-        pelaaja.valitseNumero(15);
-        assertEquals(3, pelaaja.montakoValittuaNumeroa());
+        pelaaja.valitseKortti(4);
+        pelaaja.valitseKortti(4);
+        pelaaja.valitseKortti(20);
+        pelaaja.valitseKortti(20);
+        pelaaja.valitseKortti(15);
+        assertEquals(3, pelaaja.montakoValittuaKorttia());
     }
 
     @Test
@@ -73,16 +73,16 @@ public class PelaajaTest {
 
     @Test
     public void tyhjennaRiviJaMontakoValittuaNumeroaToimii() {
-        pelaaja.valitseNumero(16);
-        pelaaja.valitseNumero(2);
-        pelaaja.valitseNumero(17);
-        pelaaja.valitseNumero(9);
-        assertEquals(4, pelaaja.montakoValittuaNumeroa());
+        pelaaja.valitseKortti(16);
+        pelaaja.valitseKortti(2);
+        pelaaja.valitseKortti(17);
+        pelaaja.valitseKortti(9);
+        assertEquals(4, pelaaja.montakoValittuaKorttia());
         pelaaja.tyhjennaRivi();
-        pelaaja.valitseNumero(17);
-        pelaaja.valitseNumero(9);
-        assertEquals(2, pelaaja.montakoValittuaNumeroa());
+        pelaaja.valitseKortti(17);
+        pelaaja.valitseKortti(9);
+        assertEquals(2, pelaaja.montakoValittuaKorttia());
         pelaaja.tyhjennaRivi();
-        assertEquals(0, pelaaja.montakoValittuaNumeroa());
+        assertEquals(0, pelaaja.montakoValittuaKorttia());
     }
 }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package korttikeno.Pelaaja;
 
 import java.util.ArrayList;
@@ -14,15 +10,24 @@ import java.util.ArrayList;
  * @author Jani
  */
 public class Pelaaja {
-   
-    public double saldo;
-    public ArrayList<Integer> valitutNumerot;
-    public int tuplaus;
+
+    /**
+     * Pelaajan saldo
+     */
+    private double saldo;
+    /**
+     * Lista pelaajan valitsemista korteista
+     */
+    private ArrayList<Integer> valitutKortit;
+    /**
+     * Pelaajan tuplaus arvo, 0 pieni, 3 suuri, -1 kun ei olla tuplaamassa
+     */
+    private int tuplaus;
 
     public Pelaaja(double saldo) {
-        
+
         this.saldo = saldo;
-        valitutNumerot = new ArrayList();
+        valitutKortit = new ArrayList();
         this.tuplaus = -1;
     }
 
@@ -41,8 +46,8 @@ public class Pelaaja {
      */
     public void muutaSaldoa(double maara) {
         if (this.saldo + maara >= 0) {
-            double uusiSaldo = Math.round((this.saldo+maara)*100);
-            this.saldo = uusiSaldo/100;
+            double uusiSaldo = Math.round((this.saldo + maara) * 100);
+            this.saldo = uusiSaldo / 100;
         }
     }
 
@@ -54,9 +59,9 @@ public class Pelaaja {
      * @param numero indeksi, joka jokaisella kortilla on, indeksöinti on
      * välillä 1-52.
      */
-    public void valitseNumero(int numero) {
-        if (!valitutNumerot.contains(numero)) {
-            valitutNumerot.add(numero);
+    public void valitseKortti(int numero) {
+        if (!valitutKortit.contains(numero)) {
+            valitutKortit.add(numero);
         }
     }
 
@@ -64,11 +69,11 @@ public class Pelaaja {
      * Metodi, joka tyhjentää pelaajan valitsemat numerot.
      */
     public void tyhjennaRivi() {
-        valitutNumerot.clear();
+        valitutKortit.clear();
     }
 
-    public ArrayList<Integer> getValitutNumerot() {
-        return valitutNumerot;
+    public ArrayList<Integer> getValitutKortit() {
+        return valitutKortit;
     }
 
     /**
@@ -76,8 +81,8 @@ public class Pelaaja {
      *
      * @return valittujen numeroiden määrä.
      */
-    public int montakoValittuaNumeroa() {
-        return valitutNumerot.size();
+    public int montakoValittuaKorttia() {
+        return valitutKortit.size();
     }
 
     public int getTuplaus() {

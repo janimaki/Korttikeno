@@ -37,7 +37,7 @@ public class KenoarvontaTest {
     @Before
     public void setUp() {
         arvonta = new Kenoarvonta();
-        arvonta.uusiPelaaja(5);
+        arvonta.setSaldo(5);
 
     }
 
@@ -50,7 +50,7 @@ public class KenoarvontaTest {
 
     @Test
     public void arvontaaEiSuoritetaIlmanSaldoa() {
-        arvonta.asetaSaldo(0);
+        arvonta.setSaldo(0);
         arvonta.setPanos(0.2);
         arvonta.suoritaArvonta();
         assertEquals(0, arvonta.arvotutNumerot.size());
@@ -64,40 +64,15 @@ public class KenoarvontaTest {
         assertEquals(10, arvonta.arvotutNumerot.size());
     }
 
-    @Test
-    public void uusiPelaajaToimii() {
-        arvonta.uusiPelaaja(10);
-        assertEquals("sinun saldosi: 10.0", arvonta.pelaaja.toString());
-
-    }
 
     @Test
     public void arvontaaEiSuoritetaJosSaldoEiRiita() {
-        arvonta.asetaSaldo(0.8);
+        arvonta.setSaldo(0.8);
         arvonta.setPanos(1.0);
         arvonta.suoritaArvonta();
         assertEquals(0, arvonta.arvotutNumerot.size());
         assertEquals(0.8, arvonta.pelaaja.getSaldo(), 0.00001);
 
-    }
-
-    @Test
-    public void panosOnOikeallaValilla() {
-
-        arvonta.setPanos(0.1999);
-        assertEquals(0.2, arvonta.panos.getPanos(), 0.00001);
-        arvonta.setPanos(1.0001);
-        assertEquals(1.0, arvonta.panos.getPanos(), 0.00001);
-        arvonta.setPanos(0);
-        assertEquals(0.2, arvonta.panos.getPanos(), 0.00001);
-        arvonta.setPanos(1.0);
-        assertEquals(1.0, arvonta.panos.getPanos(), 0.00001);
-        arvonta.setPanos(0.2);
-        assertEquals(0.2, arvonta.panos.getPanos(), 0.00001);
-        arvonta.setPanos(arvonta.pelaaja.saldo);
-        assertEquals(1, arvonta.panos.getPanos(), 0.00001);
-        arvonta.setPanos(-1);
-        assertEquals(0.2, arvonta.panos.getPanos(), 0.00001);
     }
 
     @Test

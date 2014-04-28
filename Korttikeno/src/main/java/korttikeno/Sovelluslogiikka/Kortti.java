@@ -1,24 +1,22 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package korttikeno.Sovelluslogiikka;
 
 /**
- * Luokka, jossa määritelty mikä on kortti. Kortilla on arvo 1-13 ja 4 vaihtoehtoa maaksi
+ * Luokka, jossa määritelty kortti, käytännössä kortti on luku välillä 1-52.
  *
  * @author Jani
  */
 public class Kortti {
 
+    /**
+     * Luku, joka on kortin indeksi (0-52)
+     */
     public int luku;
 
-    
     public Kortti(int luku) {
         this.luku = luku;
     }
-    
-    public int getArvo(){
+
+    public int getArvo() {
         return this.luku;
     }
 
@@ -26,5 +24,4 @@ public class Kortti {
     public String toString() {
         return "kortti_" + luku;
     }
-
 }

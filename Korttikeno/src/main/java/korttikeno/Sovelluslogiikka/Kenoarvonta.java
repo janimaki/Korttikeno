@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package korttikeno.Sovelluslogiikka;
 
 import korttikeno.Pelaaja.Pelaaja;
@@ -14,11 +10,18 @@ import java.util.ArrayList;
  */
 public class Kenoarvonta {
 
+    /**
+     * Lista, jossa arvottujen korttien indeksit
+     */
     public ArrayList<Integer> arvotutNumerot;
-    public Arpoja arpoja;
+    private Arpoja arpoja;
     public Pelaaja pelaaja;
     public Panos panos;
     public Tuplaus tupla;
+    /**
+     * Apumuuttuja, joka pitää muistissa kierroksen panoksen
+     */
+    private static double panosMuistaja;
 
     public Kenoarvonta() {
         arpoja = new Arpoja();
@@ -28,63 +31,50 @@ public class Kenoarvonta {
     }
 
     /**
-     * Metodi, joka luo uuden pelaajan peliin
-     * 
-     * @param saldo saldo, joka pelaajalle asetetaan.
-     */
-    public void uusiPelaaja(double saldo) {
-        this.pelaaja = new Pelaaja(saldo);
-    }
-
-    /**
-     * Metodi, joka asettaa panoksen arvonnalle. Panos on välillä 0,2-1,0.
+     * Metodi, jolla voidaan asettaa panos. Lähinnä käytössä tuplauksen
+     * yhteydessä, kun halutaan käyttöön vanha panos, joka oli voimassa ennen
+     * tuplausta.
      *
      * @param panos panos, jonka käyttäjä asettaa arvonnalle.
      */
     public void setPanos(double panos) {
-//        if (panos >= 1.0) {
-//            this.panos = new Panos(1.0);
-//        } else if (panos <= 0.2) {
-//            this.panos = new Panos(0.2);
-//        } else {
-//            this.panos = new Panos(panos);
-//        }
         this.panos = new Panos(panos);
     }
-    
-    public void kasvataPanosta(){
-        if(getPanos() <= 0.8) {
-            panos.setPanos(getPanos()+0.2);
+
+    /**
+     * Metodi, jolla kasvatetaan panosta 0.2:lla. Kun saavutetaan 1.0, alkaa
+     * kasvattaminen taas 0.2:sta.
+     *
+     * @param panos panos, jonka käyttäjä asettaa arvonnalle.
+     */
+    public void kasvataPanosta() {
+        if (getPanos() <= 0.8) {
+            panos.setPanos(getPanos() + 0.2);
         } else {
             panos.setPanos(0.2);
         }
     }
-    
-    public double getPanos(){
+
+    public double getPanos() {
         return panos.getPanos();
     }
-    
+
     public double getSaldo() {
         return pelaaja.getSaldo();
     }
 
-    /**
-     * Metodi, joka asettaa uuden saldon pelaajalle.
-     *
-     * @param saldo käyttäjän syöttämä uusi saldo.
-     */
-    public void asetaSaldo(double saldo) {
+    public void setSaldo(double saldo) {
         pelaaja.setSaldo(saldo);
     }
 
     /**
      * Metodi, joka vähentää pelaajan saldosta panoksen ja arpoo kymmenen
-     * korttia.
+     * korttia. Metodi ottaa myös panoksen talteen mahdollista tuplausta varten.
      */
     public void suoritaArvonta() {
-
-        if (pelaaja.getSaldo() - panos.getPanos() >= 0) {
-            pelaaja.muutaSaldoa(-panos.getPanos());
+        panosMuistaja = getPanos();
+        if (pelaaja.getSaldo() - getPanos() >= 0) {
+            pelaaja.muutaSaldoa(-getPanos());
 
             while (arvotutNumerot.size() < 10) {
                 int arvottuLuku = arpoja.arvoLuvut();
@@ -103,7 +93,7 @@ public class Kenoarvonta {
     public boolean onkoVoittoa() {
         double osumat = montakoOsumaa();
         double valitut = montaValittuaNumeroa();
-        double jako = osumat/valitut;
+        double jako = osumat / valitut;
         if (jako > 0.3) {
             return true;
         }
@@ -116,19 +106,18 @@ public class Kenoarvonta {
      * @return pelaajan valitsemien korttien lukumäärä.
      */
     public int montaValittuaNumeroa() {
-        return pelaaja.montakoValittuaNumeroa();
+        return pelaaja.montakoValittuaKorttia();
     }
 
     /**
      * Metodi, joka tarkistaa montako oikeaa korttia pelaaja onnistui arvaamaan
-     *
      *
      * @return oikeiden osumien määrä.
      */
     public int montakoOsumaa() {
         int osumat = 0;
         for (Integer arvotut : arvotutNumerot) {
-            for (Integer valitut : pelaaja.getValitutNumerot()) {
+            for (Integer valitut : pelaaja.getValitutKortit()) {
                 if (arvotut.equals(valitut)) {
                     osumat++;
                 }
@@ -141,29 +130,47 @@ public class Kenoarvonta {
      * Metodi, joka luo uuden tuplauksen, vertailee arvotun kortin arvoa
      * pelaajan veikkaamaan arvoon ja nostaa panoksen kaksinkertaiseksi oikealla
      * vastauksella, nollaksi väärälle ja pitää panoksen samana punaisella
-     * 7:llä. Uudella panoksella ei pääse enään uuteen arvontaan vaan sitä
-     * käytetään vain hyväksi voitonmaksussa.
-     * 
-     * @return true jos tuplaus oikein ja tuplausta voidaan jatkaa, false muuten.
+     * 7:llä.
+     *
      */
     public void tuplaaVoitto() {
+
         this.tupla = new Tuplaus();
         int kortinarvo = tupla.korttiPieniVaiSuuri(); // 0 = pieni, , 1 = punanen 7, 2 = musta 7, 3 = suuri
+
         if (kortinarvo == pelaaja.getTuplaus()) { // tuplaus oikein
             setPanos(getPanos() * 2);
-            suoritaVoitonmaksu();
-            setPanos(getPanos()/2);
+
         } else if (kortinarvo == 1) { // 
             setPanos(getPanos()); // punainen 7
-            suoritaVoitonmaksu();
+
         } else {
-            double apum = getPanos();
             setPanos(0); // tuplaus väärin tai musta 7
-            suoritaVoitonmaksu();
-            setPanos(apum);
 
         }
-        
+    }
+
+    /**
+     * Metodi, joka tuplauksen jälkeen kutsuu suoritaVoitonmaksu() ja asettaa
+     * alkuperäisen panoksen peliin.
+     *
+     * @return oikeiden osumien määrä.
+     */
+    public void maksaTuplausVoitto() {
+        suoritaVoitonmaksu();
+        setPanos(panosMuistaja);
+    }
+
+    /**
+     * Metodi, joka tarkistaa onko arvonta jo päättynyt.
+     *
+     * @return true jos arvonta on päättynyt, muuten false.
+     */
+    public boolean onkoArvontaPaattynyt() {
+        if (arvotutNumerot.isEmpty()) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -220,7 +227,7 @@ public class Kenoarvonta {
      * uutta peliä varten.
      */
     public void valmistaUuttaPelia() {
-        pelaaja.valitutNumerot.clear();
+        pelaaja.tyhjennaRivi();
         arvotutNumerot.clear();
     }
 }

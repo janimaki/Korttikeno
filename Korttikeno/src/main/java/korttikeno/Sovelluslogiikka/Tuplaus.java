@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package korttikeno.Sovelluslogiikka;
 
 import korttikeno.Pelaaja.Pelaaja;
@@ -15,12 +11,10 @@ public class Tuplaus {
 
     public Kortti kortti;
     public Arpoja arpoja;
-//    public Kenoarvonta arvonta;
 
     public Tuplaus() {
-//        this.arvonta = arvonta;
         arpoja = new Arpoja();
-        kortti = new Kortti(0);
+        kortti = new Kortti(arpoja.arvoLuvut());
 
     }
 
@@ -35,7 +29,7 @@ public class Tuplaus {
      * jos kortti on musta 7. 3, jos kortin arvo on 8 tai suurempi.
      */
     public int korttiPieniVaiSuuri() {
-        kortti = new Kortti(arpoja.arvoLuvut());
+
         if ((getArvo() >= 1 && getArvo() <= 5) || (getArvo() >= 13 && getArvo() <= 18) || (getArvo() >= 26 && getArvo() <= 31) || (getArvo() >= 39 && getArvo() <= 44) || getArvo() == 52) {
             return 0; // 0 = pieni
         } else if (getArvo() == 6 || getArvo() == 45) {

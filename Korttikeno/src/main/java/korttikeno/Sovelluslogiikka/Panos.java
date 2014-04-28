@@ -1,21 +1,20 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package korttikeno.Sovelluslogiikka;
 
 import java.text.DecimalFormat;
 
 /**
- * Luokka, joka määrittää pelin panoksen. 
- * 
+ * Luokka, joka määrittää pelin panoksen.
+ *
  * @author Jani
  */
 public class Panos {
+
+    /**
+     * Pelin panos
+     */
     public double panos = 0;
-  
-    
-    public Panos(double paukku){
+
+    public Panos(double paukku) {
         this.panos = paukku;
     }
 
@@ -24,13 +23,7 @@ public class Panos {
     }
 
     public void setPanos(double panos) {
-        panos = Math.round(panos*100);
-        this.panos = panos/100;
+        panos = Math.round(panos * 100);
+        this.panos = panos / 100;
     }
-    
-
-    
-    
-    
-    
 }

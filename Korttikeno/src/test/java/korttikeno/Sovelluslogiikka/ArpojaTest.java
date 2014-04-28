@@ -54,28 +54,4 @@ public class ArpojaTest {
         }
     }
 
-    @Test
-    public void ArvoMaaValillaNollaKolme() {
-        for (int i = 0; i < 10000; i++) {
-            boolean tosi = false;
-            int luku = arpoja.arvoMaa();
-            if (luku >= 0 && luku <= 3) {
-                tosi = true;
-            }
-            assertEquals(true, tosi);
-        }
-    }
-
-    @Test
-    public void ArvoKorttiValillaYksKolmetoista() {
-
-        for (int i = 0; i < 10000; i++) {
-            boolean tosi = false;
-            int luku = arpoja.arvoKortti();
-            if (luku >= 1 && luku <= 13) {
-                tosi = true;
-            }
-            assertEquals(true, tosi);
-        }
-    }
 }

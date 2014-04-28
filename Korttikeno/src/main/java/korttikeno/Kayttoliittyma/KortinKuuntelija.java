@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package korttikeno.Kayttoliittyma;
 
 import java.awt.Color;
@@ -15,20 +10,18 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import korttikeno.Skanneri.Skanneri;
 import korttikeno.Sovelluslogiikka.Kenoarvonta;
-import korttikeno.korttikeno.Korttikeno;
 
 /**
+ * ActionListener luokka, jolla toteutetaan korttien valinta.
  *
- * @author janimaki@cs
+ * @author Jani
  */
 public class KortinKuuntelija implements ActionListener {
 
     public Kenoarvonta arvonta;
     public JButton kortti;
     public HashMap<JButton, Integer> indeksit;
-    private JButton pelaa;
 
     KortinKuuntelija(Kenoarvonta arvonta, JButton kortti, HashMap indeksit) {
         this.arvonta = arvonta;
@@ -37,15 +30,13 @@ public class KortinKuuntelija implements ActionListener {
 
     }
 
-
-
     @Override
     public void actionPerformed(ActionEvent ae) {
 
         if (ae.getSource() == kortti) {
             if (arvonta.montaValittuaNumeroa() < 5) {
                 int numero = indeksit.get(kortti);
-                arvonta.pelaaja.valitseNumero(numero);
+                arvonta.pelaaja.valitseKortti(numero);
                 kortti.setEnabled(false);
 
             }

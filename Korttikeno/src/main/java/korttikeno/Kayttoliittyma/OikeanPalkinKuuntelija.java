@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package korttikeno.Kayttoliittyma;
 
 import java.awt.event.ActionEvent;
@@ -12,13 +7,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import korttikeno.Skanneri.Skanneri;
 import korttikeno.Sovelluslogiikka.Kenoarvonta;
-import korttikeno.korttikeno.Korttikeno;
 
 /**
+ * ActionListener luokka, jolla toteutetaan oikean sivupalkin nappien toiminnot.
  *
- * @author janimaki@cs
+ * @author Jani
  */
 public class OikeanPalkinKuuntelija implements ActionListener {
 
@@ -27,14 +21,12 @@ public class OikeanPalkinKuuntelija implements ActionListener {
     public ArrayList<KortinKuuntelija> kortit;
     private JButton voitot;
 
-
     public OikeanPalkinKuuntelija(Kenoarvonta arvonta, JButton poista, ArrayList kortit, JButton voitot) {
         this.arvonta = arvonta;
         this.poista = poista;
         this.kortit = kortit;
         this.voitot = voitot;
     }
-
 
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -45,14 +37,17 @@ public class OikeanPalkinKuuntelija implements ActionListener {
             }
         }
 //        
-//        if( ae.getSource() == voitot) {
-//            
-//            voitot.setText("Voitit " + arvonta.getSaldo() + " euroa!");
-//            this.arvonta.asetaSaldo(0);
-//            voitot.setEnabled(false);
-//            poista.setEnabled(false);
-//            
-//        }
+        if (ae.getSource() == voitot) {
+            if (arvonta.onkoArvontaPaattynyt()&& arvonta.getSaldo()>0) {
+                voitot.setText("Voitit " + arvonta.getSaldo() + " euroa!");
+                this.arvonta.setSaldo(0);
+                voitot.setEnabled(false);
+                poista.setEnabled(false);
+            } else {
+                voitot.setText("<html>Voitot talteen<br/>FAIL!<br/>Arvonta kesken<br/>tai saldo 0</html>");
+            }
+
+        }
 
     }
 }

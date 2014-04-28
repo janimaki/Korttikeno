@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package korttikeno.Kayttoliittyma;
 
 import java.awt.BorderLayout;
@@ -19,6 +15,7 @@ import korttikeno.Sovelluslogiikka.Kenoarvonta;
 import korttikeno.Sovelluslogiikka.Tuplaus;
 
 /**
+ * Käyttöliittymä-luokka, jossa suoritetaan tuplaus.
  *
  * @author Jani
  */
@@ -26,20 +23,20 @@ public class Tuplausliittyma implements Runnable {
 
     public Kenoarvonta arvonta;
     private JFrame frame;
-    public Tuplaus tuplaus;
     public JLabel kortti;
-    public boolean onkoTuplattu;
+    public static boolean onkoTuplaamassa;
 
-    public Tuplausliittyma(Kenoarvonta arvonta) {
+    public Tuplausliittyma(Kenoarvonta arvonta, boolean onko) {
         this.arvonta = arvonta;
-        this.onkoTuplattu = false;
+        this.onkoTuplaamassa = onko;
+
 
     }
 
     @Override
     public void run() {
-        frame = new JFrame("Tuplaus");
-        frame.setPreferredSize(new Dimension(800, 600));
+        frame = new JFrame("Valitse pieni tai suuri, sulje ikkuna ja paina 'Tuplaus rdy'. Jos suljet ikkunan ennen valintaa, paina 'Tuplaus rdy' ja peli jatkuu ilman tuplausta");
+        frame.setPreferredSize(new Dimension(1000, 600));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         luoKomponentit(frame.getContentPane());
@@ -59,9 +56,8 @@ public class Tuplausliittyma implements Runnable {
         JPanel panel = new JPanel(new GridLayout(1, 3));
         JButton pieni = new JButton("pieni");
         JButton suuri = new JButton("suuri");
-        kortti = new JLabel(new ImageIcon(((new ImageIcon("cards/" + "kortti_0" +".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
-//        kortti = new JLabel();
-        TuplausKuuntelija kuuntelija = new TuplausKuuntelija(arvonta, pieni, suuri, kortti, onkoTuplattu, frame);
+        kortti = new JLabel(new ImageIcon(((new ImageIcon("cards/" + "kortti_0" + ".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
+        TuplausKuuntelija kuuntelija = new TuplausKuuntelija(arvonta, pieni, suuri, kortti, frame, onkoTuplaamassa);
 
         pieni.addActionListener(kuuntelija);
         suuri.addActionListener(kuuntelija);
@@ -72,5 +68,4 @@ public class Tuplausliittyma implements Runnable {
 
         return panel;
     }
-
 }
