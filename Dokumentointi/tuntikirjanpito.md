@@ -1,5 +1,7 @@
 ﻿Ohjelmoinnin harjoitustyön tuntikirjanpito
 
+Viidellä ensimmäisellä viikolla tein ohjelmaa aina deadline-torstaisin.
+
 Viikko 1: Ensimmäinen viikko meni opetellessa githubin käyttöä ja varsinkin ssh-avaimen luomista laitoksen koneelle, mikä tuotti ongelmia. Aikaa meni myös tuntikirjanpidon ja aihemäärittelyn kirjoittamiseen.
 
 Aikaa käytetty 5 tuntia.
@@ -25,13 +27,17 @@ Käyttöliittymä luokkaa aloitettu hahmottelemaan, ulkomuoto alkaa olla kasassa
 
 Aikaa käytetty 6 tuntia.
 
-Loput viikot:
-Käyttöliittymän kanssa väännetty ja käännetty todella paljon. Tällä sessiolla tuli neljä tuntia tauluun.
+23.4.-25.4.
+-Käyttöliittymän kanssa väännetty ja käännetty todella paljon. Demokuntoon ohjelma tuli kuin tulikin. Noin 6 tuntia yhteensä tänä aikana käytetty.
+
+28.4.-29.4.
+-Taas tuli ahkeroitua käyttöliittymän parissa, taitaa olla aika lailla valmis nyt. Myös testit, javadocit valmiit. Ensi kerralla ajattelin siistiä koodia, dokumentaatiot viimeistellä ja jarrin tehdä. 6 tuntia tuli täyteen tällä erää.
 
 Viikko 1: 5 tuntia
 Viikko 2: 8 tuntia
 Viikko 3: 8 tuntia
 Viikko 4: 7 tuntia
 Viikko 5: 6 tuntia
+
 
 
