@@ -45,7 +45,6 @@ public class Kenoarvonta {
      * Metodi, jolla kasvatetaan panosta 0.2:lla. Kun saavutetaan 1.0, alkaa
      * kasvattaminen taas 0.2:sta.
      *
-     * @param panos panos, jonka käyttäjä asettaa arvonnalle.
      */
     public void kasvataPanosta() {
         if (getPanos() <= 0.8) {
@@ -142,8 +141,7 @@ public class Kenoarvonta {
             setPanos(getPanos() * 2);
 
         } else if (kortinarvo == 1) { // 
-             // punainen 7, panos pysyy ennallaan
-
+            // punainen 7, panos pysyy ennallaan
         } else {
             setPanos(0); // tuplaus väärin tai musta 7
 
@@ -154,7 +152,6 @@ public class Kenoarvonta {
      * Metodi, joka tuplauksen jälkeen kutsuu suoritaVoitonmaksu() ja asettaa
      * alkuperäisen panoksen peliin.
      *
-     * @return oikeiden osumien määrä.
      */
     public void maksaTuplausVoitto() {
         suoritaVoitonmaksu();
@@ -179,46 +176,65 @@ public class Kenoarvonta {
      */
     public void suoritaVoitonmaksu() {
         if (montaValittuaNumeroa() == 1) { // yksi kortti valittuna
-            if (montakoOsumaa() == 1) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 5);
-            }
+            maksaYhdenNumeronVoitto();
         }
         if (montaValittuaNumeroa() == 2) { // kaksi korttia valittu
-            if (montakoOsumaa() == 1) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 2);
-            } else if (montakoOsumaa() == 2) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 8);
-            }
+            maksaKahdenNumeronVoitto();
         }
         if (montaValittuaNumeroa() == 3) { // kolme korttia valittu
-            if (montakoOsumaa() == 1) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 1);
-            } else if (montakoOsumaa() == 2) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 5);
-            } else if (montakoOsumaa() == 3) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 18);
-            }
+            maksaKolmenNumeronVoitto();
         }
         if (montaValittuaNumeroa() == 4) { // neljä korttia valittu
-            if (montakoOsumaa() == 2) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 5);
-            } else if (montakoOsumaa() == 3) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 10);
-            } else if (montakoOsumaa() == 4) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 20);
-            }
+            maksaNeljanNumeronVoitto();
         }
         if (montaValittuaNumeroa() == 5) { // viisi korttia valittu
-            if (montakoOsumaa() == 2) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 2);
-            } else if (montakoOsumaa() == 3) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 10);
-            } else if (montakoOsumaa() == 4) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 30);
-            } else if (montakoOsumaa() == 5) {
-                pelaaja.muutaSaldoa(panos.getPanos() * 50);
-            }
+            maksaViidenNumeronVoitto();
+        }
+    }
 
+    public void maksaYhdenNumeronVoitto() {
+        if (montakoOsumaa() == 1) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 5);
+        }
+    }
+
+    public void maksaKahdenNumeronVoitto() {
+        if (montakoOsumaa() == 1) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 2);
+        } else if (montakoOsumaa() == 2) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 8);
+        }
+    }
+
+    public void maksaKolmenNumeronVoitto() {
+        if (montakoOsumaa() == 1) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 1);
+        } else if (montakoOsumaa() == 2) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 5);
+        } else if (montakoOsumaa() == 3) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 18);
+        }
+    }
+
+    public void maksaNeljanNumeronVoitto() {
+        if (montakoOsumaa() == 2) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 5);
+        } else if (montakoOsumaa() == 3) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 10);
+        } else if (montakoOsumaa() == 4) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 20);
+        }
+    }
+
+    public void maksaViidenNumeronVoitto() {
+        if (montakoOsumaa() == 2) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 2);
+        } else if (montakoOsumaa() == 3) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 10);
+        } else if (montakoOsumaa() == 4) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 30);
+        } else if (montakoOsumaa() == 5) {
+            pelaaja.muutaSaldoa(panos.getPanos() * 50);
         }
     }
 
