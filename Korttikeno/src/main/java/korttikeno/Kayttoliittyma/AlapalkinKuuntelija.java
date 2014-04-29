@@ -43,7 +43,7 @@ public class AlapalkinKuuntelija implements ActionListener {
         this.lista = kortit;
         this.pelaa = pelaaNappi;
         this.arvonta = arvonta;
-        this.pelaa.setEnabled(false);
+//        this.pelaa.setEnabled(false);
         this.kasvataPanos = kasvataPanos;
         this.ohjelaatikko = ohjelaatikko;
         this.asetaSaldo = asetaSaldo;
@@ -68,7 +68,7 @@ public class AlapalkinKuuntelija implements ActionListener {
                 arvonta.setSaldo(saldo);
                 this.asetaSaldo.setEnabled(false);
                 paivitaSaldo();
-                this.ohjelaatikko.setText("alkusaldosi: "+ arvonta.getSaldo() + "e" );
+                this.ohjelaatikko.setText("alkusaldosi: " + arvonta.getSaldo() + "e");
             } else {
                 this.ohjelaatikko.setText("kokeileppa 0.2-20.0");
             }
@@ -86,11 +86,11 @@ public class AlapalkinKuuntelija implements ActionListener {
         }
 
         if (ae.getSource() == pelaa) {
-            if (arvonta.pelaaja.montakoValittuaKorttia() > 0 && arvonta.pelaaja.montakoValittuaKorttia() <= 5) {
+            if (arvonta.pelaaja.montakoValittuaKorttia() > 0 && arvonta.getSaldo() >= 0.2 && onkoTuplaamassa == false) {
                 pelaa.setEnabled(false);
                 kasvataPanos.setEnabled(false);
-                poistaArvotut();
 
+                poistaArvotut();
                 suoritaPeli();
 
             }
@@ -119,7 +119,7 @@ public class AlapalkinKuuntelija implements ActionListener {
         }
 
         if (ae.getSource() == tuplattu) {
-            if (arvonta.pelaaja.getTuplaus() != -1) {
+            if (arvonta.pelaaja.getTuplaus() != -1) { // pelaaja on suorittanut tuplauksen, maksetaan mahdollinen tuplausvoitto.
                 arvonta.maksaTuplausVoitto();
                 vapautaNapit();
                 peliLoppuun();
@@ -128,7 +128,7 @@ public class AlapalkinKuuntelija implements ActionListener {
                 onkoTuplaamassa = false;
 
             } else {
-                arvonta.suoritaVoitonmaksu();
+                arvonta.suoritaVoitonmaksu(); // pelaaja ei ole suorittanut tuplausta, palautetaan alkup. voitto.
                 vapautaNapit();
                 peliLoppuun();
                 tuplattu.setEnabled(false);
@@ -190,13 +190,15 @@ public class AlapalkinKuuntelija implements ActionListener {
     /**
      * Metodi, joka tarkistaa onko pelaajan antama alkusaldo kelvollinen
      *
+     * @param saldo Käyttäjän antama syöte
+     *
      * @return pelaajan antama saldo, jos kelvollinen, muuten 0
      */
     public double onkoKelpoSaldo(JTextField saldo) {
         double alkusaldo = 0;
         try {
             NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
-            alkusaldo = Double.parseDouble(""+format.parse(saldo.getText()));
+            alkusaldo = Double.parseDouble("" + format.parse(saldo.getText()));
             return alkusaldo;
 
         } catch (Exception e) {

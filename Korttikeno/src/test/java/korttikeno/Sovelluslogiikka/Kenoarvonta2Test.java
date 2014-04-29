@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package korttikeno.Sovelluslogiikka;
 
 import java.util.Random;
@@ -25,18 +21,11 @@ public class Kenoarvonta2Test {
     public Kenoarvonta2Test() {
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
     @Before
     public void setUp() {
         arvonta = new Kenoarvonta();
         arvonta.setSaldo(5);
+        arvonta.setPanos(1.0);
         arvonta.arvotutNumerot.add(1);
         arvonta.arvotutNumerot.add(2);
         arvonta.arvotutNumerot.add(10);
@@ -48,15 +37,6 @@ public class Kenoarvonta2Test {
         arvonta.arvotutNumerot.add(33);
         arvonta.arvotutNumerot.add(34);
     }
-
-    @After
-    public void tearDown() {
-    }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 
     @Test
     public void MontakoOsumaaToimii() {
@@ -106,43 +86,60 @@ public class Kenoarvonta2Test {
         arvonta.pelaaja.valitseKortti(3);
         arvonta.pelaaja.valitseKortti(6);
         arvonta.pelaaja.valitseKortti(5);
-        boolean tosi = arvonta.onkoVoittoa();
-        assertEquals(true, tosi);
+        for (int i = 0; i < 10000; i++) {
+            arvonta.suoritaArvonta();
+            if (arvonta.montakoOsumaa() >= 2) {
+                assertEquals(true, arvonta.onkoVoittoa());
+            } else {
+                assertEquals(false, arvonta.onkoVoittoa());
+            }
+        }
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.pelaaja.valitseKortti(1);
         arvonta.pelaaja.valitseKortti(2);
-        tosi = arvonta.onkoVoittoa();
-        assertEquals(true, tosi);
-        arvonta.pelaaja.tyhjennaRivi();
         arvonta.pelaaja.valitseKortti(3);
         arvonta.pelaaja.valitseKortti(5);
-        tosi = arvonta.onkoVoittoa();
-        assertEquals(false, tosi);
-        arvonta.pelaaja.tyhjennaRivi();
-        arvonta.pelaaja.valitseKortti(7);
-        arvonta.pelaaja.valitseKortti(2);
-        arvonta.pelaaja.valitseKortti(3);
-        arvonta.pelaaja.valitseKortti(6);
-        arvonta.pelaaja.valitseKortti(5);
-        tosi = arvonta.onkoVoittoa();
-        assertEquals(false, tosi);
+        for (int i = 0; i < 10000; i++) {
+            arvonta.suoritaArvonta();
+            if (arvonta.montakoOsumaa() >= 2) {
+                assertEquals(true, arvonta.onkoVoittoa());
+            } else {
+                assertEquals(false, arvonta.onkoVoittoa());
+            }
+        }
         arvonta.pelaaja.tyhjennaRivi();
         arvonta.pelaaja.valitseKortti(3);
         arvonta.pelaaja.valitseKortti(5);
         arvonta.pelaaja.valitseKortti(7);
-        tosi = arvonta.onkoVoittoa();
-        assertEquals(false, tosi);
-        arvonta.pelaaja.valitseKortti(1);
-        tosi = arvonta.onkoVoittoa();
-        assertEquals(false, tosi);
-        arvonta.pelaaja.valitseKortti(2);
-        tosi = arvonta.onkoVoittoa();
-        assertEquals(true, tosi);
+        for (int i = 0; i < 10000; i++) {
+            arvonta.suoritaArvonta();
+            if (arvonta.montakoOsumaa() >= 1) {
+                assertEquals(true, arvonta.onkoVoittoa());
+            } else {
+                assertEquals(false, arvonta.onkoVoittoa());
+            }
+        }
         arvonta.pelaaja.tyhjennaRivi();
-        tosi = arvonta.onkoVoittoa();
-        assertEquals(false,tosi);
-        
-
+        arvonta.pelaaja.valitseKortti(5);
+        arvonta.pelaaja.valitseKortti(7);
+        for (int i = 0; i < 10000; i++) {
+            arvonta.suoritaArvonta();
+            if (arvonta.montakoOsumaa() >= 1) {
+                assertEquals(true, arvonta.onkoVoittoa());
+            } else {
+                assertEquals(false, arvonta.onkoVoittoa());
+            }
+        }
+        arvonta.pelaaja.tyhjennaRivi();
+        arvonta.pelaaja.valitseKortti(3);
+        for (int i = 0; i < 10000; i++) {
+            arvonta.suoritaArvonta();
+            if (arvonta.montakoOsumaa() >= 1) {
+                assertEquals(true, arvonta.onkoVoittoa());
+            } else {
+                assertEquals(false, arvonta.onkoVoittoa());
+            }
+        }
     }
 
     @Test
@@ -334,8 +331,18 @@ public class Kenoarvonta2Test {
         arvonta.pelaaja.valitseKortti(9);
         arvonta.pelaaja.valitseKortti(8);
         arvonta.valmistaUuttaPelia();
-        assertEquals(0,arvonta.arvotutNumerot.size());
-        assertEquals(0,arvonta.pelaaja.montakoValittuaKorttia());        
-    }    
-    
+        assertEquals(0, arvonta.arvotutNumerot.size());
+        assertEquals(0, arvonta.pelaaja.montakoValittuaKorttia());
+    }
+
+    @Test
+    public void tuplausMaksetaanOikein() {
+        arvonta.pelaaja.valitseKortti(2);
+        arvonta.suoritaArvonta();
+        arvonta.setPanos(0.4);
+        arvonta.maksaTuplausVoitto();
+        assertEquals(1.0, arvonta.getPanos(), 0.00001);
+        assertEquals(6.0, arvonta.getSaldo(), 0.00001);
+
+    }
 }

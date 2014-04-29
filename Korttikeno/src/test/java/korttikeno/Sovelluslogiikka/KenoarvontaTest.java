@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package korttikeno.Sovelluslogiikka;
 
 import java.util.Random;
@@ -26,27 +22,12 @@ public class KenoarvontaTest {
     public KenoarvontaTest() {
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
     @Before
     public void setUp() {
         arvonta = new Kenoarvonta();
         arvonta.setSaldo(5);
 
     }
-
-    @After
-    public void tearDown() {
-    }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
 
     @Test
     public void arvontaaEiSuoritetaIlmanSaldoa() {
@@ -63,7 +44,6 @@ public class KenoarvontaTest {
         arvonta.suoritaArvonta();
         assertEquals(10, arvonta.arvotutNumerot.size());
     }
-
 
     @Test
     public void arvontaaEiSuoritetaJosSaldoEiRiita() {
@@ -84,7 +64,68 @@ public class KenoarvontaTest {
         arvonta.pelaaja.setSaldo(1);
         arvonta.setPanos(1);
         arvonta.suoritaArvonta();
-        assertEquals(0,arvonta.pelaaja.getSaldo(),0.00001);
+        assertEquals(0, arvonta.pelaaja.getSaldo(), 0.00001);
     }
+
+    @Test
+    public void kasvataPanostaToimii() {
+        arvonta.setPanos(0.2);
+        assertEquals(0.2, arvonta.getPanos(), 0.00001);
+        arvonta.kasvataPanosta();
+        assertEquals(0.4, arvonta.getPanos(), 0.00001);
+        arvonta.kasvataPanosta();
+        assertEquals(0.6, arvonta.getPanos(), 0.00001);
+        arvonta.kasvataPanosta();
+        assertEquals(0.8, arvonta.getPanos(), 0.00001);
+        arvonta.kasvataPanosta();
+        assertEquals(1.0, arvonta.getPanos(), 0.00001);
+        arvonta.kasvataPanosta();
+        assertEquals(0.2, arvonta.getPanos(), 0.00001);
+    }
+
+    @Test
+    public void getSaldoToimii() {
+        arvonta.setSaldo(1.5);
+        assertEquals(1.5, arvonta.getSaldo(), 0.00001);
+    }
+
+    @Test
+    public void arvontaPaattynytEiErehdy() {
+        arvonta.arvotutNumerot.add(33);
+        arvonta.arvotutNumerot.add(34);
+        assertEquals(false, arvonta.onkoArvontaPaattynyt());
+        arvonta.valmistaUuttaPelia();
+        assertEquals(true, arvonta.onkoArvontaPaattynyt());
+    }
+
+    @Test
+    public void tuplausEiLahoa() {
+        arvonta.setPanos(1.0);
+        arvonta.pelaaja.setTuplaus(1);
+        for (int i = 0; i < 10000; i++) {
+            arvonta.tuplaaVoitto();
+            if (arvonta.tupla.korttiPieniVaiSuuri() == 1) {
+                assertEquals(2, arvonta.getPanos(), 0.0001);
+            } else if (arvonta.tupla.korttiPieniVaiSuuri() == 1) {
+                assertEquals(1, arvonta.getPanos(), 0.0001);
+            } else {
+                assertEquals(0, arvonta.getPanos(), 0.0001);
+            }
+            arvonta.setPanos(1);
+        }
+        arvonta.pelaaja.setTuplaus(3);
+        for (int i = 0; i < 10000; i++) {
+            arvonta.tuplaaVoitto();
+            if (arvonta.tupla.korttiPieniVaiSuuri() == 3) {
+                assertEquals(2, arvonta.getPanos(), 0.0001);
+            } else if (arvonta.tupla.korttiPieniVaiSuuri() == 1) {
+                assertEquals(1, arvonta.getPanos(), 0.0001);
+            } else {
+                assertEquals(0, arvonta.getPanos(), 0.0001);
+            }
+            arvonta.setPanos(1);
+        }
+    }
+    
     
 }

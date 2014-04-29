@@ -93,8 +93,4 @@ public class Pelaaja {
         this.tuplaus = tuplaus; // 0 = pieni, 3 = suuri
     }
 
-    @Override
-    public String toString() {
-        return "sinun saldosi: " + saldo;
-    }
 }

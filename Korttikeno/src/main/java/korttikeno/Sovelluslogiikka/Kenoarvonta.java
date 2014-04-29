@@ -142,7 +142,7 @@ public class Kenoarvonta {
             setPanos(getPanos() * 2);
 
         } else if (kortinarvo == 1) { // 
-            setPanos(getPanos()); // punainen 7
+             // punainen 7, panos pysyy ennallaan
 
         } else {
             setPanos(0); // tuplaus väärin tai musta 7

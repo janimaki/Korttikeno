@@ -85,4 +85,12 @@ public class PelaajaTest {
         pelaaja.tyhjennaRivi();
         assertEquals(0, pelaaja.montakoValittuaKorttia());
     }
+    
+    @Test
+    public void getJaSetTuplausToimii(){
+        pelaaja.setTuplaus(1);
+        assertEquals(1, pelaaja.getTuplaus());
+        pelaaja.setTuplaus(3);
+        assertEquals(3, pelaaja.getTuplaus());
+    }
 }

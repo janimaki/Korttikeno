@@ -22,25 +22,11 @@ public class TuplausTest {
     public TuplausTest() {
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
     @Before
     public void setUp() {
         tuplaus = new Tuplaus();
     }
 
-    @After
-    public void tearDown() {
-    }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
 
     @Test
     public void kortinVertailuKunnossa() {

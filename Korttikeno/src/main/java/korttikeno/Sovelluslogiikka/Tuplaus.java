@@ -15,7 +15,6 @@ public class Tuplaus {
     public Tuplaus() {
         arpoja = new Arpoja();
         kortti = new Kortti(arpoja.arvoLuvut());
-
     }
 
     public int getArvo() {
