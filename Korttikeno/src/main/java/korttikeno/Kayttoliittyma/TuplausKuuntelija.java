@@ -77,7 +77,7 @@ public class TuplausKuuntelija implements ActionListener {
         pieni.setEnabled(false);
         suuri.setEnabled(false);
         arvonta.tuplaaVoitto();
-        kortti.setIcon(new ImageIcon(((new ImageIcon("cards/" + arvonta.tupla.kortti.toString() + ".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
+        kortti.setIcon(new ImageIcon(((new ImageIcon("Korttikeno/cards/" + arvonta.tupla.kortti.toString() + ".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
 
     }
 }

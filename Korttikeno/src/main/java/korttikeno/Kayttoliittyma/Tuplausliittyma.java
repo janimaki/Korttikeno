@@ -56,7 +56,7 @@ public class Tuplausliittyma implements Runnable {
         JPanel panel = new JPanel(new GridLayout(1, 3));
         JButton pieni = new JButton("pieni");
         JButton suuri = new JButton("suuri");
-        kortti = new JLabel(new ImageIcon(((new ImageIcon("cards/" + "kortti_0" + ".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
+        kortti = new JLabel(new ImageIcon(((new ImageIcon("Korttikeno/cards/" + "kortti_0" + ".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
         TuplausKuuntelija kuuntelija = new TuplausKuuntelija(arvonta, pieni, suuri, kortti, frame, onkoTuplaamassa);
 
         pieni.addActionListener(kuuntelija);

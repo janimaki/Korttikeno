@@ -81,7 +81,7 @@ public class Kayttoliittyma implements Runnable {
 
         for (int i = 1; i <= 52; i++) {
 
-            JButton kortti = new JButton(new ImageIcon(((new ImageIcon("cards/" + "kortti_" + i + ".png")).getImage()).getScaledInstance(73, 175, java.awt.Image.SCALE_SMOOTH)));
+            JButton kortti = new JButton(new ImageIcon(((new ImageIcon("Korttikeno/cards/" + "kortti_" + i + ".png")).getImage()).getScaledInstance(73, 175, java.awt.Image.SCALE_SMOOTH)));
             kortti.setBackground(Color.lightGray);
             indeksit.put(kortti, i);
             KortinKuuntelija kuuntelija = new KortinKuuntelija(arvonta, kortti, indeksit);
