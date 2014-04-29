@@ -1,9 +1,7 @@
 package korttikeno.korttikeno;
 
 import javax.swing.SwingUtilities;
-import korttikeno.Kayttoliittyma.Kayttoliittyma;
-import korttikeno.Pelaaja.Pelaaja;
-import korttikeno.Sovelluslogiikka.Kenoarvonta;
+import main.java.korttikeno.Kayttoliittyma.Kayttoliittyma;
 
 /**
  * Pääluokka, joka käynnistää ohjelman.

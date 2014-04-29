@@ -1,4 +1,4 @@
-package korttikeno.Kayttoliittyma;
+package main.java.korttikeno.Kayttoliittyma;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -13,7 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-import korttikeno.Sovelluslogiikka.Kenoarvonta;
+import main.java.korttikeno.Sovelluslogiikka.Kenoarvonta;
+import main.java.korttikeno.Kayttoliittyma.KortinKuuntelija;
 
 /**
  * ActionListener luokka, jolla toteutetaan alapalkin nappien toiminnot.

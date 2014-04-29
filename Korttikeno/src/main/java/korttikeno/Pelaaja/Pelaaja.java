@@ -1,4 +1,4 @@
-package korttikeno.Pelaaja;
+package main.java.korttikeno.Pelaaja;
 
 import java.util.ArrayList;
 

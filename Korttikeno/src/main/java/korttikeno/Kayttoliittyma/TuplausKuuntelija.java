@@ -1,4 +1,4 @@
-package korttikeno.Kayttoliittyma;
+package main.java.korttikeno.Kayttoliittyma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import korttikeno.Sovelluslogiikka.Kenoarvonta;
+import main.java.korttikeno.Sovelluslogiikka.Kenoarvonta;
 
 /**
  * ActionListener luokka, jolla toteutetaan tuplaus.

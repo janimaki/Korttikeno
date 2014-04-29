@@ -1,4 +1,4 @@
-package korttikeno.Sovelluslogiikka;
+package main.java.korttikeno.Sovelluslogiikka;
 
 import java.text.DecimalFormat;
 

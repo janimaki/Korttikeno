@@ -1,4 +1,4 @@
-package korttikeno.Kayttoliittyma;
+package main.java.korttikeno.Kayttoliittyma;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-import korttikeno.Sovelluslogiikka.Kenoarvonta;
+import main.java.korttikeno.Sovelluslogiikka.Kenoarvonta;
 
 /**
  * Käyttöliittymäluokka, joka luo graafisen käyttöliittymän pelille.

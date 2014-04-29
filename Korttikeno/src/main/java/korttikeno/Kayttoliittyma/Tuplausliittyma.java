@@ -1,4 +1,4 @@
-package korttikeno.Kayttoliittyma;
+package main.java.korttikeno.Kayttoliittyma;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -11,8 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-import korttikeno.Sovelluslogiikka.Kenoarvonta;
-import korttikeno.Sovelluslogiikka.Tuplaus;
+import main.java.korttikeno.Sovelluslogiikka.Kenoarvonta;
+import main.java.korttikeno.Sovelluslogiikka.Tuplaus;
 
 /**
  * Käyttöliittymä-luokka, jossa suoritetaan tuplaus.

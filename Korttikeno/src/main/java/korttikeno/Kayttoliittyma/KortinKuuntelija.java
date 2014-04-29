@@ -1,4 +1,4 @@
-package korttikeno.Kayttoliittyma;
+package main.java.korttikeno.Kayttoliittyma;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import korttikeno.Sovelluslogiikka.Kenoarvonta;
+import main.java.korttikeno.Sovelluslogiikka.Kenoarvonta;
 
 /**
  * ActionListener luokka, jolla toteutetaan korttien valinta.

@@ -1,6 +1,6 @@
-package korttikeno.Sovelluslogiikka;
+package main.java.korttikeno.Sovelluslogiikka;
 
-import korttikeno.Pelaaja.Pelaaja;
+import main.java.korttikeno.Pelaaja.Pelaaja;
 import java.util.ArrayList;
 
 /**
