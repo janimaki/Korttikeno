@@ -192,12 +192,18 @@ public class Kenoarvonta {
         }
     }
 
+    /**
+     * Metodi, joka lisää pelaajan saldoon voiton, kun valittuna yksi kortti
+     */
     public void maksaYhdenNumeronVoitto() {
         if (montakoOsumaa() == 1) {
             pelaaja.muutaSaldoa(panos.getPanos() * 5);
         }
     }
 
+    /**
+     * Metodi, joka lisää pelaajan saldoon voiton, kun valittuna kaksi korttia
+     */
     public void maksaKahdenNumeronVoitto() {
         if (montakoOsumaa() == 1) {
             pelaaja.muutaSaldoa(panos.getPanos() * 2);
@@ -206,6 +212,9 @@ public class Kenoarvonta {
         }
     }
 
+    /**
+     * Metodi, joka lisää pelaajan saldoon voiton, kun valittuna kolme kortti.
+     */
     public void maksaKolmenNumeronVoitto() {
         if (montakoOsumaa() == 1) {
             pelaaja.muutaSaldoa(panos.getPanos() * 1);
@@ -216,6 +225,9 @@ public class Kenoarvonta {
         }
     }
 
+    /**
+     * Metodi, joka lisää pelaajan saldoon voiton, kun valittuna neljä korttia
+     */
     public void maksaNeljanNumeronVoitto() {
         if (montakoOsumaa() == 2) {
             pelaaja.muutaSaldoa(panos.getPanos() * 5);
@@ -226,6 +238,9 @@ public class Kenoarvonta {
         }
     }
 
+    /**
+     * Metodi, joka lisää pelaajan saldoon voiton, kun valittuna viisi korttia
+     */
     public void maksaViidenNumeronVoitto() {
         if (montakoOsumaa() == 2) {
             pelaaja.muutaSaldoa(panos.getPanos() * 2);
