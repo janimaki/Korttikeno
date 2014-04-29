@@ -31,14 +31,20 @@ public class OikeanPalkinKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == poista) {
-            arvonta.pelaaja.tyhjennaRivi();
-            for (KortinKuuntelija kuuntelija : kortit) {
-                kuuntelija.kortti.setEnabled(true);
+            if (arvonta.onkoArvontaPaattynyt()) {
+                arvonta.pelaaja.tyhjennaRivi();
+                poista.setText("Uudet kortit");
+                for (KortinKuuntelija kuuntelija : kortit) {
+                    kuuntelija.kortti.setEnabled(true);
+                }
+
+            } else {
+                poista.setText("<html>Uudet kortit<br/>Arvonta kesken?</html>");
             }
         }
 //        
         if (ae.getSource() == voitot) {
-            if (arvonta.onkoArvontaPaattynyt()&& arvonta.getSaldo()>0) {
+            if (arvonta.onkoArvontaPaattynyt() && arvonta.getSaldo() > 0) {
                 voitot.setText("Voitit " + arvonta.getSaldo() + " euroa!");
                 this.arvonta.setSaldo(0);
                 voitot.setEnabled(false);
