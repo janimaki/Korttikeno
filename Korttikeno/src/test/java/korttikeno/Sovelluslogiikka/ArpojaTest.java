@@ -1,5 +1,5 @@
 
-package korttikeno.Sovelluslogiikka;
+package main.java.korttikeno.Sovelluslogiikka;
 
 import org.junit.After;
 import org.junit.AfterClass;

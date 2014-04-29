@@ -1,8 +1,8 @@
-package korttikeno.Sovelluslogiikka;
+package main.java.korttikeno.Sovelluslogiikka;
 
 import java.util.Random;
-import korttikeno.Sovelluslogiikka.Kenoarvonta;
-import korttikeno.Pelaaja.Pelaaja;
+import main.java.korttikeno.Sovelluslogiikka.Kenoarvonta;
+import main.java.korttikeno.Pelaaja.Pelaaja;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
