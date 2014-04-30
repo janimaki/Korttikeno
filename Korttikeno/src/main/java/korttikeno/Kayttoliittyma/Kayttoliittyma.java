@@ -34,6 +34,7 @@ public class Kayttoliittyma implements Runnable {
     public ArrayList<KortinKuuntelija> kortit;
     public HashMap<JButton, Integer> indeksit;
 
+
     public Kayttoliittyma() {
         this.arvonta = new Kenoarvonta();
         this.kortit = new ArrayList();
@@ -102,7 +103,7 @@ public class Kayttoliittyma implements Runnable {
         JPanel panel = new JPanel(new GridLayout(1, 9));
 
         JButton kasvataPanos = new JButton("Panos: 0.2e");
-        JButton pelaaNappi = new JButton("Pelaa: 0.0e");
+        JButton pelaa = new JButton("Pelaa: 0.0e");
         JLabel ohjelaatikko = new JLabel("Anna saldosi: ");
         JTextField teksti = new JTextField();
         JButton asetaSaldo = new JButton("aseta saldo");
@@ -111,10 +112,10 @@ public class Kayttoliittyma implements Runnable {
         JButton ei = new JButton("Ei");
         JButton tuplattu = new JButton("Tuplaus rdy");
 
-        AlapalkinKuuntelija kuuntelija = new AlapalkinKuuntelija(arvonta, pelaaNappi, kortit, kasvataPanos,
+        AlapalkinKuuntelija kuuntelija = new AlapalkinKuuntelija(arvonta, pelaa, kortit, kasvataPanos,
                 asetaSaldo, teksti, ohjelaatikko, kylla, ei, tuplausOhje, tuplattu);
 
-        panel.add(pelaaNappi);
+        panel.add(pelaa);
         panel.add(kasvataPanos);
         panel.add(ohjelaatikko);
         panel.add(teksti);
@@ -127,7 +128,7 @@ public class Kayttoliittyma implements Runnable {
 
         asetaSaldo.addActionListener(kuuntelija);
         kasvataPanos.addActionListener(kuuntelija);
-        pelaaNappi.addActionListener(kuuntelija);
+        pelaa.addActionListener(kuuntelija);
         kylla.addActionListener(kuuntelija);
         ei.addActionListener(kuuntelija);
         tuplattu.addActionListener(kuuntelija);

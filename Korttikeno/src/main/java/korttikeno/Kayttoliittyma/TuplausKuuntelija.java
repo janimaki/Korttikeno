@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 import main.java.korttikeno.Sovelluslogiikka.Kenoarvonta;
 
 /**
@@ -78,6 +79,15 @@ public class TuplausKuuntelija implements ActionListener {
         suuri.setEnabled(false);
         arvonta.tuplaaVoitto();
         kortti.setIcon(new ImageIcon(((new ImageIcon("Korttikeno/cards/" + arvonta.tupla.kortti.toString() + ".png")).getImage()).getScaledInstance(207, 300, java.awt.Image.SCALE_SMOOTH)));
+        Timer timer = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                frame.dispose();
+            }
+        });
+        timer.setRepeats(false);
+        timer.start();
+
 
     }
 }

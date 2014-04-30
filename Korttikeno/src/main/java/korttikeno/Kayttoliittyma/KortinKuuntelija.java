@@ -23,10 +23,12 @@ public class KortinKuuntelija implements ActionListener {
     public JButton kortti;
     public HashMap<JButton, Integer> indeksit;
 
+
     KortinKuuntelija(Kenoarvonta arvonta, JButton kortti, HashMap indeksit) {
         this.arvonta = arvonta;
         this.kortti = kortti;
         this.indeksit = indeksit;
+//        this.pelaa = pelaa;
 
     }
 
@@ -38,7 +40,10 @@ public class KortinKuuntelija implements ActionListener {
                 int numero = indeksit.get(kortti);
                 arvonta.pelaaja.valitseKortti(numero);
                 kortti.setEnabled(false);
-
+//                if (arvonta.getSaldo()>= 0.2){
+//                    pelaa.setEnabled(true);
+//                }
+                    
             }
         }
     }
