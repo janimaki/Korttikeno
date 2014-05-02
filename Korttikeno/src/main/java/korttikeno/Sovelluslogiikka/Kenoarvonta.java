@@ -1,7 +1,7 @@
 package korttikeno.Sovelluslogiikka;
 
-import main.java.korttikeno.Pelaaja.Pelaaja;
 import java.util.ArrayList;
+import korttikeno.Pelaaja.Pelaaja;
 
 /**
  * Luokka, jossa on suurin osa ohjelman logiikasta

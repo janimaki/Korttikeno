@@ -17,7 +17,6 @@ import static org.junit.Assert.*;
 public class KenoarvontaTest {
 
     Kenoarvonta arvonta;
-//    Pelaaja pelaaja;
 
     public KenoarvontaTest() {
     }
