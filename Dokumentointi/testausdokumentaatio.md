@@ -1,0 +1,7 @@
+Testausdokumentaatio.
+
+Testauksessa pyrin testaamaan koko sovelluslogiikan ja pelaaja-luokan niin kattavasti kuin pystyin. Yhtä metodia lukuunottamatta kaikki on testattu (onkoVoittoa()-metodia en vain saanut testattua niin, että se olisi pit-raportissa näkynyt vihreänä) myös getterit ja setterit. Getterit/Setterit testasin ihan vain sen takia, että vihreä rivi näytti niin paljon kivemmalta silmään. 
+
+Ohjelmassani oli todella paljon tarpeen testata käsin käyttöliittymää, koska käyttöliittymä muodosti niin suuren osan ohjelmaa. Varsinkin kaikki nappien painamiset väärään aikaan, ja mitkä napit milloinkin näkyy vei aikaa testata. Valehtelematta olen varmaan tuhat kertaa käynnistänyt ohjelman ihan vain testausta varten. Tuplausta on myös testattu käsin ja itse en löydä ongelmia, jotka kaataisivat pelin. Joitakin nappeja pystyy painamaan, vaikka niitä ei kuuluisi, mutta ne eivät kuitenkaan tee silloin mitään, jotkut ystävällisesti neuvovat esim. että "arvonta kesken" jne. Olen myös ottanut huomioon, että vääriä nappeja painamalla väärään aikaan ohjelmaa ei saisi kaadettua, ja itse en siinä onnistunut. 
+
+Ainoat bugit ovat napit, jotka välillä näkyvät, vaikkei niitä painamalla mitään tapahdu. Oletan, että pelaaja huomaa jos hän turhaan rämppää nappia, että siitä nyt ei ehkä tapahdu mitään. Pelaa-Nappi on myös välillä pois näkyvistä, jos kortit valitaan viimeisenä. Näkyviin sen saa painamalla panosta. Tämä on ongelma yleensä pelin alussa tai jos pelaa-nappia yritetään painaa ilman, että yhtään korttia on valittu. 
