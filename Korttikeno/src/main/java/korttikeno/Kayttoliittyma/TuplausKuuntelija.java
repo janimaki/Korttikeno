@@ -1,5 +1,6 @@
-package main.java.korttikeno.Kayttoliittyma;
+package korttikeno.Kayttoliittyma;
 
+import korttikeno.Kayttoliittyma.Tuplausliittyma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
@@ -10,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
-import main.java.korttikeno.Sovelluslogiikka.Kenoarvonta;
+import korttikeno.Sovelluslogiikka.Kenoarvonta;
 
 /**
  * ActionListener luokka, jolla toteutetaan tuplaus.

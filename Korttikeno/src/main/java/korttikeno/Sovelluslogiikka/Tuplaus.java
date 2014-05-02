@@ -1,6 +1,6 @@
-package main.java.korttikeno.Sovelluslogiikka;
+package korttikeno.Sovelluslogiikka;
 
-import main.java.korttikeno.Pelaaja.Pelaaja;
+import korttikeno.Pelaaja.Pelaaja;
 
 /**
  * Luokka, jossa tarkastellaan onko arvottu kortti pieni vai suuri

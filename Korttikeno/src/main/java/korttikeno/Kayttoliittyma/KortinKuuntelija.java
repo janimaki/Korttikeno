@@ -1,4 +1,4 @@
-package main.java.korttikeno.Kayttoliittyma;
+package korttikeno.Kayttoliittyma;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import main.java.korttikeno.Sovelluslogiikka.Kenoarvonta;
+import korttikeno.Sovelluslogiikka.Kenoarvonta;
 
 /**
  * ActionListener luokka, jolla toteutetaan korttien valinta.
@@ -24,11 +24,11 @@ public class KortinKuuntelija implements ActionListener {
     public HashMap<JButton, Integer> indeksit;
 
 
+
     KortinKuuntelija(Kenoarvonta arvonta, JButton kortti, HashMap indeksit) {
         this.arvonta = arvonta;
         this.kortti = kortti;
         this.indeksit = indeksit;
-//        this.pelaa = pelaa;
 
     }
 
@@ -40,9 +40,6 @@ public class KortinKuuntelija implements ActionListener {
                 int numero = indeksit.get(kortti);
                 arvonta.pelaaja.valitseKortti(numero);
                 kortti.setEnabled(false);
-//                if (arvonta.getSaldo()>= 0.2){
-//                    pelaa.setEnabled(true);
-//                }
                     
             }
         }

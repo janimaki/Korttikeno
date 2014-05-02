@@ -33,11 +33,17 @@ Aikaa käytetty 6 tuntia.
 28.4.-29.4.
 -Taas tuli ahkeroitua käyttöliittymän parissa, taitaa olla aika lailla valmis nyt. Myös testit, javadocit valmiit. Ensi kerralla ajattelin siistiä koodia, dokumentaatiot viimeistellä ja jarrin tehdä. 6 tuntia tuli täyteen tällä erää.
 
+2.5. 
+-Viimeiset silaukset dokumentaatioon ja repositorio kuntoon, 4 tuntia.
+
 Viikko 1: 5 tuntia
 Viikko 2: 8 tuntia
 Viikko 3: 8 tuntia
 Viikko 4: 7 tuntia
 Viikko 5: 6 tuntia
+Viikko 6: 16 tuntia
+
+Yhteensä: 50 tuntia.
 
 
 

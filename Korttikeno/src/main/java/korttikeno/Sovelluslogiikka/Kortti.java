@@ -1,4 +1,4 @@
-package main.java.korttikeno.Sovelluslogiikka;
+package korttikeno.Sovelluslogiikka;
 
 /**
  * Luokka, jossa määritelty kortti, käytännössä kortti on luku välillä 1-52.

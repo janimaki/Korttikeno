@@ -1,5 +1,6 @@
-package main.java.korttikeno.Kayttoliittyma;
+package korttikeno.Kayttoliittyma;
 
+import korttikeno.Kayttoliittyma.Tuplausliittyma;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,8 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-import main.java.korttikeno.Sovelluslogiikka.Kenoarvonta;
-import main.java.korttikeno.Kayttoliittyma.KortinKuuntelija;
+import korttikeno.Sovelluslogiikka.Kenoarvonta;
+import korttikeno.Kayttoliittyma.KortinKuuntelija;
 
 /**
  * ActionListener luokka, jolla toteutetaan alapalkin nappien toiminnot.
@@ -25,7 +26,7 @@ public class AlapalkinKuuntelija implements ActionListener {
 
     public ArrayList<KortinKuuntelija> lista;
     public Kenoarvonta arvonta;
-    private JButton pelaa;
+    public JButton pelaa;
     private JButton kasvataPanos;
     private JLabel ohjelaatikko;
     private JButton asetaSaldo;
@@ -44,7 +45,7 @@ public class AlapalkinKuuntelija implements ActionListener {
         this.lista = kortit;
         this.pelaa = pelaaNappi;
         this.arvonta = arvonta;
-//        this.pelaa.setEnabled(false);
+        this.pelaa.setEnabled(false);
         this.kasvataPanos = kasvataPanos;
         this.ohjelaatikko = ohjelaatikko;
         this.asetaSaldo = asetaSaldo;

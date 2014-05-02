@@ -1,4 +1,4 @@
-package main.java.korttikeno.Pelaaja;
+package korttikeno.Pelaaja;
 
 import java.util.ArrayList;
 
@@ -73,7 +73,7 @@ public class Pelaaja {
     }
 
     public ArrayList<Integer> getValitutKortit() {
-        return valitutKortit;
+            return valitutKortit;
     }
 
     /**
@@ -92,5 +92,4 @@ public class Pelaaja {
     public void setTuplaus(int tuplaus) {
         this.tuplaus = tuplaus; // 0 = pieni, 3 = suuri
     }
-
 }

@@ -1,4 +1,4 @@
-package main.java.korttikeno.Kayttoliittyma;
+package korttikeno.Kayttoliittyma;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -11,8 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-import main.java.korttikeno.Sovelluslogiikka.Kenoarvonta;
-import main.java.korttikeno.Sovelluslogiikka.Tuplaus;
+import korttikeno.Kayttoliittyma.TuplausKuuntelija;
+import korttikeno.Sovelluslogiikka.Kenoarvonta;
+import korttikeno.Sovelluslogiikka.Tuplaus;
 
 /**
  * Käyttöliittymä-luokka, jossa suoritetaan tuplaus.
@@ -35,7 +36,7 @@ public class Tuplausliittyma implements Runnable {
 
     @Override
     public void run() {
-        frame = new JFrame("Valitse pieni tai suuri, sulje ikkuna ja paina 'Tuplaus rdy'. Jos suljet ikkunan ennen valintaa, paina 'Tuplaus rdy' ja peli jatkuu ilman tuplausta");
+        frame = new JFrame("Valitse pieni tai suuri ja paina 'Tuplaus rdy'. Jos suljet ikkunan ennen valintaa, paina 'Tuplaus rdy' ja peli jatkuu ilman tuplausta");
         frame.setPreferredSize(new Dimension(1000, 600));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 

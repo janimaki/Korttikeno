@@ -1,4 +1,4 @@
-package main.java.korttikeno.Kayttoliittyma;
+package korttikeno.Kayttoliittyma;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-import main.java.korttikeno.Sovelluslogiikka.Kenoarvonta;
+import korttikeno.Sovelluslogiikka.Kenoarvonta;
 
 /**
  * Käyttöliittymäluokka, joka luo graafisen käyttöliittymän pelille.
@@ -33,6 +33,7 @@ public class Kayttoliittyma implements Runnable {
     public Kenoarvonta arvonta;
     public ArrayList<KortinKuuntelija> kortit;
     public HashMap<JButton, Integer> indeksit;
+
 
 
     public Kayttoliittyma() {
@@ -114,6 +115,7 @@ public class Kayttoliittyma implements Runnable {
 
         AlapalkinKuuntelija kuuntelija = new AlapalkinKuuntelija(arvonta, pelaa, kortit, kasvataPanos,
                 asetaSaldo, teksti, ohjelaatikko, kylla, ei, tuplausOhje, tuplattu);
+        
 
         panel.add(pelaa);
         panel.add(kasvataPanos);
@@ -159,7 +161,7 @@ public class Kayttoliittyma implements Runnable {
                 + "<br/>Osumia 4: panos x30<br/>Osumia 5: panos x50</html>");
 
 
-        OikeanPalkinKuuntelija kuuntelija = new OikeanPalkinKuuntelija(arvonta, poistaValinnat, kortit, voitonmaksu);
+        OikeanPalkinKuuntelija kuuntelija = new OikeanPalkinKuuntelija(arvonta, poistaValinnat, kortit, voitonmaksu, frame);
 
         poistaValinnat.addActionListener(kuuntelija);
         voitonmaksu.addActionListener(kuuntelija);
